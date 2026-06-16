@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Workshop 工具安裝指南 — Windows 11</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #22263a;
+    --border: #2e3352;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --warn: #f59e0b;
+    --danger: #ef4444;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --node: #539e43;
+    --vscode: #007acc;
+    --codex: #10a37f;
+    --google: #4285f4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
+
+  /* Header */
+  .hero {
+    background: linear-gradient(135deg, #1a1d27 0%, #12162b 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+  }
+  .hero h1 { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: .5rem; }
+  .hero .subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 1.5rem; }
+  .hero .badges { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; }
+  .badge { padding: .25rem .75rem; border-radius: 999px; font-size: .75rem; font-weight: 600; }
+  .badge-os { background: #1e3a5f; color: #60a5fa; }
+  .badge-free { background: #14532d; color: #4ade80; }
+  .badge-beginner { background: #4c1d95; color: #c4b5fd; }
+
+  /* Nav / TOC */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    max-width: 760px;
+    margin: 2rem auto;
+  }
+  .toc h2 { font-size: .85rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 1rem; }
+  .toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .5rem; }
+  .toc-item {
+    display: flex; align-items: center; gap: .5rem;
+    padding: .6rem .9rem; border-radius: 8px;
+    background: var(--surface2); border: 1px solid var(--border);
+    cursor: pointer; text-decoration: none; color: var(--text);
+    font-size: .9rem; transition: all .15s;
+  }
+  .toc-item:hover { border-color: var(--accent); color: #fff; }
+  .toc-num { font-size: .75rem; color: var(--muted); font-weight: 700; min-width: 1.2rem; }
+
+  /* Main layout */
+  main { max-width: 760px; margin: 0 auto; padding: 1rem 1.5rem 4rem; }
+
+  /* Section */
+  .section { margin-bottom: 3rem; }
+  .section-header {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid var(--border);
+    border-bottom: none;
+  }
+  .section-header.node-color { background: linear-gradient(90deg, rgba(83,158,67,.15) 0%, var(--surface) 100%); border-color: rgba(83,158,67,.4); }
+  .section-header.vscode-color { background: linear-gradient(90deg, rgba(0,122,204,.15) 0%, var(--surface) 100%); border-color: rgba(0,122,204,.4); }
+  .section-header.codex-color { background: linear-gradient(90deg, rgba(16,163,127,.15) 0%, var(--surface) 100%); border-color: rgba(16,163,127,.4); }
+  .section-header.google-color { background: linear-gradient(90deg, rgba(66,133,244,.15) 0%, var(--surface) 100%); border-color: rgba(66,133,244,.4); }
+  .section-header.claude-color { background: linear-gradient(90deg, rgba(108,99,255,.15) 0%, var(--surface) 100%); border-color: rgba(108,99,255,.4); }
+  .section-icon { font-size: 1.8rem; line-height: 1; }
+  .section-title { font-size: 1.2rem; font-weight: 700; }
+  .section-meta { font-size: .8rem; color: var(--muted); }
+
+  .section-body {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0 0 12px 12px;
+    padding: 1.5rem;
+  }
+  .section-header.node-color + .section-body { border-color: rgba(83,158,67,.4); }
+  .section-header.vscode-color + .section-body { border-color: rgba(0,122,204,.4); }
+  .section-header.codex-color + .section-body { border-color: rgba(16,163,127,.4); }
+  .section-header.google-color + .section-body { border-color: rgba(66,133,244,.4); }
+  .section-header.claude-color + .section-body { border-color: rgba(108,99,255,.4); }
+
+  /* Steps */
+  .step { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+  .step:last-child { margin-bottom: 0; }
+  .step-num {
+    flex-shrink: 0; width: 28px; height: 28px;
+    border-radius: 50%; background: var(--surface2);
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .8rem; font-weight: 700; color: var(--muted);
+    margin-top: .15rem;
+  }
+  .step-content { flex: 1; }
+  .step-content h3 { font-size: .95rem; font-weight: 600; margin-bottom: .4rem; color: #fff; }
+  .step-content p { font-size: .9rem; color: var(--muted); margin-bottom: .6rem; }
+
+  /* Code block */
+  .code-block {
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .75rem 1rem;
+    font-family: 'Consolas', 'Cascadia Code', monospace;
+    font-size: .85rem;
+    color: #e2e8f0;
+    position: relative;
+    margin: .5rem 0;
+    overflow-x: auto;
+  }
+  .code-block .prompt { color: #4ade80; user-select: none; }
+  .code-label {
+    font-size: .7rem; color: var(--muted); text-transform: uppercase;
+    letter-spacing: .08em; margin-bottom: .3rem;
+  }
+  .copy-btn {
+    position: absolute; top: .5rem; right: .5rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--muted); font-size: .7rem; padding: .25rem .5rem;
+    border-radius: 4px; cursor: pointer; transition: all .15s;
+  }
+  .copy-btn:hover { color: #fff; border-color: var(--accent); }
+
+  /* Alert boxes */
+  .alert {
+    border-radius: 8px; padding: .9rem 1rem;
+    font-size: .875rem; margin: .75rem 0;
+    display: flex; gap: .6rem; align-items: flex-start;
+  }
+  .alert-icon { flex-shrink: 0; font-size: 1rem; margin-top: .05rem; }
+  .alert-warn { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.35); color: #fcd34d; }
+  .alert-info { background: rgba(99,102,241,.1); border: 1px solid rgba(99,102,241,.35); color: #a5b4fc; }
+  .alert-success { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.35); color: #6ee7b7; }
+  .alert-danger { background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.35); color: #fca5a5; }
+
+  /* Screenshot placeholder */
+  .screenshot {
+    background: var(--surface2);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 2rem 1rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: .82rem;
+    margin: .75rem 0;
+  }
+  .screenshot .scr-icon { font-size: 1.5rem; display: block; margin-bottom: .4rem; }
+
+  /* Fake browser mockup */
+  .browser-mock {
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: .75rem 0;
+  }
+  .browser-bar {
+    background: #161b22;
+    padding: .5rem .75rem;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .browser-dots { display: flex; gap: .3rem; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #ffbd2e; }
+  .dot-g { background: #28c840; }
+  .browser-url {
+    flex: 1; background: #21262d; border-radius: 4px;
+    padding: .2rem .6rem; font-size: .75rem; color: var(--muted);
+    font-family: monospace;
+  }
+  .browser-content { padding: 1rem; font-size: .82rem; }
+
+  /* Tool comparison table */
+  .compare-table { width: 100%; border-collapse: collapse; font-size: .85rem; margin: 1rem 0; }
+  .compare-table th, .compare-table td {
+    padding: .6rem .9rem; border: 1px solid var(--border); text-align: left;
+  }
+  .compare-table th { background: var(--surface2); color: var(--muted); font-weight: 600; }
+  .compare-table td { background: var(--surface); }
+  .free-tag { background: #14532d; color: #4ade80; padding: .15rem .4rem; border-radius: 4px; font-size: .75rem; font-weight: 600; }
+  .paid-tag { background: #7c2d12; color: #fca5a5; padding: .15rem .4rem; border-radius: 4px; font-size: .75rem; font-weight: 600; }
+
+  /* Divider */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+
+  /* Summary checklist */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: flex; align-items: center; gap: .6rem;
+    padding: .5rem .75rem; border-radius: 6px;
+    margin-bottom: .35rem; background: var(--surface2);
+    border: 1px solid var(--border); font-size: .9rem;
+  }
+  .check-circle {
+    width: 20px; height: 20px; border-radius: 50%;
+    border: 2px solid var(--border); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .7rem; color: transparent;
+    cursor: pointer; transition: all .15s;
+  }
+  .check-circle.done { background: var(--accent2); border-color: var(--accent2); color: #000; }
+
+  /* Scrollable tip */
+  .tip-scroll { overflow-x: auto; }
+
+  a { color: var(--accent2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.4rem; }
+    main { padding: 1rem; }
+    .toc-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div style="font-size:3rem;margin-bottom:.75rem">🤖</div>
+  <h1>AI 工具安裝指南</h1>
+  <p class="subtitle">Windows 11 × AI CLI Workshop — 從零開始上手</p>
+  <div class="badges">
+    <span class="badge badge-os">🪟 Windows 11</span>
+    <span class="badge badge-free">✅ 免費方案適用</span>
+    <span class="badge badge-beginner">👋 完全新手友善</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <h2>📋 安裝清單</h2>
+  <div class="toc-grid">
+    <a href="#prereq" class="toc-item"><span class="toc-num">0</span>前置需求</a>
+    <a href="#nodejs" class="toc-item"><span class="toc-num">1</span>Node.js</a>
+    <a href="#vscode" class="toc-item"><span class="toc-num">2</span>VS Code</a>
+    <a href="#codex" class="toc-item"><span class="toc-num">3</span>Codex CLI</a>
+    <a href="#antigravity" class="toc-item"><span class="toc-num">4</span>Antigravity CLI</a>
+    <a href="#claude" class="toc-item"><span class="toc-num">5</span>Claude Code</a>
+    <a href="#verify" class="toc-item"><span class="toc-num">✓</span>驗證 & 完成</a>
+  </div>
+</div>
+
+<main>
+
+<!-- OVERVIEW TABLE -->
+<div class="section">
+  <div class="alert alert-info">
+    <span class="alert-icon">ℹ️</span>
+    <div>
+      <strong>在開始前，請先了解各工具的免費方案狀況</strong><br>
+      本指南針對<strong>免費方案</strong>用戶最佳化。Claude Code 需要付費訂閱，本指南仍提供安裝說明供參考。
+    </div>
+  </div>
+
+  <div class="tip-scroll">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>工具</th>
+          <th>開發商</th>
+          <th>免費方案</th>
+          <th>需要帳號</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🟢 <strong>Codex CLI</strong></td>
+          <td>OpenAI</td>
+          <td><span class="free-tag">免費</span> ChatGPT 帳號即可</td>
+          <td>ChatGPT 帳號</td>
+        </tr>
+        <tr>
+          <td>🔵 <strong>Antigravity CLI</strong><br><small>（前身 Gemini CLI）</small></td>
+          <td>Google</td>
+          <td><span class="free-tag">免費</span> Google 帳號即可</td>
+          <td>Google 帳號</td>
+        </tr>
+        <tr>
+          <td>🟣 <strong>Claude Code</strong></td>
+          <td>Anthropic</td>
+          <td><span class="paid-tag">需付費</span> Claude Pro $20/月起</td>
+          <td>Claude Pro 帳號</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 0: 前置需求 -->
+<div class="section" id="prereq">
+  <div class="section-header vscode-color">
+    <div class="section-icon">⚙️</div>
+    <div>
+      <div class="section-title">前置需求確認</div>
+      <div class="section-meta">開始安裝前，請先確認這些項目</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="step">
+      <div class="step-num">✓</div>
+      <div class="step-content">
+        <h3>確認 Windows 11 已更新</h3>
+        <p>請確保 Windows 11 已安裝最新更新。按下 <kbd style="background:#22263a;padding:.1rem .4rem;border-radius:4px;border:1px solid #2e3352">Win + I</kbd> → 「Windows Update」→ 檢查更新。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">✓</div>
+      <div class="step-content">
+        <h3>準備帳號</h3>
+        <p>請事先註冊以下帳號（均免費）：</p>
+        <ul style="color:var(--muted);font-size:.875rem;padding-left:1.2rem;margin-top:.4rem;">
+          <li style="margin-bottom:.3rem">📧 <a href="https://chat.openai.com" target="_blank">ChatGPT 帳號</a>（用於 Codex CLI）</li>
+          <li style="margin-bottom:.3rem">🔵 <a href="https://accounts.google.com" target="_blank">Google 帳號</a>（用於 Antigravity CLI）</li>
+          <li>🟣 <a href="https://claude.ai" target="_blank">Claude Pro 帳號</a>（用於 Claude Code，選用）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">✓</div>
+      <div class="step-content">
+        <h3>開啟 PowerShell（以系統管理員身分）</h3>
+        <p>很多安裝步驟需要用到 PowerShell。開啟方式：</p>
+        <div class="browser-mock">
+          <div class="browser-bar">
+            <div class="browser-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+            <div style="font-size:.75rem;color:var(--muted)">開啟 PowerShell 步驟</div>
+          </div>
+          <div class="browser-content">
+            <p style="color:var(--muted)">1. 按下鍵盤上的 <strong style="color:#fff">Windows 鍵</strong></p>
+            <p style="color:var(--muted)">2. 輸入 <strong style="color:#60a5fa">PowerShell</strong></p>
+            <p style="color:var(--muted)">3. 在「Windows PowerShell」上按右鍵 → <strong style="color:#fff">以系統管理員身分執行</strong></p>
+          </div>
+        </div>
+        <div class="alert alert-warn">
+          <span class="alert-icon">⚠️</span>
+          <span>請勿使用「命令提示字元 (CMD)」或「Git Bash」，否則部分指令可能無法執行。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: Node.js -->
+<div class="section" id="nodejs">
+  <div class="section-header node-color">
+    <div class="section-icon">🟢</div>
+    <div>
+      <div class="section-title">步驟 1：安裝 Node.js（LTS 版本）</div>
+      <div class="section-meta">Codex CLI 與 Claude Code 的執行環境 · 約需 5 分鐘</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="alert alert-danger" style="margin-bottom:1.25rem;">
+      <span class="alert-icon">🏢</span>
+      <div>
+        <strong>公司電腦用戶請注意：需先向 IT 申請安裝權限</strong><br>
+        公司管理的 Windows 電腦通常限制自行安裝軟體。請在 Workshop <strong>前 2～3 個工作天</strong>向 IT Help Desk 提交申請，避免當天無法安裝。
+        <div style="margin-top:.75rem;background:rgba(0,0,0,.3);border-radius:8px;padding:.9rem 1rem;font-size:.85rem;line-height:1.7;">
+          <p style="color:#fca5a5;font-weight:700;margin-bottom:.4rem;">📋 IT Ticket 建議填寫內容：</p>
+          <p><span style="color:#94a3b8">主旨：</span><strong style="color:#fff">申請安裝 Node.js LTS — AI Workshop 使用</strong></p>
+          <p><span style="color:#94a3b8">內容：</span></p>
+          <div style="background:#0d1117;border-radius:6px;padding:.7rem .9rem;margin-top:.35rem;font-family:monospace;font-size:.82rem;color:#e2e8f0;white-space:pre-wrap;">您好，
+
+我將參加 [日期] 的 AI Workshop，
+課程需要在本機安裝以下軟體：
+
+- 軟體名稱：Node.js LTS
+- 下載來源：https://nodejs.org（官方網站）
+- 用途：執行 AI CLI 工具（Codex CLI / Claude Code）
+- 需要權限：本機系統管理員安裝權限
+
+請問能否協助開放安裝權限，或由 IT 協助預先安裝？
+
+謝謝！</div>
+          <button onclick="copyTicket(this)" style="margin-top:.6rem;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-size:.75rem;padding:.3rem .7rem;border-radius:4px;cursor:pointer;">📋 複製 Ticket 內容</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>前往 Node.js 官方網站</h3>
+        <p>用瀏覽器打開以下網址：</p>
+        <div class="browser-mock">
+          <div class="browser-bar">
+            <div class="browser-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+            <div class="browser-url">https://nodejs.org</div>
+          </div>
+          <div class="browser-content">
+            <p style="color:var(--muted)">你會看到兩個下載按鈕：</p>
+            <div style="display:flex;gap:.75rem;margin-top:.75rem;flex-wrap:wrap;">
+              <div style="background:#539e43;color:#fff;padding:.5rem 1.2rem;border-radius:6px;font-weight:700;font-size:.9rem;">
+                ✅ LTS（推薦）<br><span style="font-size:.75rem;font-weight:400">22.x.x</span>
+              </div>
+              <div style="background:#333;color:#888;padding:.5rem 1.2rem;border-radius:6px;font-size:.9rem;">
+                Current<br><span style="font-size:.75rem;">不建議</span>
+              </div>
+            </div>
+            <p style="color:var(--accent2);font-size:.82rem;margin-top:.6rem">👆 請點選左邊綠色的「LTS」按鈕下載</p>
+          </div>
+        </div>
+        <div class="alert alert-info">
+          <span class="alert-icon">💡</span>
+          <span><strong>為什麼選 LTS？</strong> LTS（長期支援版）更穩定，與大部分 AI 工具的相容性最好。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>執行安裝程式</h3>
+        <p>下載完成後，雙擊 <code style="background:#0d1117;padding:.1rem .35rem;border-radius:4px">.msi</code> 安裝檔，然後：</p>
+        <ul style="color:var(--muted);font-size:.875rem;padding-left:1.2rem;">
+          <li style="margin-bottom:.3rem">點「Next」→「Next」→ 接受授權條款</li>
+          <li style="margin-bottom:.3rem">安裝路徑保持<strong style="color:#fff">預設</strong>，直接 Next</li>
+          <li style="margin-bottom:.3rem">出現「Tools for Native Modules」頁面，<strong style="color:#fff">不用勾選</strong>，直接 Next</li>
+          <li>點「Install」→「Finish」</li>
+        </ul>
+        <div class="screenshot">
+          <span class="scr-icon">🖼️</span>
+          Node.js 安裝精靈畫面（選擇 LTS、一路按 Next 即可）
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>驗證安裝成功</h3>
+        <p>安裝完成後，<strong>關閉並重新開啟</strong> PowerShell，輸入：</p>
+        <div class="code-block">
+          <div class="code-label">PowerShell</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">PS> </span>node -v<br>
+          <span style="color:#94a3b8"># 應顯示類似 v22.x.x</span><br><br>
+          <span class="prompt">PS> </span>npm -v<br>
+          <span style="color:#94a3b8"># 應顯示類似 10.x.x</span>
+        </div>
+        <div class="alert alert-success">
+          <span class="alert-icon">✅</span>
+          <span>看到版本號碼代表 Node.js 已成功安裝！</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: VS Code -->
+<div class="section" id="vscode">
+  <div class="section-header vscode-color">
+    <div class="section-icon">💙</div>
+    <div>
+      <div class="section-title">步驟 2：安裝 Visual Studio Code</div>
+      <div class="section-meta">主力程式碼編輯器 · 約需 3 分鐘</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>下載 VS Code</h3>
+        <p>前往官方網站下載：</p>
+        <div class="browser-mock">
+          <div class="browser-bar">
+            <div class="browser-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+            <div class="browser-url">https://code.visualstudio.com</div>
+          </div>
+          <div class="browser-content">
+            <p style="color:var(--muted)">首頁中央會有藍色的大型下載按鈕：</p>
+            <div style="background:#007acc;color:#fff;display:inline-block;padding:.5rem 1.5rem;border-radius:6px;font-weight:700;margin-top:.5rem;">
+              ⬇ Download for Windows
+            </div>
+            <p style="color:var(--muted);font-size:.82rem;margin-top:.5rem">它會自動偵測你的 Windows 版本</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>安裝 VS Code</h3>
+        <p>執行下載的安裝程式，安裝時請務必勾選以下選項：</p>
+        <div style="background:#0d1117;border:1px solid var(--border);border-radius:8px;padding:1rem;margin:.5rem 0;">
+          <p style="color:#fff;font-size:.875rem;margin-bottom:.5rem">📋 安裝選項頁面（重要！）</p>
+          <div style="display:flex;flex-direction:column;gap:.4rem;">
+            <label style="display:flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.85rem;">
+              <span style="background:#4ade80;color:#000;border-radius:3px;padding:.1rem .3rem;font-size:.75rem;font-weight:700">✓</span>
+              將「以 Code 開啟」新增至 Windows 檔案總管的檔案操作功能表
+            </label>
+            <label style="display:flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.85rem;">
+              <span style="background:#4ade80;color:#000;border-radius:3px;padding:.1rem .3rem;font-size:.75rem;font-weight:700">✓</span>
+              將「以 Code 開啟」新增至 Windows 檔案總管的目錄操作功能表
+            </label>
+            <label style="display:flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.85rem;">
+              <span style="background:#4ade80;color:#000;border-radius:3px;padding:.1rem .3rem;font-size:.75rem;font-weight:700">✓</span>
+              將 Code 登錄為受支援的檔案類型編輯器
+            </label>
+            <label style="display:flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.85rem;">
+              <span style="background:#4ade80;color:#000;border-radius:3px;padding:.1rem .3rem;font-size:.75rem;font-weight:700">✓</span>
+              新增至 PATH（重要！）
+            </label>
+          </div>
+        </div>
+        <div class="alert alert-warn">
+          <span class="alert-icon">⚠️</span>
+          <span>務必勾選「新增至 PATH」，否則之後在終端機輸入 <code>code .</code> 無法直接開啟編輯器。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>安裝推薦擴充功能</h3>
+        <p>開啟 VS Code，按 <kbd style="background:#22263a;padding:.1rem .4rem;border-radius:4px;border:1px solid #2e3352">Ctrl + Shift + X</kbd> 開啟擴充功能面板，搜尋並安裝：</p>
+        <div style="display:flex;flex-direction:column;gap:.4rem;margin-top:.5rem;">
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;font-size:.85rem;">
+            🌏 <strong style="color:#fff">Chinese (Traditional) Language Pack</strong> — 中文介面
+          </div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;font-size:.85rem;">
+            🤖 <strong style="color:#fff">GitHub Copilot</strong>（可選）— AI 輔助寫程式
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: Codex CLI -->
+<div class="section" id="codex">
+  <div class="section-header codex-color">
+    <div class="section-icon">🤖</div>
+    <div>
+      <div class="section-title">步驟 3：安裝 Codex CLI（OpenAI）</div>
+      <div class="section-meta">免費 · 需要 ChatGPT 帳號 · 約需 3 分鐘</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="alert alert-success">
+      <span class="alert-icon">✅</span>
+      <span><strong>完全免費！</strong> 用 ChatGPT 免費帳號即可登入使用 Codex CLI，無需信用卡。</span>
+    </div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>以系統管理員身分開啟 PowerShell</h3>
+        <p>請確保使用 PowerShell（不是 CMD 或 Git Bash）。</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>執行安裝指令</h3>
+        <p>在 PowerShell 中貼上並執行以下指令：</p>
+        <div class="code-block">
+          <div class="code-label">PowerShell（以系統管理員執行）</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
+        </div>
+        <div class="alert alert-info">
+          <span class="alert-icon">💡</span>
+          <span>安裝完成後，<strong>關閉並重新開啟 PowerShell</strong>，讓 PATH 設定生效。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>驗證並首次登入</h3>
+        <p>重新開啟 PowerShell 後，輸入：</p>
+        <div class="code-block">
+          <div class="code-label">PowerShell</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">PS> </span>codex
+        </div>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">首次執行時，會提示你登入 ChatGPT 帳號，瀏覽器會自動開啟讓你完成授權。登入後即可開始使用！</p>
+        <div class="browser-mock">
+          <div class="browser-bar">
+            <div class="browser-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+            <div style="font-size:.75rem;color:var(--muted)">Codex CLI 使用方式</div>
+          </div>
+          <div class="browser-content">
+            <p style="color:var(--muted)">登入後，在 Codex 的互動介面中，你可以輸入像這樣的自然語言指令：</p>
+            <div style="background:#0d1117;border-radius:6px;padding:.6rem;margin-top:.5rem;font-family:monospace;font-size:.82rem;">
+              <span style="color:#4ade80">codex&gt;</span> <span style="color:#e2e8f0">建立一個 Python 的 Hello World 程式</span><br>
+              <span style="color:#94a3b8"># Codex 會直接幫你建立檔案並執行</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: Antigravity CLI -->
+<div class="section" id="antigravity">
+  <div class="section-header google-color">
+    <div class="section-icon">🔵</div>
+    <div>
+      <div class="section-title">步驟 4：安裝 Antigravity CLI（Google）</div>
+      <div class="section-meta">免費 · 需要 Google 帳號 · 約需 3 分鐘</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="alert alert-warn">
+      <span class="alert-icon">📢</span>
+      <div>
+        <strong>重要說明：Gemini CLI → Antigravity CLI</strong><br>
+        Google 已在 2026/6/18 將 Gemini CLI 替換為 <strong>Antigravity CLI</strong>（指令為 <code>agy</code>）。如果你之前安裝過 Gemini CLI，請改安裝此新版本。
+      </div>
+    </div>
+    <div class="alert alert-success">
+      <span class="alert-icon">✅</span>
+      <span><strong>完全免費！</strong> 用 Google 帳號即可登入，每天最多 1,000 次請求，完全不需要信用卡。</span>
+    </div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>執行安裝指令</h3>
+        <p>在 PowerShell（可不需系統管理員）中執行：</p>
+        <div class="code-block">
+          <div class="code-label">PowerShell</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          irm https://antigravity.google/cli/install.ps1 | iex
+        </div>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">安裝腳本會自動偵測你的 Windows 版本，下載對應的 <code>agy.exe</code> 並設定環境變數。</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>重新開啟終端機並驗證</h3>
+        <p><strong>關閉並重新開啟</strong> PowerShell，然後輸入：</p>
+        <div class="code-block">
+          <div class="code-label">PowerShell</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">PS> </span>agy --version<br>
+          <span style="color:#94a3b8"># 應顯示版本號碼</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>首次登入</h3>
+        <p>執行 <code>agy</code> 啟動後，選擇登入方式：</p>
+        <div style="background:#0d1117;border-radius:8px;padding:1rem;margin:.5rem 0;font-family:monospace;font-size:.85rem;">
+          <p style="color:#e2e8f0">? 請選擇登入方式：</p>
+          <p style="color:#4ade80">❯ ◉ Google OAuth（推薦，免費）</p>
+          <p style="color:#94a3b8">&nbsp; ○ Use a Google Cloud project（進階）</p>
+        </div>
+        <p style="color:var(--muted);font-size:.875rem;">選擇「Google OAuth」後，終端機會顯示一個連結，複製後貼到瀏覽器，以 Google 帳號授權即完成。</p>
+        <div class="alert alert-info">
+          <span class="alert-icon">💡</span>
+          <span>登入成功後，之後每次使用都不需要重新登入，憑證會儲存在本機。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>試用看看</h3>
+        <div class="code-block">
+          <div class="code-label">PowerShell</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">PS> </span>agy "請用繁體中文介紹你自己"
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: Claude Code -->
+<div class="section" id="claude">
+  <div class="section-header claude-color">
+    <div class="section-icon">🟣</div>
+    <div>
+      <div class="section-title">步驟 5：安裝 Claude Code（Anthropic）</div>
+      <div class="section-meta">需要 Claude Pro 訂閱（$20/月） · 選用</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="alert alert-danger">
+      <span class="alert-icon">⚠️</span>
+      <div>
+        <strong>注意：Claude Code 沒有免費方案</strong><br>
+        需要 Claude Pro（$20/月）或 Claude Max（$100/月）訂閱才能使用。如果你目前只使用免費方案，可以先跳過此步驟。
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>安裝 Git for Windows（必須）</h3>
+        <p>Claude Code 需要 Git，請先安裝：</p>
+        <div class="code-block">
+          <div class="code-label">PowerShell（系統管理員）</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          winget install Git.Git
+        </div>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">安裝完後，關閉並重開 PowerShell。</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>安裝 Claude Code</h3>
+        <p>在 PowerShell 中執行：</p>
+        <div class="code-block">
+          <div class="code-label">PowerShell</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          irm https://claude.ai/install.ps1 | iex
+        </div>
+        <div class="alert alert-info">
+          <span class="alert-icon">💡</span>
+          <span>這是原生安裝器，<strong>不需要 Node.js</strong>，安裝更簡單穩定，並會自動更新。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>重開終端機並登入</h3>
+        <div class="code-block">
+          <div class="code-label">PowerShell</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">PS> </span>claude
+        </div>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">首次執行會自動開啟瀏覽器，用 Claude Pro/Max 帳號登入即完成授權。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: Verify -->
+<div class="section" id="verify">
+  <div class="section-header" style="background:linear-gradient(90deg,rgba(108,99,255,.15) 0%,var(--surface) 100%);border:1px solid rgba(108,99,255,.4);">
+    <div class="section-icon">✅</div>
+    <div>
+      <div class="section-title">最終驗證清單</div>
+      <div class="section-meta">確認所有工具都已正確安裝</div>
+    </div>
+  </div>
+  <div class="section-body" style="border-color:rgba(108,99,255,.4)">
+    <p style="color:var(--muted);font-size:.875rem;margin-bottom:1rem">在 PowerShell 中依序執行以下指令，確認每個工具都有回應版本號碼：</p>
+    <div class="code-block">
+      <div class="code-label">PowerShell — 一次全部驗證</div>
+      <button class="copy-btn" onclick="copyCode(this)">複製</button>
+      <span class="prompt">PS> </span>node -v && npm -v<br>
+      <span style="color:#94a3b8"># Node.js 已安裝</span><br><br>
+      <span class="prompt">PS> </span>code --version<br>
+      <span style="color:#94a3b8"># VS Code 已安裝</span><br><br>
+      <span class="prompt">PS> </span>codex --version<br>
+      <span style="color:#94a3b8"># Codex CLI 已安裝</span><br><br>
+      <span class="prompt">PS> </span>agy --version<br>
+      <span style="color:#94a3b8"># Antigravity CLI 已安裝</span><br><br>
+      <span class="prompt">PS> </span>claude --version<br>
+      <span style="color:#94a3b8"># Claude Code（選用，需付費訂閱）</span>
+    </div>
+
+    <hr class="divider">
+
+    <p style="color:var(--muted);font-size:.875rem;margin-bottom:.75rem">點選項目打勾確認完成：</p>
+    <ul class="checklist" id="checklist">
+      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Node.js LTS 已安裝，<code>node -v</code> 有輸出版本號</li>
+      <li><div class="check-circle" onclick="toggleCheck(this)"></div>VS Code 已安裝並可正常開啟</li>
+      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Codex CLI 已安裝，並以 ChatGPT 帳號登入</li>
+      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Antigravity CLI 已安裝，並以 Google 帳號登入</li>
+      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Claude Code 已安裝（選用）</li>
+    </ul>
+  </div>
+</div>
+
+<!-- TROUBLESHOOTING -->
+<div class="section">
+  <div class="section-header" style="background:linear-gradient(90deg,rgba(245,158,11,.1) 0%,var(--surface) 100%);border:1px solid rgba(245,158,11,.3);">
+    <div class="section-icon">🔧</div>
+    <div>
+      <div class="section-title">常見問題排除</div>
+    </div>
+  </div>
+  <div class="section-body" style="border-color:rgba(245,158,11,.3)">
+    <div style="display:flex;flex-direction:column;gap:.75rem;">
+      <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
+        <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ 輸入指令後出現「不是內部或外部命令」</summary>
+        <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">PATH 設定尚未生效。請<strong style="color:#fff">完全關閉 PowerShell 後重新開啟</strong>，不是按 X 最小化，而是關閉後重開。如果還是不行，請重新啟動電腦。</p>
+      </details>
+      <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
+        <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ npm 安裝出現「permission denied」錯誤</summary>
+        <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">請確保以<strong style="color:#fff">系統管理員身分</strong>開啟 PowerShell（右鍵點選 → 以系統管理員身分執行）。</p>
+      </details>
+      <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
+        <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ Claude Code 出現「Raw mode is not supported」</summary>
+        <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">請確保你使用的是<strong style="color:#fff"> PowerShell</strong>，而非 Git Bash 或 CMD。Claude Code 的互動介面需要 PowerShell 的 TTY 支援。</p>
+      </details>
+      <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
+        <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ Antigravity CLI 登入後瀏覽器無法開啟</summary>
+        <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">手動複製終端機顯示的 URL，貼到瀏覽器網址列即可完成授權。</p>
+      </details>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<div style="text-align:center;padding:2rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);">
+  AI Workshop 工具安裝指南 · 最後更新：2026年6月 · 適用 Windows 11
+</div>
+
+<script>
+function copyTicket(btn) {
+  const text = `您好，\n\n我將參加 [日期] 的 AI Workshop，\n課程需要在本機安裝以下軟體：\n\n- 軟體名稱：Node.js LTS\n- 下載來源：https://nodejs.org（官方網站）\n- 用途：執行 AI CLI 工具（Codex CLI / Claude Code）\n- 需要權限：本機系統管理員安裝權限\n\n請問能否協助開放安裝權限，或由 IT 協助預先安裝？\n\n謝謝！`;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✅ 已複製！';
+    setTimeout(() => btn.textContent = '📋 複製 Ticket 內容', 1800);
+  });
+}
+function toggleCheck(el) {
+  el.classList.toggle('done');
+  el.textContent = el.classList.contains('done') ? '✓' : '';
+}
+function copyCode(btn) {
+  const block = btn.closest('.code-block');
+  const text = [...block.childNodes]
+    .filter(n => n.nodeType === 3 || (n.tagName && n.tagName !== 'BUTTON' && !n.classList.contains('code-label') && !n.classList.contains('prompt')))
+    .map(n => n.textContent)
+    .join('').replace(/\n{3,}/g, '\n\n').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '已複製！';
+    setTimeout(() => btn.textContent = '複製', 1500);
+  });
+}
+// Smooth scroll for TOC
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+</script>
+</body>
+</html>
