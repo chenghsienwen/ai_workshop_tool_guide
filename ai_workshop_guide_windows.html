@@ -796,6 +796,57 @@
       <span><strong>完全免費！</strong> 用 Google 帳號即可登入，每天最多 1,000 次請求，完全不需要信用卡。</span>
     </div>
 
+    <div class="alert alert-danger" style="margin-bottom:1.25rem;">
+      <span class="alert-icon">🏢</span>
+      <div>
+        <strong>公司電腦用戶請注意：網路防火牆可能封鎖 Antigravity CLI</strong><br>
+        公司的網路安全設定可能會在安裝或登入時出現以下症狀。若遇到，請聯繫 IT Help Desk 申請開放網路存取權限。
+        <div style="margin-top:1rem;display:flex;flex-direction:column;gap:.75rem;">
+          <div>
+            <p style="color:#fca5a5;font-size:.8rem;font-weight:700;margin-bottom:.4rem;">症狀 1：登入時瀏覽器顯示 Google OAuth 授權錯誤或無法完成</p>
+            <div style="background:#0d1117;border:1px dashed rgba(239,68,68,.4);border-radius:8px;padding:1.25rem;text-align:center;color:var(--muted);font-size:.82rem;">
+              <span style="font-size:1.4rem;display:block;margin-bottom:.4rem;">🖼️</span>
+              截圖待補：Google OAuth 授權失敗畫面<br>
+              <span style="font-size:.75rem;color:#4b5563;">（如遇到此畫面，請截圖並附在 IT Ticket 中）</span>
+            </div>
+            <p style="color:#94a3b8;font-size:.78rem;margin-top:.35rem;">原因：公司防火牆封鎖了 Google OAuth 認證伺服器（accounts.google.com / oauth2.googleapis.com）的連線。</p>
+          </div>
+          <div>
+            <p style="color:#fca5a5;font-size:.8rem;font-weight:700;margin-bottom:.4rem;">症狀 2：執行 agy 時彈出「Restricted Access」或防毒軟體警告</p>
+            <div style="background:#0d1117;border:1px dashed rgba(239,68,68,.4);border-radius:8px;padding:1.25rem;text-align:center;color:var(--muted);font-size:.82rem;">
+              <span style="font-size:1.4rem;display:block;margin-bottom:.4rem;">🖼️</span>
+              截圖待補：端點安全軟體封鎖 agy.exe 畫面<br>
+              <span style="font-size:.75rem;color:#4b5563;">（如遇到此畫面，請截圖並附在 IT Ticket 中）</span>
+            </div>
+            <p style="color:#94a3b8;font-size:.78rem;margin-top:.35rem;">原因：公司端點安全軟體封鎖了 <code>agy.exe</code> 的對外連線至 Google API。</p>
+          </div>
+        </div>
+        <div style="margin-top:.9rem;background:rgba(0,0,0,.3);border-radius:8px;padding:.9rem 1rem;font-size:.85rem;line-height:1.7;">
+          <p style="color:#fca5a5;font-weight:700;margin-bottom:.4rem;">📋 IT Ticket 建議填寫內容（Antigravity CLI 網路權限）：</p>
+          <div style="background:#0d1117;border-radius:6px;padding:.7rem .9rem;margin-top:.35rem;font-family:monospace;font-size:.82rem;color:#e2e8f0;white-space:pre-wrap;">主旨：申請開放 Antigravity CLI (agy) 網路存取 — AI Workshop 使用
+
+您好，
+
+我在使用 AI Workshop 的 Antigravity CLI（Google agy）工具時，
+遭遇公司安全政策封鎖，出現以下錯誤：
+
+- 錯誤 1：瀏覽器無法完成 Google OAuth 授權
+  （無法連線至 accounts.google.com / oauth2.googleapis.com）
+- 錯誤 2：端點安全軟體顯示「Restricted Access」
+  （封鎖 agy.exe 對外連線至 Google API）
+
+需要開放的網路存取：
+- accounts.google.com（Google OAuth 登入）
+- oauth2.googleapis.com（OAuth Token 交換）
+- generativelanguage.googleapis.com（Gemini API 呼叫）
+- 應用程式：agy.exe（Google LLC）
+
+謝謝！</div>
+          <button onclick="copyAgyTicket(this)" style="margin-top:.6rem;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-size:.75rem;padding:.3rem .7rem;border-radius:4px;cursor:pointer;">📋 複製 Ticket 內容</button>
+        </div>
+      </div>
+    </div>
+
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-content">
@@ -989,6 +1040,19 @@
         <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">手動複製終端機顯示的 URL，貼到瀏覽器網址列即可完成授權。</p>
       </details>
       <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
+        <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ Antigravity CLI 登入時 Google OAuth 授權失敗，或出現「Restricted Access」</summary>
+        <div style="margin-top:.6rem;display:flex;flex-direction:column;gap:.6rem;">
+          <p style="color:var(--muted);font-size:.85rem;">這是公司網路安全設定造成的封鎖，<strong style="color:#fff">不是你的操作問題</strong>。需要 IT 協助開放以下存取權限：</p>
+          <ul style="color:var(--muted);font-size:.85rem;padding-left:1.2rem;line-height:1.8;">
+            <li><code>accounts.google.com</code> — Google OAuth 登入</li>
+            <li><code>oauth2.googleapis.com</code> — OAuth Token 交換</li>
+            <li><code>generativelanguage.googleapis.com</code> — Gemini API 呼叫</li>
+            <li><code>agy.exe</code> 應用程式的對外網路存取</li>
+          </ul>
+          <p style="color:var(--muted);font-size:.85rem;">請參考 Antigravity CLI 安裝步驟中的 IT Ticket 範本，將錯誤截圖一併附上送出。</p>
+        </div>
+      </details>
+      <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
         <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ Codex CLI 登入時顯示「Sign-in could not be completed」或「Restricted Access」</summary>
         <div style="margin-top:.6rem;display:flex;flex-direction:column;gap:.6rem;">
           <p style="color:var(--muted);font-size:.85rem;">這是公司網路安全設定造成的封鎖，<strong style="color:#fff">不是你的操作問題</strong>。需要 IT 協助開放以下存取權限：</p>
@@ -1011,6 +1075,13 @@
 </div>
 
 <script>
+function copyAgyTicket(btn) {
+  const text = `主旨：申請開放 Antigravity CLI (agy) 網路存取 — AI Workshop 使用\n\n您好，\n\n我在使用 AI Workshop 的 Antigravity CLI（Google agy）工具時，\n遭遇公司安全政策封鎖，出現以下錯誤：\n\n- 錯誤 1：瀏覽器無法完成 Google OAuth 授權\n  （無法連線至 accounts.google.com / oauth2.googleapis.com）\n- 錯誤 2：端點安全軟體顯示「Restricted Access」\n  （封鎖 agy.exe 對外連線至 Google API）\n\n需要開放的網路存取：\n- accounts.google.com（Google OAuth 登入）\n- oauth2.googleapis.com（OAuth Token 交換）\n- generativelanguage.googleapis.com（Gemini API 呼叫）\n- 應用程式：agy.exe（Google LLC）\n\n謝謝！`;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✅ 已複製！';
+    setTimeout(() => btn.textContent = '📋 複製 Ticket 內容', 1800);
+  });
+}
 function copyCodexTicket(btn) {
   const text = `主旨：申請開放 Codex CLI 網路存取 — AI Workshop 使用\n\n您好，\n\n我在使用 AI Workshop 的 Codex CLI 工具時，\n遭遇公司安全政策封鎖，出現以下錯誤：\n\n- 錯誤 1：瀏覽器顯示「Sign-in could not be completed」\n  （token_exchange_failed，無法連線至 auth.openai.com）\n- 錯誤 2：端點安全軟體顯示「Restricted Access」\n  （封鎖 codex.exe 對外連線至 185.199.111.133:443）\n\n需要開放的網路存取：\n- auth.openai.com（OAuth 認證）\n- api.openai.com（API 呼叫）\n- 應用程式：codex.exe（OpenAI OpCo, LLC）\n\n謝謝！`;
   navigator.clipboard.writeText(text).then(() => {
