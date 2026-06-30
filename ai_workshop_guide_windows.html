@@ -18,6 +18,7 @@
     --muted: #94a3b8;
     --node: #539e43;
     --vscode: #007acc;
+    --python: #3776ab;
     --codex: #10a37f;
     --google: #4285f4;
   }
@@ -74,6 +75,7 @@
   }
   .section-header.node-color { background: linear-gradient(90deg, rgba(83,158,67,.15) 0%, var(--surface) 100%); border-color: rgba(83,158,67,.4); }
   .section-header.vscode-color { background: linear-gradient(90deg, rgba(0,122,204,.15) 0%, var(--surface) 100%); border-color: rgba(0,122,204,.4); }
+  .section-header.python-color { background: linear-gradient(90deg, rgba(55,118,171,.15) 0%, var(--surface) 100%); border-color: rgba(55,118,171,.4); }
   .section-header.codex-color { background: linear-gradient(90deg, rgba(16,163,127,.15) 0%, var(--surface) 100%); border-color: rgba(16,163,127,.4); }
   .section-header.google-color { background: linear-gradient(90deg, rgba(66,133,244,.15) 0%, var(--surface) 100%); border-color: rgba(66,133,244,.4); }
   .section-header.claude-color { background: linear-gradient(90deg, rgba(108,99,255,.15) 0%, var(--surface) 100%); border-color: rgba(108,99,255,.4); }
@@ -89,6 +91,7 @@
   }
   .section-header.node-color + .section-body { border-color: rgba(83,158,67,.4); }
   .section-header.vscode-color + .section-body { border-color: rgba(0,122,204,.4); }
+  .section-header.python-color + .section-body { border-color: rgba(55,118,171,.4); }
   .section-header.codex-color + .section-body { border-color: rgba(16,163,127,.4); }
   .section-header.google-color + .section-body { border-color: rgba(66,133,244,.4); }
   .section-header.claude-color + .section-body { border-color: rgba(108,99,255,.4); }
@@ -248,9 +251,10 @@
     <a href="#prereq" class="toc-item"><span class="toc-num">0</span>前置需求</a>
     <a href="#nodejs" class="toc-item"><span class="toc-num">1</span>Node.js</a>
     <a href="#vscode" class="toc-item"><span class="toc-num">2</span>VS Code</a>
-    <a href="#codex" class="toc-item"><span class="toc-num">3</span>Codex CLI</a>
-    <a href="#antigravity" class="toc-item"><span class="toc-num">4</span>Antigravity CLI</a>
-    <a href="#claude" class="toc-item"><span class="toc-num">5</span>Claude Code</a>
+    <a href="#python" class="toc-item"><span class="toc-num">3</span>Python</a>
+    <a href="#codex" class="toc-item"><span class="toc-num">4</span>Codex CLI</a>
+    <a href="#antigravity" class="toc-item"><span class="toc-num">5</span>Antigravity CLI</a>
+    <a href="#claude" class="toc-item"><span class="toc-num">6</span>Claude Code</a>
     <a href="#verify" class="toc-item"><span class="toc-num">✓</span>驗證 & 完成</a>
   </div>
 </div>
@@ -278,6 +282,12 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td>🐍 <strong>Python</strong></td>
+          <td>Python.org</td>
+          <td><span class="free-tag">免費</span> 開源，無需帳號</td>
+          <td>無</td>
+        </tr>
         <tr>
           <td>🟢 <strong>Codex CLI</strong></td>
           <td>OpenAI</td>
@@ -449,7 +459,7 @@
           <div class="code-label">PowerShell</div>
           <button class="copy-btn" onclick="copyCode(this)">複製</button>
           <span class="prompt">PS> </span>node -v<br>
-          <span style="color:#94a3b8"># 應顯示類似 v22.x.x</span><br><br>
+          <span style="color:#94a3b8"># 應顯示類似 v22.x.x（參考版本：v22.14.0）</span><br><br>
           <span class="prompt">PS> </span>npm -v<br>
           <span style="color:#94a3b8"># 應顯示類似 10.x.x</span>
         </div>
@@ -544,12 +554,114 @@
   </div>
 </div>
 
-<!-- SECTION 3: Codex CLI -->
+<!-- SECTION 3: Python -->
+<div class="section" id="python">
+  <div class="section-header python-color">
+    <div class="section-icon">🐍</div>
+    <div>
+      <div class="section-title">步驟 3：安裝 Python</div>
+      <div class="section-meta">AI 腳本執行環境 · 參考版本：Python 3.10.12 · 約需 5 分鐘</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="alert alert-danger" style="margin-bottom:1.25rem;">
+      <span class="alert-icon">🏢</span>
+      <div>
+        <strong>公司電腦用戶請注意：需先向 IT 申請安裝權限</strong><br>
+        請在 Workshop <strong>前 2～3 個工作天</strong>向 IT Help Desk 提交申請，並在 IT Ticket 中加入以下資訊：
+        <div style="margin-top:.75rem;background:rgba(0,0,0,.3);border-radius:8px;padding:.9rem 1rem;font-size:.85rem;line-height:1.7;">
+          <p style="color:#fca5a5;font-weight:700;margin-bottom:.4rem;">📋 IT Ticket 建議填寫內容（Python）：</p>
+          <div style="background:#0d1117;border-radius:6px;padding:.7rem .9rem;margin-top:.35rem;font-family:monospace;font-size:.82rem;color:#e2e8f0;white-space:pre-wrap;">- 軟體名稱：Python 3.x（官方版）
+- 下載來源：https://www.python.org（官方網站）
+- 用途：執行 AI Workshop 課程的 Python 腳本
+- 需要權限：本機系統管理員安裝權限</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>前往 Python 官方網站下載</h3>
+        <p>用瀏覽器打開以下網址：</p>
+        <div class="browser-mock">
+          <div class="browser-bar">
+            <div class="browser-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+            <div class="browser-url">https://www.python.org/downloads/</div>
+          </div>
+          <div class="browser-content">
+            <p style="color:var(--muted)">頁面頂部會有黃色的大型下載按鈕：</p>
+            <div style="background:#f7c948;color:#000;display:inline-block;padding:.5rem 1.5rem;border-radius:6px;font-weight:700;margin-top:.5rem;">
+              ⬇ Download Python 3.x.x
+            </div>
+            <p style="color:var(--muted);font-size:.82rem;margin-top:.5rem">它會自動偵測你的 Windows 版本並提供對應的安裝檔</p>
+          </div>
+        </div>
+        <div class="alert alert-info">
+          <span class="alert-icon">💡</span>
+          <span>建議下載 <strong>3.10.x 或更新的穩定版</strong>，本指南的參考版本為 <code>Python 3.10.12</code>。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>執行安裝程式（重要：勾選 Add to PATH）</h3>
+        <p>雙擊下載的 <code style="background:#0d1117;padding:.1rem .35rem;border-radius:4px">.exe</code> 安裝檔，在安裝畫面的最下方務必勾選：</p>
+        <div style="background:#0d1117;border:1px solid var(--border);border-radius:8px;padding:1rem;margin:.5rem 0;">
+          <p style="color:#fff;font-size:.875rem;margin-bottom:.5rem">📋 Python 安裝器首頁（重要！）</p>
+          <div style="display:flex;flex-direction:column;gap:.4rem;">
+            <label style="display:flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.85rem;">
+              <span style="background:#4ade80;color:#000;border-radius:3px;padding:.1rem .3rem;font-size:.75rem;font-weight:700">✓</span>
+              <strong style="color:#fff">Add Python to PATH</strong>（必須勾選！否則終端機找不到 python 指令）
+            </label>
+            <label style="display:flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.85rem;">
+              <span style="background:#4ade80;color:#000;border-radius:3px;padding:.1rem .3rem;font-size:.75rem;font-weight:700">✓</span>
+              Install launcher for all users（建議勾選）
+            </label>
+          </div>
+        </div>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">勾選後點「Install Now」，等待安裝完成再點「Close」。</p>
+        <div class="alert alert-warn">
+          <span class="alert-icon">⚠️</span>
+          <span>若忘記勾選「Add Python to PATH」，需要重新安裝，或手動將 Python 路徑加入環境變數。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>驗證安裝成功</h3>
+        <p>安裝完成後，<strong>關閉並重新開啟</strong> PowerShell，輸入：</p>
+        <div class="code-block">
+          <div class="code-label">PowerShell</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">PS> </span>python --version<br>
+          <span style="color:#94a3b8"># 應顯示類似 Python 3.x.x（參考版本：Python 3.10.12）</span><br><br>
+          <span class="prompt">PS> </span>pip --version<br>
+          <span style="color:#94a3b8"># 應顯示 pip 版本號</span>
+        </div>
+        <div class="alert alert-warn">
+          <span class="alert-icon">💡</span>
+          <span>若 <code>python</code> 無法執行，請嘗試 <code>python3 --version</code>。Windows 有時會將指令名稱設為 <code>python3</code>。</span>
+        </div>
+        <div class="alert alert-success">
+          <span class="alert-icon">✅</span>
+          <span>看到版本號碼代表 Python 已成功安裝！</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: Codex CLI -->
 <div class="section" id="codex">
   <div class="section-header codex-color">
     <div class="section-icon">🤖</div>
     <div>
-      <div class="section-title">步驟 3：安裝 Codex CLI（OpenAI）</div>
+      <div class="section-title">步驟 4：安裝 Codex CLI（OpenAI）</div>
       <div class="section-meta">免費 · 需要 ChatGPT 帳號 · 約需 3 分鐘</div>
     </div>
   </div>
@@ -587,8 +699,15 @@
     <div class="step">
       <div class="step-num">3</div>
       <div class="step-content">
-        <h3>驗證並首次登入</h3>
-        <p>重新開啟 PowerShell 後，輸入：</p>
+        <h3>驗證版本並首次登入</h3>
+        <p>重新開啟 PowerShell 後，先確認版本：</p>
+        <div class="code-block">
+          <div class="code-label">PowerShell</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">PS> </span>codex --version<br>
+          <span style="color:#94a3b8"># 應顯示類似 codex-cli x.x.x（參考版本：codex-cli 0.142.2）</span>
+        </div>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">確認版本後，輸入 <code>codex</code> 啟動並登入：</p>
         <div class="code-block">
           <div class="code-label">PowerShell</div>
           <button class="copy-btn" onclick="copyCode(this)">複製</button>
@@ -613,12 +732,12 @@
   </div>
 </div>
 
-<!-- SECTION 4: Antigravity CLI -->
+<!-- SECTION 5: Antigravity CLI -->
 <div class="section" id="antigravity">
   <div class="section-header google-color">
     <div class="section-icon">🔵</div>
     <div>
-      <div class="section-title">步驟 4：安裝 Antigravity CLI（Google）</div>
+      <div class="section-title">步驟 5：安裝 Antigravity CLI（Google）</div>
       <div class="section-meta">免費 · 需要 Google 帳號 · 約需 3 分鐘</div>
     </div>
   </div>
@@ -695,12 +814,12 @@
   </div>
 </div>
 
-<!-- SECTION 5: Claude Code -->
+<!-- SECTION 6: Claude Code -->
 <div class="section" id="claude">
   <div class="section-header claude-color">
     <div class="section-icon">🟣</div>
     <div>
-      <div class="section-title">步驟 5：安裝 Claude Code（Anthropic）</div>
+      <div class="section-title">步驟 6：安裝 Claude Code（Anthropic）</div>
       <div class="section-meta">需要 Claude Pro 訂閱（$20/月） · 選用</div>
     </div>
   </div>
@@ -774,11 +893,13 @@
       <div class="code-label">PowerShell — 一次全部驗證</div>
       <button class="copy-btn" onclick="copyCode(this)">複製</button>
       <span class="prompt">PS> </span>node -v && npm -v<br>
-      <span style="color:#94a3b8"># Node.js 已安裝</span><br><br>
+      <span style="color:#94a3b8"># Node.js 已安裝（參考版本：v22.14.0）</span><br><br>
       <span class="prompt">PS> </span>code --version<br>
       <span style="color:#94a3b8"># VS Code 已安裝</span><br><br>
+      <span class="prompt">PS> </span>python --version<br>
+      <span style="color:#94a3b8"># Python 已安裝（參考版本：Python 3.10.12）</span><br><br>
       <span class="prompt">PS> </span>codex --version<br>
-      <span style="color:#94a3b8"># Codex CLI 已安裝</span><br><br>
+      <span style="color:#94a3b8"># Codex CLI 已安裝（參考版本：codex-cli 0.142.2）</span><br><br>
       <span class="prompt">PS> </span>agy --version<br>
       <span style="color:#94a3b8"># Antigravity CLI 已安裝</span><br><br>
       <span class="prompt">PS> </span>claude --version<br>
@@ -789,9 +910,10 @@
 
     <p style="color:var(--muted);font-size:.875rem;margin-bottom:.75rem">點選項目打勾確認完成：</p>
     <ul class="checklist" id="checklist">
-      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Node.js LTS 已安裝，<code>node -v</code> 有輸出版本號</li>
+      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Node.js LTS 已安裝，<code>node -v</code> 顯示 v22.x.x</li>
       <li><div class="check-circle" onclick="toggleCheck(this)"></div>VS Code 已安裝並可正常開啟</li>
-      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Codex CLI 已安裝，並以 ChatGPT 帳號登入</li>
+      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Python 已安裝，<code>python --version</code> 顯示 3.x.x</li>
+      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Codex CLI 已安裝，<code>codex --version</code> 顯示 codex-cli 0.x.x，並以 ChatGPT 帳號登入</li>
       <li><div class="check-circle" onclick="toggleCheck(this)"></div>Antigravity CLI 已安裝，並以 Google 帳號登入</li>
       <li><div class="check-circle" onclick="toggleCheck(this)"></div>Claude Code 已安裝（選用）</li>
     </ul>
@@ -831,7 +953,7 @@
 </main>
 
 <div style="text-align:center;padding:2rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);">
-  AI Workshop 工具安裝指南 · 最後更新：2026年6月 · 適用 Windows 11
+  AI Workshop 工具安裝指南 · 最後更新：2026年6月30日 · 適用 Windows 11
 </div>
 
 <script>
