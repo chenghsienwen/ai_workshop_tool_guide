@@ -18,6 +18,7 @@
     --muted: #94a3b8;
     --node: #539e43;
     --vscode: #007acc;
+    --python: #3776ab;
     --codex: #10a37f;
     --google: #4285f4;
   }
@@ -74,6 +75,7 @@
   }
   .section-header.node-color { background: linear-gradient(90deg, rgba(83,158,67,.15) 0%, var(--surface) 100%); border-color: rgba(83,158,67,.4); }
   .section-header.vscode-color { background: linear-gradient(90deg, rgba(0,122,204,.15) 0%, var(--surface) 100%); border-color: rgba(0,122,204,.4); }
+  .section-header.python-color { background: linear-gradient(90deg, rgba(55,118,171,.15) 0%, var(--surface) 100%); border-color: rgba(55,118,171,.4); }
   .section-header.codex-color { background: linear-gradient(90deg, rgba(16,163,127,.15) 0%, var(--surface) 100%); border-color: rgba(16,163,127,.4); }
   .section-header.google-color { background: linear-gradient(90deg, rgba(66,133,244,.15) 0%, var(--surface) 100%); border-color: rgba(66,133,244,.4); }
   .section-header.claude-color { background: linear-gradient(90deg, rgba(108,99,255,.15) 0%, var(--surface) 100%); border-color: rgba(108,99,255,.4); }
@@ -89,6 +91,7 @@
   }
   .section-header.node-color + .section-body { border-color: rgba(83,158,67,.4); }
   .section-header.vscode-color + .section-body { border-color: rgba(0,122,204,.4); }
+  .section-header.python-color + .section-body { border-color: rgba(55,118,171,.4); }
   .section-header.codex-color + .section-body { border-color: rgba(16,163,127,.4); }
   .section-header.google-color + .section-body { border-color: rgba(66,133,244,.4); }
   .section-header.claude-color + .section-body { border-color: rgba(108,99,255,.4); }
@@ -248,9 +251,10 @@
     <a href="#prereq" class="toc-item"><span class="toc-num">0</span>前置需求</a>
     <a href="#nodejs" class="toc-item"><span class="toc-num">1</span>Node.js</a>
     <a href="#vscode" class="toc-item"><span class="toc-num">2</span>VS Code</a>
-    <a href="#codex" class="toc-item"><span class="toc-num">3</span>Codex CLI</a>
-    <a href="#antigravity" class="toc-item"><span class="toc-num">4</span>Antigravity CLI</a>
-    <a href="#claude" class="toc-item"><span class="toc-num">5</span>Claude Code</a>
+    <a href="#python" class="toc-item"><span class="toc-num">3</span>Python</a>
+    <a href="#codex" class="toc-item"><span class="toc-num">4</span>Codex CLI</a>
+    <a href="#antigravity" class="toc-item"><span class="toc-num">5</span>Antigravity CLI</a>
+    <a href="#claude" class="toc-item"><span class="toc-num">6</span>Claude Code</a>
     <a href="#verify" class="toc-item"><span class="toc-num">✓</span>驗證 & 完成</a>
   </div>
 </div>
@@ -278,6 +282,12 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td>🐍 <strong>Python</strong></td>
+          <td>Python.org</td>
+          <td><span class="free-tag">免費</span> 開源，無需帳號</td>
+          <td>無</td>
+        </tr>
         <tr>
           <td>🟢 <strong>Codex CLI</strong></td>
           <td>OpenAI</td>
@@ -449,7 +459,7 @@
           <div class="code-label">PowerShell</div>
           <button class="copy-btn" onclick="copyCode(this)">複製</button>
           <span class="prompt">PS> </span>node -v<br>
-          <span style="color:#94a3b8"># 應顯示類似 v22.x.x</span><br><br>
+          <span style="color:#94a3b8"># 應顯示類似 v22.x.x（參考版本：v22.14.0）</span><br><br>
           <span class="prompt">PS> </span>npm -v<br>
           <span style="color:#94a3b8"># 應顯示類似 10.x.x</span>
         </div>
@@ -544,12 +554,114 @@
   </div>
 </div>
 
-<!-- SECTION 3: Codex CLI -->
+<!-- SECTION 3: Python -->
+<div class="section" id="python">
+  <div class="section-header python-color">
+    <div class="section-icon">🐍</div>
+    <div>
+      <div class="section-title">步驟 3：安裝 Python</div>
+      <div class="section-meta">AI 腳本執行環境 · 參考版本：Python 3.10.12 · 約需 5 分鐘</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="alert alert-danger" style="margin-bottom:1.25rem;">
+      <span class="alert-icon">🏢</span>
+      <div>
+        <strong>公司電腦用戶請注意：需先向 IT 申請安裝權限</strong><br>
+        請在 Workshop <strong>前 2～3 個工作天</strong>向 IT Help Desk 提交申請，並在 IT Ticket 中加入以下資訊：
+        <div style="margin-top:.75rem;background:rgba(0,0,0,.3);border-radius:8px;padding:.9rem 1rem;font-size:.85rem;line-height:1.7;">
+          <p style="color:#fca5a5;font-weight:700;margin-bottom:.4rem;">📋 IT Ticket 建議填寫內容（Python）：</p>
+          <div style="background:#0d1117;border-radius:6px;padding:.7rem .9rem;margin-top:.35rem;font-family:monospace;font-size:.82rem;color:#e2e8f0;white-space:pre-wrap;">- 軟體名稱：Python 3.x（官方版）
+- 下載來源：https://www.python.org（官方網站）
+- 用途：執行 AI Workshop 課程的 Python 腳本
+- 需要權限：本機系統管理員安裝權限</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>前往 Python 官方網站下載</h3>
+        <p>用瀏覽器打開以下網址：</p>
+        <div class="browser-mock">
+          <div class="browser-bar">
+            <div class="browser-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+            <div class="browser-url">https://www.python.org/downloads/</div>
+          </div>
+          <div class="browser-content">
+            <p style="color:var(--muted)">頁面頂部會有黃色的大型下載按鈕：</p>
+            <div style="background:#f7c948;color:#000;display:inline-block;padding:.5rem 1.5rem;border-radius:6px;font-weight:700;margin-top:.5rem;">
+              ⬇ Download Python 3.x.x
+            </div>
+            <p style="color:var(--muted);font-size:.82rem;margin-top:.5rem">它會自動偵測你的 Windows 版本並提供對應的安裝檔</p>
+          </div>
+        </div>
+        <div class="alert alert-info">
+          <span class="alert-icon">💡</span>
+          <span>建議下載 <strong>3.10.x 或更新的穩定版</strong>，本指南的參考版本為 <code>Python 3.10.12</code>。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>執行安裝程式（重要：勾選 Add to PATH）</h3>
+        <p>雙擊下載的 <code style="background:#0d1117;padding:.1rem .35rem;border-radius:4px">.exe</code> 安裝檔，在安裝畫面的最下方務必勾選：</p>
+        <div style="background:#0d1117;border:1px solid var(--border);border-radius:8px;padding:1rem;margin:.5rem 0;">
+          <p style="color:#fff;font-size:.875rem;margin-bottom:.5rem">📋 Python 安裝器首頁（重要！）</p>
+          <div style="display:flex;flex-direction:column;gap:.4rem;">
+            <label style="display:flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.85rem;">
+              <span style="background:#4ade80;color:#000;border-radius:3px;padding:.1rem .3rem;font-size:.75rem;font-weight:700">✓</span>
+              <strong style="color:#fff">Add Python to PATH</strong>（必須勾選！否則終端機找不到 python 指令）
+            </label>
+            <label style="display:flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.85rem;">
+              <span style="background:#4ade80;color:#000;border-radius:3px;padding:.1rem .3rem;font-size:.75rem;font-weight:700">✓</span>
+              Install launcher for all users（建議勾選）
+            </label>
+          </div>
+        </div>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">勾選後點「Install Now」，等待安裝完成再點「Close」。</p>
+        <div class="alert alert-warn">
+          <span class="alert-icon">⚠️</span>
+          <span>若忘記勾選「Add Python to PATH」，需要重新安裝，或手動將 Python 路徑加入環境變數。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>驗證安裝成功</h3>
+        <p>安裝完成後，<strong>關閉並重新開啟</strong> PowerShell，輸入：</p>
+        <div class="code-block">
+          <div class="code-label">PowerShell</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">PS> </span>python --version<br>
+          <span style="color:#94a3b8"># 應顯示類似 Python 3.x.x（參考版本：Python 3.10.12）</span><br><br>
+          <span class="prompt">PS> </span>pip --version<br>
+          <span style="color:#94a3b8"># 應顯示 pip 版本號</span>
+        </div>
+        <div class="alert alert-warn">
+          <span class="alert-icon">💡</span>
+          <span>若 <code>python</code> 無法執行，請嘗試 <code>python3 --version</code>。Windows 有時會將指令名稱設為 <code>python3</code>。</span>
+        </div>
+        <div class="alert alert-success">
+          <span class="alert-icon">✅</span>
+          <span>看到版本號碼代表 Python 已成功安裝！</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: Codex CLI -->
 <div class="section" id="codex">
   <div class="section-header codex-color">
     <div class="section-icon">🤖</div>
     <div>
-      <div class="section-title">步驟 3：安裝 Codex CLI（OpenAI）</div>
+      <div class="section-title">步驟 4：安裝 Codex CLI（OpenAI）</div>
       <div class="section-meta">免費 · 需要 ChatGPT 帳號 · 約需 3 分鐘</div>
     </div>
   </div>
@@ -557,6 +669,48 @@
     <div class="alert alert-success">
       <span class="alert-icon">✅</span>
       <span><strong>完全免費！</strong> 用 ChatGPT 免費帳號即可登入使用 Codex CLI，無需信用卡。</span>
+    </div>
+
+    <div class="alert alert-danger" style="margin-bottom:1.25rem;">
+      <span class="alert-icon">🏢</span>
+      <div>
+        <strong>公司電腦用戶請注意：網路防火牆可能封鎖 Codex CLI</strong><br>
+        即使安裝成功，公司的網路安全設定可能會在你嘗試登入時顯示以下錯誤畫面。若出現這些症狀，請聯繫 IT Help Desk 申請開放網路存取權限。
+        <div style="margin-top:1rem;display:flex;flex-direction:column;gap:.75rem;">
+          <div>
+            <p style="color:#fca5a5;font-size:.8rem;font-weight:700;margin-bottom:.4rem;">症狀 1：登入時瀏覽器顯示「Sign-in could not be completed」</p>
+            <img src="assets/code_signin_refused.png" alt="Codex login sign-in could not be completed — token_exchange_failed" style="width:100%;max-width:480px;border-radius:8px;border:1px solid rgba(239,68,68,.4);display:block;">
+            <p style="color:#94a3b8;font-size:.78rem;margin-top:.35rem;">原因：公司防火牆封鎖了 OpenAI OAuth 認證伺服器（auth.openai.com）的連線。</p>
+          </div>
+          <div>
+            <p style="color:#fca5a5;font-size:.8rem;font-weight:700;margin-bottom:.4rem;">症狀 2：執行時彈出「Restricted Access」對話框</p>
+            <img src="assets/codex_restricted_access.png" alt="Restricted Access — codex.exe blocked from internet by corporate security software" style="width:100%;max-width:480px;border-radius:8px;border:1px solid rgba(239,68,68,.4);display:block;">
+            <p style="color:#94a3b8;font-size:.78rem;margin-top:.35rem;">原因：公司端點安全軟體（如 Symantec / CrowdStrike）封鎖了 <code>codex.exe</code> 的對外連線。</p>
+          </div>
+        </div>
+        <div style="margin-top:.9rem;background:rgba(0,0,0,.3);border-radius:8px;padding:.9rem 1rem;font-size:.85rem;line-height:1.7;">
+          <p style="color:#fca5a5;font-weight:700;margin-bottom:.4rem;">📋 IT Ticket 建議填寫內容（Codex CLI 網路權限）：</p>
+          <div style="background:#0d1117;border-radius:6px;padding:.7rem .9rem;margin-top:.35rem;font-family:monospace;font-size:.82rem;color:#e2e8f0;white-space:pre-wrap;">主旨：申請開放 Codex CLI 網路存取 — AI Workshop 使用
+
+您好，
+
+我在使用 AI Workshop 的 Codex CLI 工具時，
+遭遇公司安全政策封鎖，出現以下錯誤：
+
+- 錯誤 1：瀏覽器顯示「Sign-in could not be completed」
+  （token_exchange_failed，無法連線至 auth.openai.com）
+- 錯誤 2：端點安全軟體顯示「Restricted Access」
+  （封鎖 codex.exe 對外連線至 185.199.111.133:443）
+
+需要開放的網路存取：
+- auth.openai.com（OAuth 認證）
+- api.openai.com（API 呼叫）
+- 應用程式：codex.exe（OpenAI OpCo, LLC）
+
+謝謝！</div>
+          <button onclick="copyCodexTicket(this)" style="margin-top:.6rem;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-size:.75rem;padding:.3rem .7rem;border-radius:4px;cursor:pointer;">📋 複製 Ticket 內容</button>
+        </div>
+      </div>
     </div>
 
     <div class="step">
@@ -587,8 +741,15 @@
     <div class="step">
       <div class="step-num">3</div>
       <div class="step-content">
-        <h3>驗證並首次登入</h3>
-        <p>重新開啟 PowerShell 後，輸入：</p>
+        <h3>驗證版本並首次登入</h3>
+        <p>重新開啟 PowerShell 後，先確認版本：</p>
+        <div class="code-block">
+          <div class="code-label">PowerShell</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">PS> </span>codex --version<br>
+          <span style="color:#94a3b8"># 應顯示類似 codex-cli x.x.x（參考版本：codex-cli 0.142.2）</span>
+        </div>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">確認版本後，輸入 <code>codex</code> 啟動並登入：</p>
         <div class="code-block">
           <div class="code-label">PowerShell</div>
           <button class="copy-btn" onclick="copyCode(this)">複製</button>
@@ -613,12 +774,12 @@
   </div>
 </div>
 
-<!-- SECTION 4: Antigravity CLI -->
+<!-- SECTION 5: Antigravity CLI -->
 <div class="section" id="antigravity">
   <div class="section-header google-color">
     <div class="section-icon">🔵</div>
     <div>
-      <div class="section-title">步驟 4：安裝 Antigravity CLI（Google）</div>
+      <div class="section-title">步驟 5：安裝 Antigravity CLI（Google）</div>
       <div class="section-meta">免費 · 需要 Google 帳號 · 約需 3 分鐘</div>
     </div>
   </div>
@@ -633,6 +794,57 @@
     <div class="alert alert-success">
       <span class="alert-icon">✅</span>
       <span><strong>完全免費！</strong> 用 Google 帳號即可登入，每天最多 1,000 次請求，完全不需要信用卡。</span>
+    </div>
+
+    <div class="alert alert-danger" style="margin-bottom:1.25rem;">
+      <span class="alert-icon">🏢</span>
+      <div>
+        <strong>公司電腦用戶請注意：網路防火牆可能封鎖 Antigravity CLI</strong><br>
+        公司的網路安全設定可能會在安裝或登入時出現以下症狀。若遇到，請聯繫 IT Help Desk 申請開放網路存取權限。
+        <div style="margin-top:1rem;display:flex;flex-direction:column;gap:.75rem;">
+          <div>
+            <p style="color:#fca5a5;font-size:.8rem;font-weight:700;margin-bottom:.4rem;">症狀 1：登入時瀏覽器顯示 Google OAuth 授權錯誤或無法完成</p>
+            <div style="background:#0d1117;border:1px dashed rgba(239,68,68,.4);border-radius:8px;padding:1.25rem;text-align:center;color:var(--muted);font-size:.82rem;">
+              <span style="font-size:1.4rem;display:block;margin-bottom:.4rem;">🖼️</span>
+              截圖待補：Google OAuth 授權失敗畫面<br>
+              <span style="font-size:.75rem;color:#4b5563;">（如遇到此畫面，請截圖並附在 IT Ticket 中）</span>
+            </div>
+            <p style="color:#94a3b8;font-size:.78rem;margin-top:.35rem;">原因：公司防火牆封鎖了 Google OAuth 認證伺服器（accounts.google.com / oauth2.googleapis.com）的連線。</p>
+          </div>
+          <div>
+            <p style="color:#fca5a5;font-size:.8rem;font-weight:700;margin-bottom:.4rem;">症狀 2：執行 agy 時彈出「Restricted Access」或防毒軟體警告</p>
+            <div style="background:#0d1117;border:1px dashed rgba(239,68,68,.4);border-radius:8px;padding:1.25rem;text-align:center;color:var(--muted);font-size:.82rem;">
+              <span style="font-size:1.4rem;display:block;margin-bottom:.4rem;">🖼️</span>
+              截圖待補：端點安全軟體封鎖 agy.exe 畫面<br>
+              <span style="font-size:.75rem;color:#4b5563;">（如遇到此畫面，請截圖並附在 IT Ticket 中）</span>
+            </div>
+            <p style="color:#94a3b8;font-size:.78rem;margin-top:.35rem;">原因：公司端點安全軟體封鎖了 <code>agy.exe</code> 的對外連線至 Google API。</p>
+          </div>
+        </div>
+        <div style="margin-top:.9rem;background:rgba(0,0,0,.3);border-radius:8px;padding:.9rem 1rem;font-size:.85rem;line-height:1.7;">
+          <p style="color:#fca5a5;font-weight:700;margin-bottom:.4rem;">📋 IT Ticket 建議填寫內容（Antigravity CLI 網路權限）：</p>
+          <div style="background:#0d1117;border-radius:6px;padding:.7rem .9rem;margin-top:.35rem;font-family:monospace;font-size:.82rem;color:#e2e8f0;white-space:pre-wrap;">主旨：申請開放 Antigravity CLI (agy) 網路存取 — AI Workshop 使用
+
+您好，
+
+我在使用 AI Workshop 的 Antigravity CLI（Google agy）工具時，
+遭遇公司安全政策封鎖，出現以下錯誤：
+
+- 錯誤 1：瀏覽器無法完成 Google OAuth 授權
+  （無法連線至 accounts.google.com / oauth2.googleapis.com）
+- 錯誤 2：端點安全軟體顯示「Restricted Access」
+  （封鎖 agy.exe 對外連線至 Google API）
+
+需要開放的網路存取：
+- accounts.google.com（Google OAuth 登入）
+- oauth2.googleapis.com（OAuth Token 交換）
+- generativelanguage.googleapis.com（Gemini API 呼叫）
+- 應用程式：agy.exe（Google LLC）
+
+謝謝！</div>
+          <button onclick="copyAgyTicket(this)" style="margin-top:.6rem;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-size:.75rem;padding:.3rem .7rem;border-radius:4px;cursor:pointer;">📋 複製 Ticket 內容</button>
+        </div>
+      </div>
     </div>
 
     <div class="step">
@@ -695,12 +907,12 @@
   </div>
 </div>
 
-<!-- SECTION 5: Claude Code -->
+<!-- SECTION 6: Claude Code -->
 <div class="section" id="claude">
   <div class="section-header claude-color">
     <div class="section-icon">🟣</div>
     <div>
-      <div class="section-title">步驟 5：安裝 Claude Code（Anthropic）</div>
+      <div class="section-title">步驟 6：安裝 Claude Code（Anthropic）</div>
       <div class="section-meta">需要 Claude Pro 訂閱（$20/月） · 選用</div>
     </div>
   </div>
@@ -774,11 +986,13 @@
       <div class="code-label">PowerShell — 一次全部驗證</div>
       <button class="copy-btn" onclick="copyCode(this)">複製</button>
       <span class="prompt">PS> </span>node -v && npm -v<br>
-      <span style="color:#94a3b8"># Node.js 已安裝</span><br><br>
+      <span style="color:#94a3b8"># Node.js 已安裝（參考版本：v22.14.0）</span><br><br>
       <span class="prompt">PS> </span>code --version<br>
       <span style="color:#94a3b8"># VS Code 已安裝</span><br><br>
+      <span class="prompt">PS> </span>python --version<br>
+      <span style="color:#94a3b8"># Python 已安裝（參考版本：Python 3.10.12）</span><br><br>
       <span class="prompt">PS> </span>codex --version<br>
-      <span style="color:#94a3b8"># Codex CLI 已安裝</span><br><br>
+      <span style="color:#94a3b8"># Codex CLI 已安裝（參考版本：codex-cli 0.142.2）</span><br><br>
       <span class="prompt">PS> </span>agy --version<br>
       <span style="color:#94a3b8"># Antigravity CLI 已安裝</span><br><br>
       <span class="prompt">PS> </span>claude --version<br>
@@ -789,9 +1003,10 @@
 
     <p style="color:var(--muted);font-size:.875rem;margin-bottom:.75rem">點選項目打勾確認完成：</p>
     <ul class="checklist" id="checklist">
-      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Node.js LTS 已安裝，<code>node -v</code> 有輸出版本號</li>
+      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Node.js LTS 已安裝，<code>node -v</code> 顯示 v22.x.x</li>
       <li><div class="check-circle" onclick="toggleCheck(this)"></div>VS Code 已安裝並可正常開啟</li>
-      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Codex CLI 已安裝，並以 ChatGPT 帳號登入</li>
+      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Python 已安裝，<code>python --version</code> 顯示 3.x.x</li>
+      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Codex CLI 已安裝，<code>codex --version</code> 顯示 codex-cli 0.x.x，並以 ChatGPT 帳號登入</li>
       <li><div class="check-circle" onclick="toggleCheck(this)"></div>Antigravity CLI 已安裝，並以 Google 帳號登入</li>
       <li><div class="check-circle" onclick="toggleCheck(this)"></div>Claude Code 已安裝（選用）</li>
     </ul>
@@ -824,6 +1039,31 @@
         <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ Antigravity CLI 登入後瀏覽器無法開啟</summary>
         <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">手動複製終端機顯示的 URL，貼到瀏覽器網址列即可完成授權。</p>
       </details>
+      <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
+        <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ Antigravity CLI 登入時 Google OAuth 授權失敗，或出現「Restricted Access」</summary>
+        <div style="margin-top:.6rem;display:flex;flex-direction:column;gap:.6rem;">
+          <p style="color:var(--muted);font-size:.85rem;">這是公司網路安全設定造成的封鎖，<strong style="color:#fff">不是你的操作問題</strong>。需要 IT 協助開放以下存取權限：</p>
+          <ul style="color:var(--muted);font-size:.85rem;padding-left:1.2rem;line-height:1.8;">
+            <li><code>accounts.google.com</code> — Google OAuth 登入</li>
+            <li><code>oauth2.googleapis.com</code> — OAuth Token 交換</li>
+            <li><code>generativelanguage.googleapis.com</code> — Gemini API 呼叫</li>
+            <li><code>agy.exe</code> 應用程式的對外網路存取</li>
+          </ul>
+          <p style="color:var(--muted);font-size:.85rem;">請參考 Antigravity CLI 安裝步驟中的 IT Ticket 範本，將錯誤截圖一併附上送出。</p>
+        </div>
+      </details>
+      <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
+        <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ Codex CLI 登入時顯示「Sign-in could not be completed」或「Restricted Access」</summary>
+        <div style="margin-top:.6rem;display:flex;flex-direction:column;gap:.6rem;">
+          <p style="color:var(--muted);font-size:.85rem;">這是公司網路安全設定造成的封鎖，<strong style="color:#fff">不是你的操作問題</strong>。需要 IT 協助開放以下存取權限：</p>
+          <ul style="color:var(--muted);font-size:.85rem;padding-left:1.2rem;line-height:1.8;">
+            <li><code>auth.openai.com</code> — OAuth 登入認證</li>
+            <li><code>api.openai.com</code> — Codex CLI API 呼叫</li>
+            <li><code>codex.exe</code> 應用程式的對外網路存取</li>
+          </ul>
+          <p style="color:var(--muted);font-size:.85rem;">請參考 Codex CLI 安裝步驟中的 IT Ticket 範本，將錯誤截圖一併附上。</p>
+        </div>
+      </details>
     </div>
   </div>
 </div>
@@ -831,10 +1071,24 @@
 </main>
 
 <div style="text-align:center;padding:2rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);">
-  AI Workshop 工具安裝指南 · 最後更新：2026年6月 · 適用 Windows 11
+  AI Workshop 工具安裝指南 · 最後更新：2026年6月30日 · 適用 Windows 11
 </div>
 
 <script>
+function copyAgyTicket(btn) {
+  const text = `主旨：申請開放 Antigravity CLI (agy) 網路存取 — AI Workshop 使用\n\n您好，\n\n我在使用 AI Workshop 的 Antigravity CLI（Google agy）工具時，\n遭遇公司安全政策封鎖，出現以下錯誤：\n\n- 錯誤 1：瀏覽器無法完成 Google OAuth 授權\n  （無法連線至 accounts.google.com / oauth2.googleapis.com）\n- 錯誤 2：端點安全軟體顯示「Restricted Access」\n  （封鎖 agy.exe 對外連線至 Google API）\n\n需要開放的網路存取：\n- accounts.google.com（Google OAuth 登入）\n- oauth2.googleapis.com（OAuth Token 交換）\n- generativelanguage.googleapis.com（Gemini API 呼叫）\n- 應用程式：agy.exe（Google LLC）\n\n謝謝！`;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✅ 已複製！';
+    setTimeout(() => btn.textContent = '📋 複製 Ticket 內容', 1800);
+  });
+}
+function copyCodexTicket(btn) {
+  const text = `主旨：申請開放 Codex CLI 網路存取 — AI Workshop 使用\n\n您好，\n\n我在使用 AI Workshop 的 Codex CLI 工具時，\n遭遇公司安全政策封鎖，出現以下錯誤：\n\n- 錯誤 1：瀏覽器顯示「Sign-in could not be completed」\n  （token_exchange_failed，無法連線至 auth.openai.com）\n- 錯誤 2：端點安全軟體顯示「Restricted Access」\n  （封鎖 codex.exe 對外連線至 185.199.111.133:443）\n\n需要開放的網路存取：\n- auth.openai.com（OAuth 認證）\n- api.openai.com（API 呼叫）\n- 應用程式：codex.exe（OpenAI OpCo, LLC）\n\n謝謝！`;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✅ 已複製！';
+    setTimeout(() => btn.textContent = '📋 複製 Ticket 內容', 1800);
+  });
+}
 function copyTicket(btn) {
   const text = `您好，\n\n我將參加 [日期] 的 AI Workshop，\n課程需要在本機安裝以下軟體：\n\n- 軟體名稱：Node.js LTS\n- 下載來源：https://nodejs.org（官方網站）\n- 用途：執行 AI CLI 工具（Codex CLI / Claude Code）\n- 需要權限：本機系統管理員安裝權限\n\n請問能否協助開放安裝權限，或由 IT 協助預先安裝？\n\n謝謝！`;
   navigator.clipboard.writeText(text).then(() => {
