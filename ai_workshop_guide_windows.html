@@ -671,6 +671,48 @@
       <span><strong>完全免費！</strong> 用 ChatGPT 免費帳號即可登入使用 Codex CLI，無需信用卡。</span>
     </div>
 
+    <div class="alert alert-danger" style="margin-bottom:1.25rem;">
+      <span class="alert-icon">🏢</span>
+      <div>
+        <strong>公司電腦用戶請注意：網路防火牆可能封鎖 Codex CLI</strong><br>
+        即使安裝成功，公司的網路安全設定可能會在你嘗試登入時顯示以下錯誤畫面。若出現這些症狀，請聯繫 IT Help Desk 申請開放網路存取權限。
+        <div style="margin-top:1rem;display:flex;flex-direction:column;gap:.75rem;">
+          <div>
+            <p style="color:#fca5a5;font-size:.8rem;font-weight:700;margin-bottom:.4rem;">症狀 1：登入時瀏覽器顯示「Sign-in could not be completed」</p>
+            <img src="assets/code_signin_refused.png" alt="Codex login sign-in could not be completed — token_exchange_failed" style="width:100%;max-width:480px;border-radius:8px;border:1px solid rgba(239,68,68,.4);display:block;">
+            <p style="color:#94a3b8;font-size:.78rem;margin-top:.35rem;">原因：公司防火牆封鎖了 OpenAI OAuth 認證伺服器（auth.openai.com）的連線。</p>
+          </div>
+          <div>
+            <p style="color:#fca5a5;font-size:.8rem;font-weight:700;margin-bottom:.4rem;">症狀 2：執行時彈出「Restricted Access」對話框</p>
+            <img src="assets/codex_restricted_access.png" alt="Restricted Access — codex.exe blocked from internet by corporate security software" style="width:100%;max-width:480px;border-radius:8px;border:1px solid rgba(239,68,68,.4);display:block;">
+            <p style="color:#94a3b8;font-size:.78rem;margin-top:.35rem;">原因：公司端點安全軟體（如 Symantec / CrowdStrike）封鎖了 <code>codex.exe</code> 的對外連線。</p>
+          </div>
+        </div>
+        <div style="margin-top:.9rem;background:rgba(0,0,0,.3);border-radius:8px;padding:.9rem 1rem;font-size:.85rem;line-height:1.7;">
+          <p style="color:#fca5a5;font-weight:700;margin-bottom:.4rem;">📋 IT Ticket 建議填寫內容（Codex CLI 網路權限）：</p>
+          <div style="background:#0d1117;border-radius:6px;padding:.7rem .9rem;margin-top:.35rem;font-family:monospace;font-size:.82rem;color:#e2e8f0;white-space:pre-wrap;">主旨：申請開放 Codex CLI 網路存取 — AI Workshop 使用
+
+您好，
+
+我在使用 AI Workshop 的 Codex CLI 工具時，
+遭遇公司安全政策封鎖，出現以下錯誤：
+
+- 錯誤 1：瀏覽器顯示「Sign-in could not be completed」
+  （token_exchange_failed，無法連線至 auth.openai.com）
+- 錯誤 2：端點安全軟體顯示「Restricted Access」
+  （封鎖 codex.exe 對外連線至 185.199.111.133:443）
+
+需要開放的網路存取：
+- auth.openai.com（OAuth 認證）
+- api.openai.com（API 呼叫）
+- 應用程式：codex.exe（OpenAI OpCo, LLC）
+
+謝謝！</div>
+          <button onclick="copyCodexTicket(this)" style="margin-top:.6rem;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-size:.75rem;padding:.3rem .7rem;border-radius:4px;cursor:pointer;">📋 複製 Ticket 內容</button>
+        </div>
+      </div>
+    </div>
+
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-content">
@@ -946,6 +988,18 @@
         <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ Antigravity CLI 登入後瀏覽器無法開啟</summary>
         <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">手動複製終端機顯示的 URL，貼到瀏覽器網址列即可完成授權。</p>
       </details>
+      <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
+        <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ Codex CLI 登入時顯示「Sign-in could not be completed」或「Restricted Access」</summary>
+        <div style="margin-top:.6rem;display:flex;flex-direction:column;gap:.6rem;">
+          <p style="color:var(--muted);font-size:.85rem;">這是公司網路安全設定造成的封鎖，<strong style="color:#fff">不是你的操作問題</strong>。需要 IT 協助開放以下存取權限：</p>
+          <ul style="color:var(--muted);font-size:.85rem;padding-left:1.2rem;line-height:1.8;">
+            <li><code>auth.openai.com</code> — OAuth 登入認證</li>
+            <li><code>api.openai.com</code> — Codex CLI API 呼叫</li>
+            <li><code>codex.exe</code> 應用程式的對外網路存取</li>
+          </ul>
+          <p style="color:var(--muted);font-size:.85rem;">請參考 Codex CLI 安裝步驟中的 IT Ticket 範本，將錯誤截圖一併附上。</p>
+        </div>
+      </details>
     </div>
   </div>
 </div>
@@ -957,6 +1011,13 @@
 </div>
 
 <script>
+function copyCodexTicket(btn) {
+  const text = `主旨：申請開放 Codex CLI 網路存取 — AI Workshop 使用\n\n您好，\n\n我在使用 AI Workshop 的 Codex CLI 工具時，\n遭遇公司安全政策封鎖，出現以下錯誤：\n\n- 錯誤 1：瀏覽器顯示「Sign-in could not be completed」\n  （token_exchange_failed，無法連線至 auth.openai.com）\n- 錯誤 2：端點安全軟體顯示「Restricted Access」\n  （封鎖 codex.exe 對外連線至 185.199.111.133:443）\n\n需要開放的網路存取：\n- auth.openai.com（OAuth 認證）\n- api.openai.com（API 呼叫）\n- 應用程式：codex.exe（OpenAI OpCo, LLC）\n\n謝謝！`;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✅ 已複製！';
+    setTimeout(() => btn.textContent = '📋 複製 Ticket 內容', 1800);
+  });
+}
 function copyTicket(btn) {
   const text = `您好，\n\n我將參加 [日期] 的 AI Workshop，\n課程需要在本機安裝以下軟體：\n\n- 軟體名稱：Node.js LTS\n- 下載來源：https://nodejs.org（官方網站）\n- 用途：執行 AI CLI 工具（Codex CLI / Claude Code）\n- 需要權限：本機系統管理員安裝權限\n\n請問能否協助開放安裝權限，或由 IT 協助預先安裝？\n\n謝謝！`;
   navigator.clipboard.writeText(text).then(() => {
