@@ -49,7 +49,7 @@
     <!-- Heading -->
     <text x="397" y="178" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="18" fill="#e2e2e7" font-weight="700">歡迎使用 Node.js 安裝程式</text>
     <!-- Body -->
-    <text x="397" y="222" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="13" fill="#8e8e93">本安裝程式將引導你完成安裝 Node.js v22.14.0</text>
+    <text x="397" y="222" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="13" fill="#8e8e93">本安裝程式將引導你完成安裝 Node.js v22.23.1</text>
     <text x="397" y="242" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="13" fill="#8e8e93">及 npm 10.9.2 所需的步驟。</text>
     <text x="397" y="278" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="13" fill="#8e8e93">安裝完成後，此電腦的所有使用者都可以使用</text>
     <text x="397" y="298" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="13" fill="#8e8e93">Node.js 及相關工具。</text>

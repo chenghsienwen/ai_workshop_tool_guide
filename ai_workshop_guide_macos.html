@@ -409,29 +409,17 @@
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-content">
-        <h3>前往 Node.js 官方網站</h3>
-        <p>用瀏覽器打開以下網址：</p>
-        <div class="browser-mock">
-          <div class="browser-bar">
-            <div class="browser-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
-            <div class="browser-url">https://nodejs.org</div>
-          </div>
-          <div class="browser-content">
-            <p style="color:var(--muted)">你會看到兩個下載按鈕：</p>
-            <div style="display:flex;gap:.75rem;margin-top:.75rem;flex-wrap:wrap;">
-              <div style="background:#539e43;color:#fff;padding:.5rem 1.2rem;border-radius:6px;font-weight:700;font-size:.9rem;">
-                ✅ LTS（推薦）<br><span style="font-size:.75rem;font-weight:400">22.x.x</span>
-              </div>
-              <div style="background:#333;color:#888;padding:.5rem 1.2rem;border-radius:6px;font-size:.9rem;">
-                Current<br><span style="font-size:.75rem;">不建議</span>
-              </div>
-            </div>
-            <p style="color:var(--accent2);font-size:.82rem;margin-top:.6rem">👆 請點選左邊綠色的「LTS」按鈕下載 macOS Installer（.pkg）</p>
-          </div>
+        <h3>下載 Node.js LTS 安裝檔</h3>
+        <p>點選以下連結直接下載 macOS 安裝檔（.pkg，Universal，Apple Silicon 與 Intel Mac 都適用）：</p>
+        <div class="code-block">
+          <div class="code-label">直接下載（macOS .pkg，Universal）</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <a href="https://nodejs.org/dist/v22.23.1/node-v22.23.1.pkg" style="color:#4ade80;word-break:break-all;">https://nodejs.org/dist/v22.23.1/node-v22.23.1.pkg</a>
         </div>
+        <p style="color:var(--muted);font-size:.82rem;margin-top:.5rem">版本：v22.23.1（LTS "Jod"）。若需要其他版本，可改前往官方網站 <a href="https://nodejs.org" style="color:var(--accent2)">https://nodejs.org</a> 選擇下載。</p>
         <div class="alert alert-info">
           <span class="alert-icon">💡</span>
-          <span><strong>為什麼選 LTS？</strong> LTS（長期支援版）更穩定，與大部分 AI 工具的相容性最好。官方 <code>.pkg</code> 為 Universal 安裝檔，Apple Silicon 與 Intel Mac 都適用，不需另外選擇晶片版本。</span>
+          <span><strong>為什麼選 LTS？</strong> LTS（長期支援版）更穩定，與大部分 AI 工具的相容性最好。官方 <code>.pkg</code> 為 Universal 安裝檔，不需另外選擇晶片版本。</span>
         </div>
       </div>
     </div>
@@ -447,7 +435,7 @@
           <li style="margin-bottom:.3rem">點「安裝」，系統會跳出視窗要求輸入<strong style="color:#fff">你的 Mac 登入密碼</strong>來授權安裝</li>
           <li>等待安裝完成，點「關閉」</li>
         </ul>
-        <div style="margin:.75rem 0;border-radius:8px;overflow:hidden;border:1px solid #2e3352;"><img src="assets/macos-nodejs-installer-wizard.svg" alt="Node.js macOS Installer.app 安裝精靈歡迎畫面" style="width:100%;display:block;border-radius:8px 8px 0 0;"><div style="background:#111;text-align:center;padding:.3rem .5rem;font-size:.72rem;color:#555;border-top:1px solid #2e2e2e">macOS Installer.app — Node.js v22.14.0 安裝精靈（一路點「繼續」即可）</div></div>
+        <div style="margin:.75rem 0;border-radius:8px;overflow:hidden;border:1px solid #2e3352;"><img src="assets/macos-nodejs-installer-wizard.svg" alt="Node.js macOS Installer.app 安裝精靈歡迎畫面" style="width:100%;display:block;border-radius:8px 8px 0 0;"><div style="background:#111;text-align:center;padding:.3rem .5rem;font-size:.72rem;color:#555;border-top:1px solid #2e2e2e">macOS Installer.app — Node.js v22.23.1 安裝精靈（一路點「繼續」即可）</div></div>
       </div>
     </div>
 
@@ -460,7 +448,7 @@
           <div class="code-label">Terminal</div>
           <button class="copy-btn" onclick="copyCode(this)">複製</button>
           <span class="prompt">$ </span>node -v<br>
-          <span style="color:#94a3b8"># 應顯示類似 v22.x.x（參考版本：v22.14.0）</span><br><br>
+          <span style="color:#94a3b8"># 應顯示類似 v22.x.x（參考版本：v22.23.1）</span><br><br>
           <span class="prompt">$ </span>npm -v<br>
           <span style="color:#94a3b8"># 應顯示類似 10.x.x</span>
         </div>
@@ -573,7 +561,7 @@
     <div class="section-icon">🐍</div>
     <div>
       <div class="section-title">步驟 3：安裝 Python</div>
-      <div class="section-meta">AI 腳本執行環境 · 參考版本：Python 3.10.12 · 約需 5 分鐘</div>
+      <div class="section-meta">AI 腳本執行環境 · 參考版本：Python 3.11.9 · 約需 5 分鐘</div>
     </div>
   </div>
   <div class="section-body">
@@ -600,24 +588,17 @@
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-content">
-        <h3>前往 Python 官方網站下載</h3>
-        <p>用瀏覽器打開以下網址：</p>
-        <div class="browser-mock">
-          <div class="browser-bar">
-            <div class="browser-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
-            <div class="browser-url">https://www.python.org/downloads/macos/</div>
-          </div>
-          <div class="browser-content">
-            <p style="color:var(--muted)">頁面頂部會有黃色的大型下載按鈕：</p>
-            <div style="background:#f7c948;color:#000;display:inline-block;padding:.5rem 1.5rem;border-radius:6px;font-weight:700;margin-top:.5rem;">
-              ⬇ Download Python 3.x.x（macOS 64-bit universal2 installer）
-            </div>
-            <p style="color:var(--muted);font-size:.82rem;margin-top:.5rem">Universal2 安裝檔同時支援 Apple Silicon 與 Intel Mac</p>
-          </div>
+        <h3>下載 Python 安裝檔</h3>
+        <p>點選以下連結直接下載 macOS 安裝檔（.pkg，universal2，同時支援 Apple Silicon 與 Intel Mac）：</p>
+        <div class="code-block">
+          <div class="code-label">直接下載（macOS .pkg，universal2）</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <a href="https://www.python.org/ftp/python/3.11.9/python-3.11.9-macos11.pkg" style="color:#4ade80;word-break:break-all;">https://www.python.org/ftp/python/3.11.9/python-3.11.9-macos11.pkg</a>
         </div>
+        <p style="color:var(--muted);font-size:.82rem;margin-top:.5rem">版本：Python 3.11.9。若需要其他版本，可改前往官方網站 <a href="https://www.python.org/downloads/macos/" style="color:var(--accent2)">https://www.python.org/downloads/macos/</a> 選擇下載。</p>
         <div class="alert alert-info">
           <span class="alert-icon">💡</span>
-          <span>建議下載 <strong>3.10.x 或更新的穩定版</strong>，本指南的參考版本為 <code>Python 3.10.12</code>。</span>
+          <span>本指南的參考版本原為 <code>Python 3.10.12</code>，但 python.org 已停止為 3.10.x 系列提供 macOS 安裝檔，故改用 <code>Python 3.11.9</code>（同樣穩定，相容性良好）。</span>
         </div>
       </div>
     </div>
@@ -636,7 +617,7 @@
             </ul>
           </div>
         </div>
-        <div style="margin:.75rem 0;border-radius:8px;overflow:hidden;border:1px solid #2e3352;"><img src="assets/macos-python-folder-finder.svg" alt="Finder 視窗顯示 Python 3.12 資料夾與 Install Certificates.command" style="width:100%;display:block;border-radius:8px 8px 0 0;"><div style="background:#111;text-align:center;padding:.3rem .5rem;font-size:.72rem;color:#555;border-top:1px solid #2e2e2e">Finder：應用程式 > Python 3.12 — 雙擊「Install Certificates.command」安裝 SSL 憑證</div></div>
+        <div style="margin:.75rem 0;border-radius:8px;overflow:hidden;border:1px solid #2e3352;"><img src="assets/macos-python-folder-finder.svg" alt="Finder 視窗顯示 Python 3.11 資料夾與 Install Certificates.command" style="width:100%;display:block;border-radius:8px 8px 0 0;"><div style="background:#111;text-align:center;padding:.3rem .5rem;font-size:.72rem;color:#555;border-top:1px solid #2e2e2e">Finder：應用程式 > Python 3.11 — 雙擊「Install Certificates.command」安裝 SSL 憑證</div></div>
       </div>
     </div>
 
@@ -649,7 +630,7 @@
           <div class="code-label">Terminal</div>
           <button class="copy-btn" onclick="copyCode(this)">複製</button>
           <span class="prompt">$ </span>python3 --version<br>
-          <span style="color:#94a3b8"># 應顯示類似 Python 3.x.x（參考版本：Python 3.10.12）</span><br><br>
+          <span style="color:#94a3b8"># 應顯示類似 Python 3.x.x（參考版本：Python 3.11.9）</span><br><br>
           <span class="prompt">$ </span>pip3 --version<br>
           <span style="color:#94a3b8"># 應顯示 pip 版本號</span>
         </div>
@@ -1013,11 +994,11 @@
       <div class="code-label">Terminal — 一次全部驗證</div>
       <button class="copy-btn" onclick="copyCode(this)">複製</button>
       <span class="prompt">$ </span>node -v && npm -v<br>
-      <span style="color:#94a3b8"># Node.js 已安裝（參考版本：v22.14.0）</span><br><br>
+      <span style="color:#94a3b8"># Node.js 已安裝（參考版本：v22.23.1）</span><br><br>
       <span class="prompt">$ </span>code --version<br>
       <span style="color:#94a3b8"># VS Code 已安裝</span><br><br>
       <span class="prompt">$ </span>python3 --version<br>
-      <span style="color:#94a3b8"># Python 已安裝（參考版本：Python 3.10.12）</span><br><br>
+      <span style="color:#94a3b8"># Python 已安裝（參考版本：Python 3.11.9）</span><br><br>
       <span class="prompt">$ </span>codex --version<br>
       <span style="color:#94a3b8"># Codex CLI 已安裝（參考版本：codex-cli 0.142.2）</span><br><br>
       <span class="prompt">$ </span>agy --version<br>
