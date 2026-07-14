@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" style="display:block;width:100%">
+  <defs>
+    <filter id="dlgshadow"><feDropShadow dx="0" dy="6" stdDeviation="12" flood-opacity="0.5"/></filter>
+    <clipPath id="dc"><rect x="30" y="20" width="340" height="210" rx="14"/></clipPath>
+  </defs>
+  <!-- Background blur hint -->
+  <rect width="400" height="250" fill="#1a1a1a" opacity="0.85"/>
+  <!-- Dialog window -->
+  <g filter="url(#dlgshadow)">
+    <rect x="30" y="20" width="340" height="210" rx="14" fill="#2d2d2f"/>
+  </g>
+  <g clip-path="url(#dc)">
+    <rect x="30" y="20" width="340" height="210" fill="#2d2d2f"/>
+    <!-- Icon area with VS Code icon (simplified) -->
+    <!-- VS Code blue square icon -->
+    <rect x="172" y="42" width="56" height="56" rx="12" fill="#007ACC"/>
+    <text x="200" y="83" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="28" fill="white" font-weight="900">&lt;/&gt;</text>
+    <!-- Warning badge -->
+    <circle cx="222" cy="46" r="12" fill="#2d2d2f"/>
+    <circle cx="222" cy="46" r="10" fill="#ff9f0a"/>
+    <text x="222" y="50" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="white" font-weight="900">!</text>
+    <!-- Title -->
+    <text x="200" y="124" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="13.5" fill="#e2e2e7" font-weight="700">「Visual Studio Code.app」無法打開</text>
+    <!-- Body text -->
+    <text x="200" y="147" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="12" fill="#98989d">Apple 無法驗證這個 App 是否含有</text>
+    <text x="200" y="163" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="12" fill="#98989d">可能損害 Mac 或破壞隱私的惡意軟體。</text>
+    <!-- Separator -->
+    <line x1="30" y1="190" x2="370" y2="190" stroke="#3a3a3c" stroke-width="1"/>
+    <!-- Buttons -->
+    <!-- Move to Trash -->
+    <rect x="44" y="200" width="100" height="22" rx="5" fill="#3a3a3c" stroke="#545458" stroke-width="1"/>
+    <text x="94" y="215" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="12" fill="#c8c8cc">移至垃圾桶</text>
+    <!-- OK (default) -->
+    <rect x="256" y="200" width="100" height="22" rx="5" fill="#0a84ff"/>
+    <text x="306" y="215" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="12" fill="white" font-weight="600">好</text>
+  </g>
+  <rect x="30.5" y="20.5" width="339" height="209" rx="13.5" fill="none" stroke="#4a4a4c" stroke-width="1"/>
+</svg>

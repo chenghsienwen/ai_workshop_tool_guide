@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 430" style="display:block;width:100%">
+  <defs><clipPath id="nc"><rect width="620" height="430" rx="12"/></clipPath></defs>
+  <g clip-path="url(#nc)">
+    <rect width="620" height="430" fill="#1c1c1e"/>
+    <rect width="620" height="52" fill="#2d2d2f"/>
+    <line x1="0" y1="52" x2="620" y2="52" stroke="#3a3a3c" stroke-width="1"/>
+    <circle cx="20" cy="26" r="6.5" fill="#ff5f57"/>
+    <circle cx="40" cy="26" r="6.5" fill="#ffbd2e"/>
+    <circle cx="60" cy="26" r="6.5" fill="#28c840"/>
+    <text x="310" y="32" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="13" fill="#c8c8cc" font-weight="500">安裝 Node.js</text>
+    <!-- Sidebar -->
+    <rect x="0" y="52" width="175" height="378" fill="#252527"/>
+    <line x1="175" y1="52" x2="175" y2="430" stroke="#3a3a3c" stroke-width="1"/>
+    <!-- Step 1 selected -->
+    <rect x="7" y="60" width="161" height="36" rx="7" fill="rgba(10,132,255,0.22)"/>
+    <circle cx="28" cy="78" r="9.5" fill="#0a84ff"/>
+    <text x="28" y="82" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="white" font-weight="700">1</text>
+    <text x="48" y="83" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="12.5" fill="#60a5fa" font-weight="600">介紹</text>
+    <!-- Step 2 -->
+    <circle cx="28" cy="114" r="9.5" fill="#3a3a3c"/>
+    <text x="28" y="118" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#7a7a80">2</text>
+    <text x="48" y="119" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="12.5" fill="#636366">讀我檔案</text>
+    <!-- Step 3 -->
+    <circle cx="28" cy="148" r="9.5" fill="#3a3a3c"/>
+    <text x="28" y="152" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#7a7a80">3</text>
+    <text x="48" y="153" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="12.5" fill="#636366">授權條款</text>
+    <!-- Step 4 -->
+    <circle cx="28" cy="182" r="9.5" fill="#3a3a3c"/>
+    <text x="28" y="186" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#7a7a80">4</text>
+    <text x="48" y="187" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="12.5" fill="#636366">目標位置</text>
+    <!-- Step 5 -->
+    <circle cx="28" cy="216" r="9.5" fill="#3a3a3c"/>
+    <text x="28" y="220" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#7a7a80">5</text>
+    <text x="48" y="221" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="12.5" fill="#636366">安裝類型</text>
+    <!-- Step 6 -->
+    <circle cx="28" cy="250" r="9.5" fill="#3a3a3c"/>
+    <text x="28" y="254" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#7a7a80">6</text>
+    <text x="48" y="255" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="12.5" fill="#636366">安裝</text>
+    <!-- Step 7 -->
+    <circle cx="28" cy="284" r="9.5" fill="#3a3a3c"/>
+    <text x="28" y="288" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#7a7a80">7</text>
+    <text x="48" y="289" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="12.5" fill="#636366">摘要</text>
+    <!-- Main content area -->
+    <!-- Node.js hexagon logo -->
+    <polygon points="397,78 425,94 425,126 397,142 369,126 369,94" fill="#539e43"/>
+    <polygon points="397,88 418,100 418,120 397,132 376,120 376,100" fill="#3a7a2c" opacity="0.7"/>
+    <text x="397" y="122" text-anchor="middle" font-family="Arial Black,Helvetica,sans-serif" font-size="26" fill="white" font-weight="900">N</text>
+    <!-- Heading -->
+    <text x="397" y="178" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="18" fill="#e2e2e7" font-weight="700">歡迎使用 Node.js 安裝程式</text>
+    <!-- Body -->
+    <text x="397" y="222" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="13" fill="#8e8e93">本安裝程式將引導你完成安裝 Node.js v22.14.0</text>
+    <text x="397" y="242" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="13" fill="#8e8e93">及 npm 10.9.2 所需的步驟。</text>
+    <text x="397" y="278" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="13" fill="#8e8e93">安裝完成後，此電腦的所有使用者都可以使用</text>
+    <text x="397" y="298" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="13" fill="#8e8e93">Node.js 及相關工具。</text>
+    <text x="397" y="333" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="13" fill="#8e8e93">點按「繼續」開始安裝程序。</text>
+    <!-- Bottom bar -->
+    <line x1="175" y1="390" x2="620" y2="390" stroke="#3a3a3c" stroke-width="1"/>
+    <!-- Go Back -->
+    <rect x="395" y="401" width="84" height="24" rx="6" fill="#3a3a3c" stroke="#545458" stroke-width="1"/>
+    <text x="437" y="417" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="12" fill="#c8c8cc">返回</text>
+    <!-- Continue -->
+    <rect x="492" y="401" width="84" height="24" rx="6" fill="#0a84ff"/>
+    <text x="534" y="417" text-anchor="middle" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="12" fill="white" font-weight="600">繼續</text>
+  </g>
+  <rect x="0.5" y="0.5" width="619" height="429" rx="11.5" fill="none" stroke="#3a3a3c" stroke-width="1"/>
+</svg>

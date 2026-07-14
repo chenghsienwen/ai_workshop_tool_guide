@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 380" style="display:block;width:100%">
+  <defs><clipPath id="cc"><rect width="620" height="380" rx="12"/></clipPath></defs>
+  <g clip-path="url(#cc)">
+    <!-- Chrome dark mode browser -->
+    <rect width="620" height="380" fill="#202124"/>
+    <!-- Tab bar -->
+    <rect width="620" height="40" fill="#35363a"/>
+    <!-- Active tab -->
+    <rect x="8" y="6" width="180" height="28" rx="6" fill="#202124"/>
+    <!-- Favicon & tab title -->
+    <circle cx="26" cy="20" r="7" fill="#10a37f" opacity="0.8"/>
+    <text x="26" y="24" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="white" font-weight="700">O</text>
+    <text x="44" y="24" font-family="-apple-system,Helvetica Neue,sans-serif" font-size="11" fill="#bdc1c6">Sign-in — auth.openai.com</text>
+    <!-- Address bar area -->
+    <rect width="620" height="46" y="40" fill="#292a2d"/>
+    <rect x="80" y="51" width="460" height="24" rx="6" fill="#303134"/>
+    <text x="94" y="67" font-family="monospace,Courier,sans-serif" font-size="11" fill="#9aa0a6">https://auth.openai.com/oauth2/...</text>
+    <line x1="0" y1="86" x2="620" y2="86" stroke="#3c3f43" stroke-width="1"/>
+    <!-- Page content (white/light background like a real browser page) -->
+    <rect x="0" y="86" width="620" height="294" fill="#ffffff"/>
+    <!-- OpenAI logo area -->
+    <rect x="252" y="118" width="116" height="116" rx="16" fill="#f7f7f7" stroke="#e5e5e5" stroke-width="1"/>
+    <rect x="270" y="136" width="80" height="80" rx="10" fill="#10a37f"/>
+    <text x="310" y="190" text-anchor="middle" font-family="Arial Black,Helvetica,sans-serif" font-size="36" fill="white" font-weight="900">O</text>
+    <!-- Error heading -->
+    <text x="310" y="262" text-anchor="middle" font-family="-apple-system,Helvetica Neue,Arial,sans-serif" font-size="20" fill="#111111" font-weight="700">Sign-in could not be completed</text>
+    <!-- Error detail -->
+    <rect x="160" y="278" width="300" height="40" rx="6" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+    <text x="310" y="298" text-anchor="middle" font-family="monospace,Courier New,sans-serif" font-size="12" fill="#dc2626" font-weight="600">Error: token_exchange_failed</text>
+    <text x="310" y="314" text-anchor="middle" font-family="monospace,Courier New,sans-serif" font-size="11" fill="#dc2626">Unable to connect to auth.openai.com</text>
+    <!-- Suggestion -->
+    <text x="310" y="345" text-anchor="middle" font-family="-apple-system,Helvetica Neue,Arial,sans-serif" font-size="12" fill="#6b7280">請確認網路連線，或聯絡 IT 申請開放 auth.openai.com</text>
+  </g>
+  <rect x="0.5" y="0.5" width="619" height="379" rx="11.5" fill="none" stroke="#3a3a3c" stroke-width="1"/>
+</svg>
