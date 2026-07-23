@@ -79,6 +79,7 @@
   .section-header.codex-color { background: linear-gradient(90deg, rgba(16,163,127,.15) 0%, var(--surface) 100%); border-color: rgba(16,163,127,.4); }
   .section-header.google-color { background: linear-gradient(90deg, rgba(66,133,244,.15) 0%, var(--surface) 100%); border-color: rgba(66,133,244,.4); }
   .section-header.claude-color { background: linear-gradient(90deg, rgba(108,99,255,.15) 0%, var(--surface) 100%); border-color: rgba(108,99,255,.4); }
+  .section-header.slidev-color { background: linear-gradient(90deg, rgba(20,184,166,.15) 0%, var(--surface) 100%); border-color: rgba(20,184,166,.4); }
   .section-icon { font-size: 1.8rem; line-height: 1; }
   .section-title { font-size: 1.2rem; font-weight: 700; }
   .section-meta { font-size: .8rem; color: var(--muted); }
@@ -95,6 +96,7 @@
   .section-header.codex-color + .section-body { border-color: rgba(16,163,127,.4); }
   .section-header.google-color + .section-body { border-color: rgba(66,133,244,.4); }
   .section-header.claude-color + .section-body { border-color: rgba(108,99,255,.4); }
+  .section-header.slidev-color + .section-body { border-color: rgba(20,184,166,.4); }
 
   /* Steps */
   .step { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
@@ -255,6 +257,7 @@
     <a href="#codex" class="toc-item"><span class="toc-num">4</span>Codex CLI</a>
     <a href="#antigravity" class="toc-item"><span class="toc-num">5</span>Antigravity CLI</a>
     <a href="#claude" class="toc-item"><span class="toc-num">6</span>Claude Code</a>
+    <a href="#slidev" class="toc-item"><span class="toc-num">7</span>Slidev 簡報</a>
     <a href="#verify" class="toc-item"><span class="toc-num">✓</span>驗證 & 完成</a>
   </div>
 </div>
@@ -979,6 +982,117 @@
   </div>
 </div>
 
+<!-- SECTION 7: Slidev -->
+<div class="section" id="slidev">
+  <div class="section-header slidev-color">
+    <div class="section-icon">📽️</div>
+    <div>
+      <div class="section-title">步驟 7：建立 Slidev 簡報</div>
+      <div class="section-meta">用 Markdown 寫投影片 · 需要 Node.js（步驟 1） · 約需 5 分鐘</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="alert alert-info">
+      <span class="alert-icon">ℹ️</span>
+      <div>
+        <strong>Slidev 是什麼？</strong><br>
+        <a href="https://sli.dev" target="_blank">Slidev</a> 是為開發者設計的簡報工具：投影片用 Markdown 撰寫、支援程式碼高亮與即時預覽，非常適合搭配 AI CLI 工具快速產生與修改簡報內容。
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>建立新的 Slidev 專案</h3>
+        <p>在終端機中，先切換到你想放專案的資料夾（例如 <code>cd ~/Documents</code>），然後執行：</p>
+        <div class="code-block">
+          <div class="code-label">Terminal</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">$ </span>npm init slidev@latest
+        </div>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">依照精靈提示操作：輸入專案名稱（例如 <strong style="color:#fff">my-slides</strong>）→ 詢問是否安裝相依套件時選 <strong style="color:#fff">Yes</strong>（套件管理器選 <code>npm</code>）。</p>
+        <div class="alert alert-info">
+          <span class="alert-icon">💡</span>
+          <span>第一次執行會先詢問是否安裝 <code>create-slidev</code> 套件，按 <strong style="color:#fff">Enter</strong> 同意即可。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>啟動簡報開發伺服器</h3>
+        <p>建立完成後精靈會詢問是否立即啟動；若選擇稍後啟動，或之後要重新開啟簡報，切換到專案資料夾執行：</p>
+        <div class="code-block">
+          <div class="code-label">Terminal</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">$ </span>cd my-slides<br>
+          <span class="prompt">$ </span>npm run dev
+        </div>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">瀏覽器會自動開啟 <code>http://localhost:3030</code> 顯示簡報。投影片內容都在專案裡的 <code>slides.md</code>，用 VS Code 編輯存檔後，瀏覽器畫面會<strong style="color:#fff">即時更新</strong>。</p>
+        <div class="alert alert-info">
+          <span class="alert-icon">💡</span>
+          <span>要停止伺服器，回到終端機按 <strong style="color:#fff">Control (⌃) + C</strong>。簡報做好後可用 <code>npm run export</code> 匯出 PDF，或 <code>npm run build</code> 產出可部署的靜態網站。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>安裝自訂主題 slidev-theme-proav</h3>
+        <p>把課程提供的主題檔 <code>slidev-theme-proav-0.0.7.tgz</code> 放進專案資料夾（與 <code>package.json</code> 同一層），接著用 VS Code 開啟 <code>package.json</code>，在 <code>dependencies</code> 區塊中加入以下這行（記得補上前一行結尾的逗號）：</p>
+        <div class="code-block">
+          <div class="code-label">package.json — dependencies</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          "slidev-theme-proav": "file:./slidev-theme-proav-0.0.7.tgz"
+        </div>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">存檔後，在專案資料夾中執行安裝：</p>
+        <div class="code-block">
+          <div class="code-label">Terminal</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">$ </span>npm install
+        </div>
+        <div class="alert alert-info">
+          <span class="alert-icon">💡</span>
+          <span>也可以直接執行 <code>npm install ./slidev-theme-proav-0.0.7.tgz</code>，npm 會自動把上面那行加進 <code>package.json</code>。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>在簡報中套用主題</h3>
+        <p>打開 <code>slides.md</code>，把最上方設定區（frontmatter）裡的 <code>theme</code> 改成 <code>proav</code>（如果沒有這個欄位，就自己加上一行）：</p>
+        <div class="code-block">
+          <div class="code-label">slides.md — 最上方設定區</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          theme: proav
+        </div>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">存檔後瀏覽器會即時套用新主題；如果開發伺服器沒有在執行，重新執行 <code>npm run dev</code> 即可。</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="alert alert-info">
+      <span class="alert-icon">🤖</span>
+      <div>
+        <strong>進階：非互動式建立（適合腳本或 AI 工具自動執行）</strong><br>
+        把專案名稱直接當參數傳入、並關閉標準輸入，精靈會在建立完所有檔案後自動結束，全程不需回答任何問題：
+      </div>
+    </div>
+    <div class="code-block">
+      <div class="code-label">Terminal — 非互動式</div>
+      <button class="copy-btn" onclick="copyCode(this)">複製</button>
+      <span class="prompt">$ </span>npm init slidev@latest my-slides &lt; /dev/null<br>
+      <span class="prompt">$ </span>cd my-slides &amp;&amp; npm install &amp;&amp; npm run dev
+    </div>
+    <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">注意：目標資料夾必須是新的或空的，且專案名稱需為小寫、不含空白（例如 <code>my-slides</code>）。</p>
+  </div>
+</div>
+
 <!-- SECTION: Verify -->
 <div class="section" id="verify">
   <div class="section-header" style="background:linear-gradient(90deg,rgba(108,99,255,.15) 0%,var(--surface) 100%);border:1px solid rgba(108,99,255,.4);">
@@ -1017,6 +1131,8 @@
       <li><div class="check-circle" onclick="toggleCheck(this)"></div>Codex CLI 已安裝，<code>codex --version</code> 顯示 codex-cli 0.x.x，並以 ChatGPT 帳號登入</li>
       <li><div class="check-circle" onclick="toggleCheck(this)"></div>Antigravity CLI 已安裝，並以 Google 帳號登入</li>
       <li><div class="check-circle" onclick="toggleCheck(this)"></div>Claude Code 已安裝（選用）</li>
+      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Slidev 專案已建立，<code>npm run dev</code> 可在 <code>http://localhost:3030</code> 開啟簡報</li>
+      <li><div class="check-circle" onclick="toggleCheck(this)"></div>自訂主題 <code>slidev-theme-proav</code> 已安裝，且簡報已套用 <code>theme: proav</code></li>
     </ul>
   </div>
 </div>
