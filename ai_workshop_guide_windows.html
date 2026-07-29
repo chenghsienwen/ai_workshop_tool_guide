@@ -363,6 +363,30 @@
           <span class="alert-icon">⚠️</span>
           <span>請勿使用「命令提示字元 (CMD)」或「Git Bash」，否則部分指令可能無法執行。</span>
         </div>
+
+        <div class="alert alert-danger" style="margin-top:.75rem;">
+          <span class="alert-icon">🔑</span>
+          <div>
+            <strong>公司電腦：你自己的帳號通常不是系統管理員</strong><br>
+            點選「以系統管理員身分執行」後，如果跳出「使用者帳戶控制」視窗要求輸入<strong style="color:#fff">系統管理員帳號與密碼</strong>，這組帳密請向 IT 索取（不是你平常登入電腦用的帳密），最好在 Workshop 開始前就先跟 IT 要好。
+          </div>
+        </div>
+
+        <div class="alert alert-warn" style="margin-top:.75rem;">
+          <span class="alert-icon">⌨️</span>
+          <div>
+            <strong>這個帳密欄位通常無法貼上，只能自己手動輸入</strong><br>
+            基於安全考量，「使用者帳戶控制」的帳號密碼輸入框大多<strong style="color:#fff">不允許 Ctrl+V 貼上</strong>，要一個字一個字手動打進去，輸入密碼時也不會顯示明碼，請跟 IT 確認清楚帳號密碼後再照著輸入，並留意大小寫與符號。
+          </div>
+        </div>
+
+        <div class="alert alert-info" style="margin-top:.75rem;">
+          <span class="alert-icon">💡</span>
+          <div>
+            <strong>安裝指令貼不進系統管理員 PowerShell 視窗？</strong><br>
+            部分公司的資安政策會封鎖不同權限視窗之間的剪貼簿，導致指令沒辦法直接貼到「以系統管理員身分執行」開啟的視窗裡。遇到這種狀況，可以先把本頁要用的指令貼在<strong style="color:#fff">一般（非管理員）PowerShell 視窗或 VS Code</strong> 裡對照著看，再手動輸入到系統管理員視窗中執行。
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -912,20 +936,6 @@
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-content">
-        <h3>安裝 Git for Windows（必須）</h3>
-        <p>Claude Code 需要 Git，請先安裝：</p>
-        <div class="code-block">
-          <div class="code-label">PowerShell（系統管理員）</div>
-          <button class="copy-btn" onclick="copyCode(this)">複製</button>
-          winget install Git.Git
-        </div>
-        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">安裝完後，關閉並重開 PowerShell。</p>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-content">
         <h3>安裝 Claude Code</h3>
         <p>在 PowerShell 中執行：</p>
         <div class="code-block">
@@ -935,13 +945,13 @@
         </div>
         <div class="alert alert-info">
           <span class="alert-icon">💡</span>
-          <span>這是原生安裝器，<strong>不需要 Node.js</strong>，安裝更簡單穩定，並會自動更新。</span>
+          <span>這是原生安裝器，<strong>不需要 Node.js、也不需要先安裝 Git</strong>，安裝更簡單穩定，並會自動更新。</span>
         </div>
       </div>
     </div>
 
     <div class="step">
-      <div class="step-num">3</div>
+      <div class="step-num">2</div>
       <div class="step-content">
         <h3>重開終端機並登入</h3>
         <div class="code-block">
