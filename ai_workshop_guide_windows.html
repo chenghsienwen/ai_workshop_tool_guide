@@ -1005,8 +1005,62 @@
   <div class="section-body" style="border-color:rgba(245,158,11,.3)">
     <div style="display:flex;flex-direction:column;gap:.75rem;">
       <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
-        <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ 輸入指令後出現「不是內部或外部命令」</summary>
-        <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">PATH 設定尚未生效。請<strong style="color:#fff">完全關閉 PowerShell 後重新開啟</strong>，不是按 X 最小化，而是關閉後重開。如果還是不行，請重新啟動電腦。</p>
+        <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ 輸入指令後出現「不是內部或外部命令」（PATH 沒有生效）</summary>
+        <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">先試試看：請<strong style="color:#fff">完全關閉 PowerShell 後重新開啟</strong>（不是按 X 最小化，而是關閉後重開）。如果還是不行，請重新啟動電腦。</p>
+
+        <div class="alert alert-warn" style="margin-top:.9rem;">
+          <span class="alert-icon">📢</span>
+          <div>
+            <strong>重開機還是不行？手動新增 PATH（完全不需要系統管理員權限）</strong><br>
+            部分安裝程式（例如 Claude Code 的原生安裝器，這是官方已知的問題）不會自動把工具路徑加入 PATH。只要把路徑加到<strong style="color:#fff">「使用者變數」</strong>（不是「系統變數」），一般帳號、沒有系統管理員權限也能自己修好，不需要請 IT 協助。
+          </div>
+        </div>
+
+        <div style="margin-top:1rem;">
+          <div class="step" style="margin-bottom:1.25rem;">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>用 Win + R 直接打開環境變數設定視窗</h3>
+              <p>同時按下 <code>Win</code> + <code>R</code> 打開「執行」視窗，貼上以下指令並按 Enter（或直接按確定）：</p>
+              <div class="code-block">
+                <div class="code-label">Win + R</div>
+                <button class="copy-btn" onclick="copyCode(this)">複製</button>
+                rundll32.exe sysdm.cpl,EditEnvironmentVariables
+              </div>
+              <p style="color:var(--muted);font-size:.85rem;margin-top:.5rem">這個指令會跳過需要系統管理員權限的「系統內容」視窗，直接開啟「環境變數」設定視窗，一般帳號就能編輯自己的 PATH。</p>
+            </div>
+          </div>
+
+          <div class="step" style="margin-bottom:1.25rem;">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>編輯「使用者變數」裡的 Path</h3>
+              <p>視窗<strong style="color:#fff">上半部「〇〇的使用者變數」</strong>（不是下半部的「系統變數」）找到 <code>Path</code> 這一列，點選後按「編輯」→「新增」。</p>
+            </div>
+          </div>
+
+          <div class="step" style="margin-bottom:1.25rem;">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>貼上工具的安裝路徑</h3>
+              <p>依照你安裝的工具，新增對應的路徑（<code>%USERPROFILE%</code> 會自動代換成你的使用者資料夾）：</p>
+              <div class="code-block">
+                <div class="code-label">參考路徑</div>
+                <button class="copy-btn" onclick="copyCode(this)">複製</button>
+                Claude Code：%USERPROFILE%\.local\bin
+              </div>
+              <p style="color:var(--muted);font-size:.85rem;margin-top:.5rem">💡 <strong style="color:#fff">Codex CLI / Antigravity CLI（agy）</strong>安裝路徑會隨版本更新調整，與其猜路徑，不如直接確認：安裝完成後<strong style="color:#fff">先別關閉</strong>那個 PowerShell 視窗（該視窗當下通常還能執行指令），輸入 <code>where.exe codex</code> 或 <code>where.exe agy</code>，把顯示出來的完整路徑（去掉檔名，只留資料夾）複製起來，貼到步驟 3 即可，這樣一定準確。</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h3>存檔並重開終端機</h3>
+              <p>新增的路徑按「確定」，再把所有「環境變數」視窗都按「確定」關閉。接著<strong style="color:#fff">完全關閉並重新開啟</strong> PowerShell，指令就能正常使用了。</p>
+            </div>
+          </div>
+        </div>
       </details>
       <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
         <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ npm 安裝出現「permission denied」錯誤</summary>
