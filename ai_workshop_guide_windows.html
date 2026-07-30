@@ -1010,9 +1010,14 @@
           <div class="code-label">PowerShell</div>
           <button class="copy-btn" onclick="copyCode(this)">複製</button>
           <span class="prompt">PS> </span>cd my-slides<br>
+          <span class="prompt">PS> </span>npm install<br>
           <span class="prompt">PS> </span>npm run dev
         </div>
         <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">瀏覽器會自動開啟 <code>http://localhost:3030</code> 顯示簡報。投影片內容都在專案裡的 <code>slides.md</code>，用 VS Code 編輯存檔後，瀏覽器畫面會<strong style="color:#fff">即時更新</strong>。</p>
+        <div class="alert alert-warn">
+          <span class="alert-icon">⚠️</span>
+          <span>第一次執行 <code>npm run dev</code> 時，因為需要安裝 JavaScript runtime，Windows 可能會跳出要求<strong style="color:#fff">系統管理員權限</strong>的視窗，請點選允許讓安裝繼續進行。</span>
+        </div>
         <div class="alert alert-info">
           <span class="alert-icon">💡</span>
           <span>要停止伺服器，回到 PowerShell 按 <strong style="color:#fff">Ctrl + C</strong>。簡報做好後可用 <code>npm run export</code> 匯出 PDF，或 <code>npm run build</code> 產出可部署的靜態網站。</span>
