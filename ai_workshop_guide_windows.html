@@ -656,6 +656,13 @@
           <span class="alert-icon">💡</span>
           <span>若 <code>python</code> 無法執行，請嘗試 <code>python3 --version</code>。Windows 有時會將指令名稱設為 <code>python3</code>。</span>
         </div>
+        <div class="alert alert-warn">
+          <span class="alert-icon">⚠️</span>
+          <div>
+            <strong>指令沒有反應，或自動跳出「Microsoft Store」視窗？</strong><br>
+            這代表 Windows 內建的<strong style="color:#fff">「應用程式執行別名」</strong>攔截了 <code>python</code> 指令（常發生在忘記勾選步驟 2 的「Add Python to PATH」時）。請到「設定 → 應用程式 → 進階應用程式設定 → 應用程式執行別名」，把清單中 <code>python.exe</code> 與 <code>python3.exe</code> 的別名都<strong style="color:#fff">關閉</strong>，再重新開啟命令提示字元（CMD）測試一次。若還是不行，請回到步驟 2 確認安裝時是否已勾選「Add Python to PATH」（環境變數）。
+          </div>
+        </div>
         <div class="alert alert-success">
           <span class="alert-icon">✅</span>
           <span>看到版本號碼代表 Python 已成功安裝！</span>
