@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - 'ai_workshop_guide_macos.html'
+      - 'index.html'
+      - 'install/**'
+      - 'workshop/**'
       - 'assets/**'
       - '.github/workflows/deploy-macos.yml'
   workflow_dispatch:
