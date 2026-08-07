@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手作步驟 — AI Workshop 工具安裝指南</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #22263a;
+    --border: #2e3352;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang TC', system-ui, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 2rem 1rem;
+  }
+  .back-link {
+    position: absolute; top: 1.5rem; left: 1.5rem;
+    color: var(--muted); text-decoration: none; font-size: .85rem;
+  }
+  .back-link:hover { color: var(--text); }
+
+  .hero { text-align: center; margin-bottom: 2.5rem; }
+  .hero .emoji { font-size: 3rem; margin-bottom: .75rem; }
+  .hero h1 { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: .5rem; }
+  .hero p { color: var(--muted); font-size: 1rem; }
+
+  .picker {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    width: 100%;
+    max-width: 560px;
+  }
+  .picker-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem 1.75rem;
+    text-align: left;
+    text-decoration: none;
+    color: var(--text);
+    transition: all .18s;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .picker-card:hover {
+    border-color: var(--accent2);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  .picker-card .icon { font-size: 2.25rem; flex-shrink: 0; }
+  .picker-card .body { flex: 1; }
+  .picker-card .tag {
+    display: inline-block;
+    font-size: .72rem; font-weight: 700;
+    color: var(--accent2);
+    letter-spacing: .05em;
+    margin-bottom: .3rem;
+  }
+  .picker-card h2 { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: .25rem; }
+  .picker-card p { font-size: .85rem; color: var(--muted); }
+  .picker-card .arrow { font-size: 1.25rem; color: var(--muted); flex-shrink: 0; }
+
+  @media (max-width: 520px) {
+    .hero h1 { font-size: 1.5rem; }
+    .back-link { position: static; display: block; margin-bottom: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="../index.html">← 返回首頁</a>
+
+<div class="hero">
+  <div class="emoji">🛠️</div>
+  <h1>手作步驟</h1>
+  <p>請選擇你要參加的場次，開始跟著步驟操作</p>
+</div>
+
+<div class="picker">
+  <a class="picker-card" href="session-1.html">
+    <div class="icon">💬</div>
+    <div class="body">
+      <span class="tag">SESSION 1</span>
+      <h2>From Prompting to Tooling</h2>
+      <p>從下指令到打造工具</p>
+    </div>
+    <div class="arrow">→</div>
+  </a>
+  <a class="picker-card" href="session-2.html">
+    <div class="icon">🎨</div>
+    <div class="body">
+      <span class="tag">SESSION 2</span>
+      <h2>Content First, Visual Follows</h2>
+      <p>AI 輔助簡報製作</p>
+    </div>
+    <div class="arrow">→</div>
+  </a>
+  <a class="picker-card" href="session-3.html">
+    <div class="icon">📊</div>
+    <div class="body">
+      <span class="tag">SESSION 3</span>
+      <h2>Excel AI Workshop</h2>
+      <p>AI 輔助 Excel 實作</p>
+    </div>
+    <div class="arrow">→</div>
+  </a>
+</div>
+
+</body>
+</html>

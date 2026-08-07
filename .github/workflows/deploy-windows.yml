@@ -6,6 +6,8 @@ on:
     paths:
       - 'ai_workshop_guide_windows.html'
       - 'index.html'
+      - 'install/**'
+      - 'workshop/**'
       - 'assets/**'
       - '.github/workflows/deploy-windows.yml'
   workflow_dispatch:
