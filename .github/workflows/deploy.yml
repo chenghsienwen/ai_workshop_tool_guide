@@ -1,15 +1,14 @@
-name: Deploy macOS Guide to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
     paths:
-      - 'ai_workshop_guide_macos.html'
       - 'index.html'
       - 'install/**'
       - 'workshop/**'
       - 'assets/**'
-      - '.github/workflows/deploy-macos.yml'
+      - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
 permissions:
@@ -30,11 +29,6 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
-      - name: Sync guide pages from source
-        run: |
-          cp ai_workshop_guide_windows.html windows.html
-          cp ai_workshop_guide_macos.html macos.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
