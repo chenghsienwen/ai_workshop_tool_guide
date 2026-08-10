@@ -16,11 +16,6 @@
     --danger: #ef4444;
     --text: #e2e8f0;
     --muted: #94a3b8;
-    --node: #539e43;
-    --vscode: #007acc;
-    --python: #3776ab;
-    --codex: #10a37f;
-    --google: #4285f4;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
@@ -62,7 +57,7 @@
   .toc-num { font-size: .75rem; color: var(--muted); font-weight: 700; min-width: 1.2rem; }
 
   /* Main layout */
-  main { max-width: 760px; margin: 0 auto; padding: 1rem 1.5rem 4rem; }
+  main { max-width: 760px; margin: 0 auto; padding: 4rem 1.5rem; }
 
   /* Section */
   .section { margin-bottom: 3rem; }
@@ -70,33 +65,20 @@
     display: flex; align-items: center; gap: 1rem;
     padding: 1rem 1.5rem;
     border-radius: 12px 12px 0 0;
-    border: 1px solid var(--border);
+    background: linear-gradient(90deg, rgba(108,99,255,.15) 0%, var(--surface) 100%);
+    border: 1px solid rgba(108,99,255,.4);
     border-bottom: none;
   }
-  .section-header.node-color { background: linear-gradient(90deg, rgba(83,158,67,.15) 0%, var(--surface) 100%); border-color: rgba(83,158,67,.4); }
-  .section-header.vscode-color { background: linear-gradient(90deg, rgba(0,122,204,.15) 0%, var(--surface) 100%); border-color: rgba(0,122,204,.4); }
-  .section-header.python-color { background: linear-gradient(90deg, rgba(55,118,171,.15) 0%, var(--surface) 100%); border-color: rgba(55,118,171,.4); }
-  .section-header.codex-color { background: linear-gradient(90deg, rgba(16,163,127,.15) 0%, var(--surface) 100%); border-color: rgba(16,163,127,.4); }
-  .section-header.google-color { background: linear-gradient(90deg, rgba(66,133,244,.15) 0%, var(--surface) 100%); border-color: rgba(66,133,244,.4); }
-  .section-header.claude-color { background: linear-gradient(90deg, rgba(108,99,255,.15) 0%, var(--surface) 100%); border-color: rgba(108,99,255,.4); }
-  .section-header.slidev-color { background: linear-gradient(90deg, rgba(20,184,166,.15) 0%, var(--surface) 100%); border-color: rgba(20,184,166,.4); }
   .section-icon { font-size: 1.8rem; line-height: 1; }
   .section-title { font-size: 1.2rem; font-weight: 700; }
   .section-meta { font-size: .8rem; color: var(--muted); }
 
   .section-body {
     background: var(--surface);
-    border: 1px solid var(--border);
+    border: 1px solid rgba(108,99,255,.4);
     border-radius: 0 0 12px 12px;
     padding: 1.5rem;
   }
-  .section-header.node-color + .section-body { border-color: rgba(83,158,67,.4); }
-  .section-header.vscode-color + .section-body { border-color: rgba(0,122,204,.4); }
-  .section-header.python-color + .section-body { border-color: rgba(55,118,171,.4); }
-  .section-header.codex-color + .section-body { border-color: rgba(16,163,127,.4); }
-  .section-header.google-color + .section-body { border-color: rgba(66,133,244,.4); }
-  .section-header.claude-color + .section-body { border-color: rgba(108,99,255,.4); }
-  .section-header.slidev-color + .section-body { border-color: rgba(20,184,166,.4); }
 
   /* Steps */
   .step { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
@@ -236,207 +218,126 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div style="font-size:3rem;margin-bottom:.75rem">🤖</div>
   <h1>AI 工具安裝指南</h1>
-</div>
-
-<!-- TOC -->
-<div class="toc">
-  <h2>📋 安裝清單</h2>
-  <div class="toc-grid">
-    <a href="#prereq" class="toc-item"><span class="toc-num">0</span>前置需求</a>
-    <a href="#nodejs" class="toc-item"><span class="toc-num">1</span>Node.js</a>
-    <a href="#python" class="toc-item"><span class="toc-num">2</span>Python</a>
-    <a href="#agent" class="toc-item"><span class="toc-num">3</span>AI Agent</a>
-    <a href="#slidev" class="toc-item"><span class="toc-num">4</span>Slidev 簡報</a>
-    <a href="#verify" class="toc-item"><span class="toc-num">✓</span>驗證 & 完成</a>
-    <a href="#troubleshoot" class="toc-item"><span class="toc-num">🔧</span>常見問題排除</a>
-  </div>
 </div>
 
 <main>
 
 <!-- SECTION 0: 前置需求 -->
 <div class="section" id="prereq">
-  <div class="section-header vscode-color">
+  <div class="section-header">
     <div class="section-icon">⚙️</div>
     <div>
       <div class="section-title">前置需求確認</div>
-      <div class="section-meta">開始安裝前，請先確認這些項目</div>
     </div>
   </div>
   <div class="section-body">
-    <div class="step">
+    <div class="step" id="admin-access">
       <div class="step-num">✓</div>
       <div class="step-content">
-        <h3>確認 Gemini 可以正常使用</h3>
-        <p>在瀏覽器開啟 <a href="https://gemini.google.com" target="_blank">gemini.google.com</a>，用 Google 帳號登入（個人或公司帳號都可以），確認能正常對話、沒有被公司網路擋住。這是後續安裝 AI Agent 的必要條件。</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">✓</div>
-      <div class="step-content">
-        <h3>確認 Windows 11 已更新</h3>
-        <p>請確保 Windows 11 已安裝最新更新。按下 <kbd style="background:#22263a;padding:.1rem .4rem;border-radius:4px;border:1px solid #2e3352">Win + I</kbd> → 「Windows Update」→ 檢查更新。</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">✓</div>
-      <div class="step-content">
-        <h3>準備帳號</h3>
-        <p>請事先準備好以下帳號：</p>
-        <ul style="color:var(--muted);font-size:.875rem;padding-left:1.2rem;margin-top:.4rem;">
-          <li style="margin-bottom:.3rem">🔵 <a href="https://accounts.google.com" target="_blank">Google 帳號</a>（免費，用於 Gemini / Google Antigravity）</li>
-          <li>🟣 <a href="https://claude.ai" target="_blank">Claude Pro 帳號</a>（選用，如果你已有訂閱，可改用 Claude Desktop）</li>
-        </ul>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">✓</div>
-      <div class="step-content">
-        <h3>開啟 PowerShell（以系統管理員身分）</h3>
-        <p>很多安裝步驟需要用到 PowerShell。開啟方式：</p>
-        <div class="browser-mock">
-          <div class="browser-bar">
-            <div class="browser-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
-            <div style="font-size:.75rem;color:var(--muted)">開啟 PowerShell 步驟</div>
-          </div>
-          <div class="browser-content">
-            <p style="color:var(--muted)">1. 按下鍵盤上的 <strong style="color:#fff">Windows 鍵</strong></p>
-            <p style="color:var(--muted)">2. 輸入 <strong style="color:#60a5fa">PowerShell</strong></p>
-            <p style="color:var(--muted)">3. 在「Windows PowerShell」上按右鍵 → <strong style="color:#fff">以系統管理員身分執行</strong></p>
-          </div>
-        </div>
-        <div class="alert alert-warn">
-          <span class="alert-icon">⚠️</span>
-          <span>請使用 PowerShell，不要用「命令提示字元 (CMD)」或「Git Bash」開啟。</span>
-        </div>
-
-        <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;margin-top:.75rem;">
-          <summary style="cursor:pointer;font-weight:600;font-size:.85rem;color:var(--muted)">🏢 公司電腦、需要系統管理員密碼？點此展開</summary>
-          <div style="margin-top:.75rem;display:flex;flex-direction:column;gap:.6rem;font-size:.85rem;color:var(--muted);">
-            <p>點「以系統管理員身分執行」後，如果跳出「使用者帳戶控制」視窗要求輸入<strong style="color:#fff">系統管理員帳號與密碼</strong>，這組帳密請向 IT 索取，最好在 Workshop 前先要好。</p>
-            <p>這個欄位通常<strong style="color:#fff">不能貼上</strong>，密碼打字時也不會顯示，請對照 IT 給的帳密手動輸入，留意大小寫。</p>
-            <p>如果安裝指令貼不進系統管理員視窗（公司資安政策封鎖跨權限剪貼簿），可以先把指令貼在一般 PowerShell 視窗或記事本對照著看，再手動輸入到系統管理員視窗執行。</p>
-          </div>
-        </details>
+        <h3>取得系統管理員權限</h3>
+        <p>安裝過程需要系統管理員權限，請<strong style="color:#fff">先與 IT 聯繫</strong>，說明需要安裝 AI 環境所需的軟體（<strong style="color:#fff">Node.js</strong>、<strong style="color:#fff">Python</strong>），需要系統管理員權限。待 IT 提供方法後，再進行後面的安裝步驟。</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SECTION 1: Node.js -->
-<div class="section" id="nodejs">
-  <div class="section-header node-color">
-    <div class="section-icon">🟢</div>
+<!-- SECTION 1: Gemini -->
+<div class="section" id="gemini">
+  <div class="section-header">
     <div>
-      <div class="section-title">步驟 1：安裝 Node.js（LTS 版本）</div>
-      <div class="section-meta">Slidev 簡報工具的執行環境 · 約需 5 分鐘</div>
+      <div class="section-title">步驟 1：登入 Gemini</div>
     </div>
   </div>
   <div class="section-body">
-    <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;margin-bottom:1.25rem;">
-      <summary style="cursor:pointer;font-weight:600;font-size:.85rem;color:#fca5a5">🏢 公司電腦，無法自行安裝軟體？點此展開（IT 申請範本）</summary>
-      <div style="margin-top:.75rem;font-size:.85rem;color:var(--muted);">
-        公司管理的 Windows 電腦通常限制自行安裝軟體，請在 Workshop <strong style="color:#fff">前 2～3 個工作天</strong>向 IT Help Desk 提交申請。
-        <div style="margin-top:.75rem;background:rgba(0,0,0,.3);border-radius:8px;padding:.9rem 1rem;font-size:.85rem;line-height:1.7;">
-          <p style="color:#fca5a5;font-weight:700;margin-bottom:.4rem;">📋 IT Ticket 建議填寫內容：</p>
-          <p><span style="color:#94a3b8">主旨：</span><strong style="color:#fff">申請安裝 Node.js LTS — AI Workshop 使用</strong></p>
-          <p><span style="color:#94a3b8">內容：</span></p>
-          <div style="background:#0d1117;border-radius:6px;padding:.7rem .9rem;margin-top:.35rem;font-family:monospace;font-size:.82rem;color:#e2e8f0;white-space:pre-wrap;">您好，
-
-我將參加 [日期] 的 AI Workshop，
-課程需要在本機安裝以下軟體：
-
-- 軟體名稱：Node.js LTS
-- 下載來源：https://nodejs.org（官方網站）
-- 用途：執行 Slidev 簡報工具
-- 需要權限：本機系統管理員安裝權限
-
-請問能否協助開放安裝權限，或由 IT 協助預先安裝？
-
-謝謝！</div>
-          <button onclick="copyTicket(this)" style="margin-top:.6rem;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-size:.75rem;padding:.3rem .7rem;border-radius:4px;cursor:pointer;">📋 複製 Ticket 內容</button>
-        </div>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>用 Google 帳號登入 Gemini</h3>
+        <p>在瀏覽器開啟 <a href="https://gemini.google.com" target="_blank">gemini.google.com</a>，用 Google 帳號登入（個人或公司帳號都可以），確認能正常對話即可。</p>
       </div>
-    </details>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: Node.js -->
+<div class="section" id="nodejs">
+  <div class="section-header">
+    <div>
+      <div class="section-title">步驟 2：安裝 Node.js</div>
+      <div class="section-meta">AI 寫本地端小工具常用的環境之一</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="alert alert-info" style="margin-bottom:1.25rem;">
+      <span class="alert-icon">🔑</span>
+      <span>請確認是否已完成<a href="#admin-access">前置需求：取得系統管理員權限</a>。</span>
+    </div>
 
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-content">
-        <h3>下載並安裝 Node.js LTS</h3>
-        <p>點選以下連結下載 Windows x64 安裝檔（.msi），下載完成後雙擊開啟，一路點「Next」到底，保持所有選項預設，最後「Install」→「Finish」。</p>
+        <h3>下載並安裝 Node.js</h3>
+        <p>點擊以下連結從官網下載安裝檔，下載完成後雙擊開啟進行安裝。</p>
         <div class="code-block">
-          <div class="code-label">直接下載（Windows x64 .msi）</div>
           <button class="copy-btn" onclick="copyCode(this)">複製</button>
           <a href="https://nodejs.org/dist/v22.23.1/node-v22.23.1-x64.msi" style="color:#4ade80;word-break:break-all;">https://nodejs.org/dist/v22.23.1/node-v22.23.1-x64.msi</a>
         </div>
-        <p style="color:var(--muted);font-size:.82rem;margin-top:.5rem">版本：v22.23.1（LTS）。需要其他版本可到 <a href="https://nodejs.org" style="color:var(--accent2)">nodejs.org</a> 選擇下載。</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SECTION 2: Python -->
+<!-- SECTION 3: Python -->
 <div class="section" id="python">
-  <div class="section-header python-color">
-    <div class="section-icon">🐍</div>
+  <div class="section-header">
     <div>
-      <div class="section-title">步驟 2：安裝 Python</div>
-      <div class="section-meta">AI 腳本執行環境 · 參考版本：Python 3.11.9 · 約需 5 分鐘</div>
+      <div class="section-title">步驟 3：安裝 Python</div>
+      <div class="section-meta">AI 寫本地端小工具常用的環境之一</div>
     </div>
   </div>
   <div class="section-body">
-    <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;margin-bottom:1.25rem;">
-      <summary style="cursor:pointer;font-weight:600;font-size:.85rem;color:#fca5a5">🏢 公司電腦，無法自行安裝軟體？點此展開（IT 申請範本）</summary>
-      <div style="margin-top:.75rem;font-size:.85rem;color:var(--muted);">
-        請在 Workshop <strong style="color:#fff">前 2～3 個工作天</strong>向 IT Help Desk 提交申請。
-        <div style="margin-top:.75rem;background:rgba(0,0,0,.3);border-radius:8px;padding:.9rem 1rem;font-size:.85rem;line-height:1.7;">
-          <p style="color:#fca5a5;font-weight:700;margin-bottom:.4rem;">📋 IT Ticket 建議填寫內容（Python）：</p>
-          <div style="background:#0d1117;border-radius:6px;padding:.7rem .9rem;margin-top:.35rem;font-family:monospace;font-size:.82rem;color:#e2e8f0;white-space:pre-wrap;">- 軟體名稱：Python 3.x（官方版）
-- 下載來源：https://www.python.org（官方網站）
-- 用途：執行 AI Workshop 課程的 Python 腳本
-- 需要權限：本機系統管理員安裝權限</div>
-        </div>
-      </div>
-    </details>
+    <div class="alert alert-info" style="margin-bottom:1.25rem;">
+      <span class="alert-icon">🔑</span>
+      <span>請確認是否已完成<a href="#admin-access">前置需求：取得系統管理員權限</a>。</span>
+    </div>
 
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-content">
         <h3>下載並安裝 Python</h3>
-        <p>點選以下連結下載安裝檔，雙擊開啟後，<strong style="color:#fff">務必勾選「Add Python to PATH」</strong>，再點「Install Now」。</p>
+        <p>點擊以下連結從官網下載安裝檔，下載完成後雙擊開啟進行安裝。</p>
         <div class="code-block">
-          <div class="code-label">直接下載（Windows x64 .exe）</div>
           <button class="copy-btn" onclick="copyCode(this)">複製</button>
           <a href="https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe" style="color:#4ade80;word-break:break-all;">https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe</a>
         </div>
         <div class="alert alert-warn">
           <span class="alert-icon">⚠️</span>
-          <span>忘記勾選「Add Python to PATH」的話，之後執行 Python 相關功能會找不到 <code>python</code> 指令，需要重新安裝一次。</span>
+          <div>
+            安裝過程請<strong style="color:#fff">務必勾選</strong> <code>Add Python to PATH</code> 再點「Install Now」，否則之後在命令提示字元中會因為找不到 <code>python</code> 指令而無法使用。
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SECTION 3: AI Agent -->
+<!-- SECTION 4: AI Agent -->
 <div class="section" id="agent">
-  <div class="section-header claude-color">
-    <div class="section-icon">🧠</div>
+  <div class="section-header">
     <div>
-      <div class="section-title">步驟 3：安裝 AI Agent</div>
-      <div class="section-meta">讓 AI 能直接讀寫專案資料夾裡的檔案 · 約需 5 分鐘</div>
+      <div class="section-title">步驟 4：安裝 AI Agent</div>
+      <div class="section-meta">讓 AI 能直接讀寫專案資料夾裡的檔案</div>
     </div>
   </div>
   <div class="section-body">
     <div class="alert alert-info">
       <span class="alert-icon">ℹ️</span>
-      <span>跟純聊天的 AI 不同，這裡要裝的是能<strong style="color:#fff">直接讀寫本機檔案</strong>的 AI Agent App：打開一個專案資料夾後，AI 可以直接幫你建立、修改、執行裡面的檔案。請依你是否已有 <strong style="color:#fff">Claude Pro / Max</strong> 訂閱，選擇下面其中一種方案安裝（擇一即可，不需要兩個都裝）。</span>
+      <span>跟純聊天的 AI 不同，這裡要裝的是能<strong style="color:#fff">直接讀寫本機檔案</strong>的 AI Agent App：打開一個專案資料夾後，AI 可以直接幫您建立、修改、執行裡面的檔案。請確認您是否已有 <strong style="color:#fff">Claude</strong> 訂閱方案，選擇下面其中一種方案安裝。</span>
     </div>
 
     <div style="background:rgba(66,133,244,.08);border:1px solid rgba(66,133,244,.3);border-radius:10px;padding:1.25rem;margin-bottom:1rem;">
-      <p style="font-weight:700;color:#fff;margin-bottom:.9rem;">🆓 方案 A：Google Antigravity（沒有付費訂閱，用免費方案）</p>
+      <p style="font-weight:700;color:#fff;margin-bottom:.9rem;">🆓 方案 A：無 Claude 方案，安裝 Google Antigravity</p>
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-content">
@@ -444,36 +345,40 @@
           <div class="browser-mock">
             <div class="browser-bar">
               <div class="browser-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
-              <div class="browser-url">https://antigravity.google</div>
+              <div class="browser-url"><a href="https://antigravity.google.com" target="_blank">https://antigravity.google.com</a></div>
             </div>
             <div class="browser-content">
-              <p style="color:var(--muted)">首頁會有下載按鈕，點選後選擇 Windows 版本下載並執行安裝。</p>
+              <p style="color:var(--muted)">於官網下載 Windows 版本並安裝。</p>
             </div>
           </div>
+          <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;margin-top:.5rem;">
+            <summary style="cursor:pointer;font-weight:600;font-size:.85rem;color:#fca5a5">❓ 安裝時顯示「Windows 已保護您的電腦」？</summary>
+            <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">此為 Windows SmartScreen 對較新軟體的預設警告，點選視窗中的<strong style="color:#fff">「其他資訊」</strong>，再點<strong style="color:#fff">「仍要執行」</strong>即可繼續安裝。</p>
+          </details>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-content">
           <h3>用 Google 帳號登入</h3>
-          <p>開啟 Antigravity，選擇用 Google 帳號登入（跟前置需求確認 Gemini 時用的帳號一樣即可，個人或公司帳號都可以）。</p>
+          <p>開啟 Antigravity，選擇用 Google 帳號登入<a href="#gemini">步驟 1</a> 的 Google 帳號即可。</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-content">
-          <h3>開啟專案資料夾，試著讓 AI 改檔案</h3>
+          <h3>選擇任意專案資料夾，試著讓 AI 改檔案</h3>
           <p>「File」→「Open Folder」開啟你的 Workshop 專案資料夾，在 Agent 面板輸入指令，例如「建立一個 hello.py，內容印出 Hello World」，AI 會直接在資料夾中建立並執行檔案。</p>
         </div>
       </div>
       <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;margin-top:.75rem;">
-        <summary style="cursor:pointer;font-weight:600;font-size:.85rem;color:#fca5a5">🏢 公司網路擋住 Google 登入畫面？點此展開</summary>
-        <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">如果登入卡住或顯示授權失敗，通常是公司防火牆封鎖了 <code>accounts.google.com</code> 的連線，<strong style="color:#fff">不是你操作錯誤</strong>。請聯繫 IT Help Desk，說明需要開放 Google 帳號登入（OAuth）的網路存取權限。</p>
+        <summary style="cursor:pointer;font-weight:600;font-size:.85rem;color:#fca5a5">❓ 無法進入 Google 登入畫面？</summary>
+        <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">如果登入卡住或顯示授權失敗，可能是公司網路防火牆封鎖了 <code>accounts.google.com</code> 的連線。請聯繫 IT，說明需要開放 Google 帳號登入的網路存取權限。</p>
       </details>
     </div>
 
     <div style="background:rgba(108,99,255,.08);border:1px solid rgba(108,99,255,.3);border-radius:10px;padding:1.25rem;">
-      <p style="font-weight:700;color:#fff;margin-bottom:.9rem;">💳 方案 B：Claude Desktop（已有 Claude Pro / Max 訂閱）</p>
+      <p style="font-weight:700;color:#fff;margin-bottom:.9rem;">💳 方案 B：已有 Claude 方案，安裝 Claude Desktop</p>
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-content">
@@ -481,10 +386,10 @@
           <div class="browser-mock">
             <div class="browser-bar">
               <div class="browser-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
-              <div class="browser-url">https://claude.ai/download</div>
+              <div class="browser-url"><a href="https://claude.ai/download" target="_blank">https://claude.ai/download</a></div>
             </div>
             <div class="browser-content">
-              <p style="color:var(--muted)">選擇 Windows 版本下載並安裝，開啟後用 Claude Pro / Max 帳號登入。</p>
+              <p style="color:var(--muted)">於官網下載 Windows 版本並安裝。</p>
             </div>
           </div>
         </div>
@@ -492,32 +397,27 @@
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-content">
-          <h3>安裝 Filesystem 擴充功能</h3>
-          <p>登入後到「設定」→「擴充功能（Extensions）」，找到 <strong style="color:#fff">Filesystem</strong> 並安裝，安裝時選擇要授權讀寫的專案資料夾。</p>
+          <h3>用 Claude 帳號登入</h3>
+          <p>開啟 Claude Desktop，選擇用 Claude 帳號登入。</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-content">
-          <h3>試著讓 AI 改檔案</h3>
+          <h3>選擇任意專案資料夾，試著讓 AI 改檔案</h3>
           <p>在對話框輸入類似「幫我在專案資料夾建立 hello.py，內容印出 Hello World」，Claude 會直接在你授權的資料夾中建立檔案。</p>
         </div>
-      </div>
-      <div class="alert alert-warn" style="margin-top:.75rem;">
-        <span class="alert-icon">⚠️</span>
-        <span>Claude Desktop 沒有免費方案，需要 Claude Pro（$20/月）或 Max（$100/月）訂閱才能使用。</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SECTION 4: Slidev -->
+<!-- SECTION 5: Slidev -->
 <div class="section" id="slidev">
-  <div class="section-header slidev-color">
-    <div class="section-icon">📽️</div>
+  <div class="section-header">
     <div>
-      <div class="section-title">步驟 4：建立 Slidev 簡報</div>
-      <div class="section-meta">用 Markdown 寫投影片 · 需要 Node.js（步驟 1） · 約需 5 分鐘</div>
+      <div class="section-title">步驟 5：建立 Slidev 簡報專案</div>
+      <div class="section-meta">用 Markdown 寫投影片的工具</div>
     </div>
   </div>
   <div class="section-body">
@@ -526,35 +426,47 @@
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-content">
-        <h3>建立並啟動 Slidev 專案</h3>
-        <p>在 命令提示字元（CMD） 中，切換到想放專案的資料夾（例如 <code>cd ~\Documents</code>），執行：</p>
-        <div class="code-block">
-          <div class="code-label">命令提示字元（CMD）</div>
-          <button class="copy-btn" onclick="copyCode(this)">複製</button>
-          <span class="prompt">C:\> </span>npm init slidev@latest
-        </div>
-        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">依提示輸入專案名稱（例如 <strong style="color:#fff">my-slides</strong>），是否安裝套件選 <strong style="color:#fff">Yes</strong>。完成後：</p>
-        <div class="code-block">
-          <div class="code-label">命令提示字元（CMD）</div>
-          <button class="copy-btn" onclick="copyCode(this)">複製</button>
-          <span class="prompt">C:\> </span>cd my-slides<br>
-          <span class="prompt">C:\> </span>npm run dev
-        </div>
-        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">瀏覽器會自動開啟 <code>http://localhost:3030</code>。投影片內容在專案裡的 <code>slides.md</code>，用 Antigravity（或任何文字編輯器）編輯存檔後畫面會<strong style="color:#fff">即時更新</strong>。停止伺服器按 <strong style="color:#fff">Ctrl + C</strong>。</p>
+        <h3>建立空資料夾，並在該資料夾開啟命令提示字元</h3>
+        <p>用檔案總管建立一個空白資料夾，作為簡報專案的位置（名稱可自訂，例如 <strong style="color:#fff">my-slides</strong>）。<strong style="color:#fff">進入這個資料夾</strong>後，點一下視窗上方的<strong style="color:#fff">網址列</strong>，直接輸入 <code>cmd</code> 後按 <strong style="color:#fff">Enter</strong>，就會開啟一個已經切換到該資料夾路徑的命令提示字元視窗。</p>
       </div>
     </div>
 
     <div class="step">
       <div class="step-num">2</div>
       <div class="step-content">
-        <h3>安裝自訂主題與範例簡報</h3>
-        <p>從 <a href="https://www.dropbox.com/scl/fo/xtz5amf0zitywjsa4p5b2/AGzkrcRgJygiLgehVVuh4dQ?rlkey=a7zr494zifaale39ampqvb1gt&amp;st=2qb5pc7j&amp;dl=0" target="_blank">課程雲端資料夾（Dropbox）</a> 下載主題檔 <code>slidev-theme-proav-0.0.7.tgz</code> 與範例 <code>slides.md</code>，兩個檔案都放進專案資料夾（<code>slides.md</code> 直接取代原本的檔案）。接著在專案資料夾中執行：</p>
+        <h3>建立並啟動 Slidev 專案</h3>
+        <p>在命令提示字元中執行：</p>
         <div class="code-block">
-          <div class="code-label">命令提示字元（CMD）</div>
+          <div class="code-label">命令提示字元</div>
           <button class="copy-btn" onclick="copyCode(this)">複製</button>
-          <span class="prompt">C:\> </span>npm install .\slidev-theme-proav-0.0.7.tgz
+          <span class="prompt">&gt; </span>npm init slidev@latest <span style="color:#24a683"># 安裝並初始化 Slidev 範例專案</span>
         </div>
-        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">瀏覽器畫面會即時更新；若開發伺服器沒在執行，重新執行 <code>npm run dev</code> 即可。</p>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">依提示輸入專案名稱（例如 <strong style="color:#fff">my-slides</strong>），是否安裝套件選 <strong style="color:#fff">Yes</strong>。完成後：</p>
+        <div class="code-block">
+          <div class="code-label">命令提示字元</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">&gt; </span>cd my-slides <span style="color:#24a683"># 切換到 Slidev 建立的專案資料夾</span><br>
+          <span class="prompt">&gt; </span>npm run dev <span style="color:#24a683"># 啟動 Slidev 專案</span>
+        </div>
+        <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;margin-top:.5rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:.85rem;color:#fca5a5">❓ 跳出「Windows Defender 防火牆已封鎖此應用程式的部分功能」？</summary>
+          <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">此為 Windows 安全機制確認是否允許執行 Slidev 啟動本地端伺服器的簡報模式，點選<strong style="color:#fff">「允許存取」</strong>即可。</p>
+        </details>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">瀏覽器會自動開啟 <code>http://localhost:3030</code> 顯示簡報檔，編輯 <code>slides.md</code> 的內容並存檔後，畫面會<strong style="color:#fff">即時更新</strong>。</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>安裝 ProAV 主題與範例簡報檔</h3>
+        <p>從 <a href="https://www.dropbox.com/scl/fo/xtz5amf0zitywjsa4p5b2/AGzkrcRgJygiLgehVVuh4dQ?rlkey=a7zr494zifaale39ampqvb1gt&amp;st=2qb5pc7j&amp;dl=0" target="_blank">Slidev 課程檔</a> 下載主題檔 <code>slidev-theme-proav-0.0.7.tgz</code> 與範例簡報 <code>slides.md</code>，兩個檔案都放進專案資料夾（<code>slides.md</code> 直接取代原本的檔案）。接著在命令提示字元中執行：</p>
+        <div class="code-block">
+          <div class="code-label">命令提示字元</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">&gt; </span>npm install .\slidev-theme-proav-0.0.7.tgz <span style="color:#24a683"># 安裝 ProAV 主題包</span>
+        </div>
+        <p style="color:var(--muted);font-size:.875rem;margin-top:.5rem">瀏覽器畫面會即時更新，並顯示如下 ProAV 主題簡報：</p>
         <div style="margin:.75rem 0;border-radius:8px;overflow:hidden;border:1px solid #2e3352;"><img src="../assets/slidev-proav-theme-cover.png" alt="Slidev proav 主題封面投影片：黑底紅藍光線背景，含 Headline 標題與 ViewSonic Pro AV Solutions 標誌" style="width:100%;display:block;border-radius:8px 8px 0 0;"><div style="background:#111;text-align:center;padding:.3rem .5rem;font-size:.72rem;color:#555;border-top:1px solid #2e2e2e">成功畫面：主題安裝完成後，瀏覽器中的第一頁投影片應該長這樣（ViewSonic Pro AV 封面）</div></div>
       </div>
     </div>
@@ -563,90 +475,83 @@
 
 <!-- SECTION: Verify -->
 <div class="section" id="verify">
-  <div class="section-header" style="background:linear-gradient(90deg,rgba(108,99,255,.15) 0%,var(--surface) 100%);border:1px solid rgba(108,99,255,.4);">
+  <div class="section-header">
     <div class="section-icon">✅</div>
     <div>
       <div class="section-title">最終驗證清單</div>
-      <div class="section-meta">確認所有工具都已正確安裝</div>
     </div>
   </div>
-  <div class="section-body" style="border-color:rgba(108,99,255,.4)">
-    <p style="color:var(--muted);font-size:.875rem;margin-bottom:1rem">開啟<strong style="color:#fff">命令提示字元（CMD）</strong>執行以下指令，確認 Node.js 有回應版本號碼（Slidev 需要用到）：</p>
-    <div class="code-block">
-      <div class="code-label">命令提示字元（CMD）</div>
-      <button class="copy-btn" onclick="copyCode(this)">複製</button>
-      <span class="prompt">C:\> </span>node -v && npm -v<br>
-      <span style="color:#94a3b8"># 應顯示類似 v22.x.x / 10.x.x</span>
+  <div class="section-body">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>開啟命令提示字元</h3>
+        <p>按下鍵盤上的 <strong style="color:#fff">Windows 鍵</strong>，輸入 <strong style="color:#fff">cmd</strong> 後按 <strong style="color:#fff">Enter</strong> 開啟。</p>
+      </div>
     </div>
 
-    <hr class="divider">
-
-    <p style="color:var(--muted);font-size:.875rem;margin-bottom:.75rem">點選項目打勾確認完成：</p>
-    <ul class="checklist" id="checklist">
-      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Node.js LTS 已安裝，<code>node -v</code> 顯示 v22.x.x</li>
-      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Python 已安裝（開始功能表搜尋「Python」看得到即可）</li>
-      <li><div class="check-circle" onclick="toggleCheck(this)"></div>AI Agent 已安裝並登入（Google Antigravity 或 Claude Desktop 擇一）</li>
-      <li><div class="check-circle" onclick="toggleCheck(this)"></div>已實際測試 AI Agent 能直接在專案資料夾建立／修改檔案</li>
-      <li><div class="check-circle" onclick="toggleCheck(this)"></div>Slidev 專案已建立，<code>npm run dev</code> 可在 <code>http://localhost:3030</code> 開啟簡報</li>
-      <li><div class="check-circle" onclick="toggleCheck(this)"></div>自訂主題 <code>slidev-theme-proav</code> 已安裝，範例 <code>slides.md</code> 已放入專案並正常顯示</li>
-    </ul>
-  </div>
-</div>
-
-<!-- TROUBLESHOOTING -->
-<div class="section" id="troubleshoot">
-  <div class="section-header" style="background:linear-gradient(90deg,rgba(245,158,11,.1) 0%,var(--surface) 100%);border:1px solid rgba(245,158,11,.3);">
-    <div class="section-icon">🔧</div>
-    <div>
-      <div class="section-title">常見問題排除</div>
-    </div>
-  </div>
-  <div class="section-body" style="border-color:rgba(245,158,11,.3)">
-    <div style="display:flex;flex-direction:column;gap:.75rem;">
-      <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
-        <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ 輸入 <code>node</code> / <code>npm</code> 出現「不是內部或外部命令」（PATH 沒有生效）</summary>
-        <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">先試試看：請<strong style="color:#fff">完全關閉 命令提示字元（CMD） 後重新開啟</strong>（不是按 X 最小化，而是關閉後重開）。如果還是不行，請重新啟動電腦。</p>
-
-        <div style="margin-top:1rem;">
-          <div class="step" style="margin-bottom:1.25rem;">
-            <div class="step-num">1</div>
-            <div class="step-content">
-              <h3>用 Win + R 直接打開環境變數設定視窗</h3>
-              <p>同時按下 <code>Win</code> + <code>R</code> 打開「執行」視窗，貼上以下指令並按 Enter（或直接按確定）：</p>
-              <div class="code-block">
-                <div class="code-label">Win + R</div>
-                <button class="copy-btn" onclick="copyCode(this)">複製</button>
-                rundll32.exe sysdm.cpl,EditEnvironmentVariables
-              </div>
-              <p style="color:var(--muted);font-size:.85rem;margin-top:.5rem">這個指令會跳過需要系統管理員權限的「系統內容」視窗，直接開啟「環境變數」設定視窗，一般帳號就能編輯自己的 PATH，不需要請 IT 協助。</p>
-            </div>
-          </div>
-
-          <div class="step" style="margin-bottom:1.25rem;">
-            <div class="step-num">2</div>
-            <div class="step-content">
-              <h3>編輯「使用者變數」裡的 Path</h3>
-              <p>視窗<strong style="color:#fff">上半部「〇〇的使用者變數」</strong>（不是下半部的「系統變數」）找到 <code>Path</code> 這一列，點選後按「編輯」→「新增」，貼上 Node.js 的安裝路徑（預設為 <code>C:\Program Files\nodejs\</code>）。</p>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-content">
-              <h3>存檔並重開終端機</h3>
-              <p>新增的路徑按「確定」，再把所有「環境變數」視窗都按「確定」關閉。接著<strong style="color:#fff">完全關閉並重新開啟</strong> 命令提示字元（CMD），指令就能正常使用了。</p>
-            </div>
-          </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>確認 Node.js 環境安裝完成</h3>
+        <p>在命令提示字元中執行指令確認版本：</p>
+        <div class="code-block">
+          <div class="code-label">命令提示字元</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">&gt; </span>node -v <span style="color:#24a683"># 應顯示 Node.js 版本號</span><br>
+          <span class="prompt">&gt; </span>npm -v <span style="color:#24a683"># 應顯示 npm（Node.js 套件管理器）版本號</span>
         </div>
-      </details>
-      <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
-        <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ npm 安裝出現「permission denied」錯誤</summary>
-        <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">請確保以<strong style="color:#fff">系統管理員身分</strong>開啟 命令提示字元（CMD）（右鍵點選 → 以系統管理員身分執行）。</p>
-      </details>
-      <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
-        <summary style="cursor:pointer;font-weight:600;font-size:.9rem">❓ 安裝 Antigravity / Claude Desktop 時顯示「Windows 已保護您的電腦」</summary>
-        <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">這是 Windows SmartScreen 對較新軟體的預設警告，並非病毒。點選視窗中的<strong style="color:#fff">「其他資訊」</strong>，再點<strong style="color:#fff">「仍要執行」</strong>即可繼續安裝。請確認下載連結是官方網站（antigravity.google / claude.ai）再執行這個步驟。</p>
-      </details>
+        <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;margin-top:.5rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:.85rem;color:#fca5a5">❓ 顯示「不是內部或外部命令」？</summary>
+          <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">代表 PATH 尚未生效。請先<strong style="color:#fff">完全關閉命令提示字元後重新開啟</strong>（不是最小化，而是關掉再開），若仍不行請重新啟動電腦。都試過還是不行的話，用以下方式手動把路徑加進 PATH，一般帳號就能自己完成、不需要 IT 協助：</p>
+          <div style="margin-top:1rem;">
+            <div class="step" style="margin-bottom:1.25rem;">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h3>開啟環境變數設定視窗</h3>
+                <p>同時按下 <strong style="color:#fff">Win + R</strong> 打開「執行」視窗，貼上以下指令並按 Enter：</p>
+                <div class="code-block">
+                  <div class="code-label">Win + R</div>
+                  <button class="copy-btn" onclick="copyCode(this)">複製</button>
+                  rundll32.exe sysdm.cpl,EditEnvironmentVariables
+                </div>
+                <p style="color:var(--muted);font-size:.85rem;margin-top:.5rem">這個指令會跳過需要系統管理員權限的「系統內容」視窗，直接開啟「環境變數」設定視窗。</p>
+              </div>
+            </div>
+            <div class="step" style="margin-bottom:1.25rem;">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h3>編輯「使用者變數」裡的 Path</h3>
+                <p>在視窗<strong style="color:#fff">上半部「〇〇的使用者變數」</strong>（不是下半部的「系統變數」）找到 <code>Path</code> 這一列，點選後按「編輯」→「新增」，貼上 Node.js 的安裝路徑（預設為 <code>C:\Program Files\nodejs\</code>）。</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h3>存檔並重開命令提示字元</h3>
+                <p>按「確定」關閉所有「環境變數」視窗，接著<strong style="color:#fff">完全關閉並重新開啟</strong>命令提示字元，指令就能正常使用了。</p>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>確認 Python 環境安裝完成</h3>
+        <p>在命令提示字元中執行指令確認版本：</p>
+        <div class="code-block">
+          <div class="code-label">命令提示字元</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt">&gt; </span>python --version <span style="color:#24a683"># 應顯示 Python 版本號</span><br>
+        </div>
+        <details style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;margin-top:.5rem;">
+          <summary style="cursor:pointer;font-weight:600;font-size:.85rem;color:#fca5a5">❓ 沒有反應，或跳出 Microsoft Store？</summary>
+          <p style="color:var(--muted);font-size:.85rem;margin-top:.6rem">通常是安裝時沒有勾選 <code>Add Python to PATH</code>。請到「設定」→「應用程式」→「進階應用程式設定」→「應用程式執行別名」，將 <code>python.exe</code> 與 <code>python3.exe</code> 的別名<strong style="color:#fff">關閉</strong>，重新開啟命令提示字元再試一次。若仍不行，請回到<a href="#python">步驟 3</a> 重新安裝一次並記得勾選該選項。</p>
+        </details>
+      </div>
     </div>
   </div>
 </div>
@@ -654,21 +559,10 @@
 </main>
 
 <div style="text-align:center;padding:2rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);">
-  AI Workshop 工具安裝指南 · 最後更新：2026年6月30日 · 適用 Windows 11
+  AI Workshop 工具安裝指南 · 最後更新：2026/08/10
 </div>
 
 <script>
-function copyTicket(btn) {
-  const text = `您好，\n\n我將參加 [日期] 的 AI Workshop，\n課程需要在本機安裝以下軟體：\n\n- 軟體名稱：Node.js LTS\n- 下載來源：https://nodejs.org（官方網站）\n- 用途：執行 Slidev 簡報工具\n- 需要權限：本機系統管理員安裝權限\n\n請問能否協助開放安裝權限，或由 IT 協助預先安裝？\n\n謝謝！`;
-  navigator.clipboard.writeText(text).then(() => {
-    btn.textContent = '✅ 已複製！';
-    setTimeout(() => btn.textContent = '📋 複製 Ticket 內容', 1800);
-  });
-}
-function toggleCheck(el) {
-  el.classList.toggle('done');
-  el.textContent = el.classList.contains('done') ? '✓' : '';
-}
 function copyCode(btn) {
   const block = btn.closest('.code-block');
   const text = [...block.childNodes]
