@@ -211,7 +211,6 @@
 </div>
 
 <div class="hero">
-  <div class="emoji">💬</div>
   <span class="tag">SESSION 1</span>
   <h1>From Prompting to Tooling</h1>
   <p>從下指令到打造工具</p>
@@ -222,7 +221,6 @@
 <!-- PART 1 -->
 <div class="section" id="part1">
   <div class="section-header">
-    <div class="section-icon">🖼️</div>
     <div>
       <span class="part-tag">PART 1</span>
       <div class="section-title">用 Gemini 把照片變成點陣圖</div>
@@ -234,8 +232,8 @@
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-content">
-        <h3>用瀏覽器開啟 Gemini</h3>
-        <p>開啟瀏覽器並登入 Gemini，帳號用安裝環境時登入的那組 Google 帳號即可。</p>
+        <h3>開啟 Gemini</h3>
+        <p>開啟瀏覽器並登入 Gemini。</p>
         <div class="browser-mock">
           <div class="browser-bar">
             <div class="browser-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
@@ -251,13 +249,14 @@
     <div class="step">
       <div class="step-num">2</div>
       <div class="step-content">
-        <h3>從課程圖片中挑一張，放進對話框</h3>
-        <p>打開講師提供的 <strong>part 1</strong> 課程圖片資料夾，從<strong>三張圖片中任選一張</strong>，用以下任一方式放進 Gemini 的對話框：</p>
+        <h3>選一張角色圖片，放進對話框</h3>
+        <p>從<a href="https://www.dropbox.com/scl/fo/o2wpm93h8h7nvej02d1y8/AKRerOQUHj9gMiaUkzq0_Zg?rlkey=oxqugy9rwt5ee5dmmx12l33v6&amp;st=yp7ku3nb&amp;dl=0" target="_blank">課程資源檔</a>中下載一張角色圖片，也可以自行搜尋喜歡的角色圖。</p>
+        <p>接著用以下任一方式把它放進 Gemini 的對話框：</p>
         <p>· 直接把圖片檔<strong>拖曳</strong>到對話框上放開<br>
            · 或點對話框左側的 <strong>＋</strong>，選擇「上傳檔案」後挑選圖片</p>
         <div class="alert alert-info">
           <span class="alert-icon">ℹ️</span>
-          <span>看到對話框上方出現圖片縮圖，就表示已經成功附加，這時候<strong>先不要送出</strong>，繼續下一步輸入指令。</span>
+          <span>當對話框上方出現圖片縮圖，代表成功附加，此時<strong>先不要送出</strong>，繼續下一步驟。</span>
         </div>
       </div>
     </div>
@@ -272,7 +271,7 @@
           <button class="copy-btn" onclick="copyCode(this)">複製</button>
           <span class="prompt-text">把這張圖轉成點陣圖風格</span>
         </div>
-        <p>Gemini 會花幾秒鐘產生圖片，請稍等它跑完。</p>
+        <p>等待 Gemini 產生對應風格的圖片。</p>
       </div>
     </div>
 
@@ -280,18 +279,68 @@
       <div class="step-num">4</div>
       <div class="step-content">
         <h3>確認結果</h3>
-        <p>你應該會得到一張<strong>點陣圖（pixel art）風格</strong>的圖片，內容與原圖相同，但畫面由一格一格的色塊組成。</p>
-        <div class="screenshot">
-          <span class="scr-icon">🖼️</span>
-          成功畫面：Gemini 回覆一張點陣圖風格的圖片（示意圖待補）
-        </div>
+        <p>預期會得到一張<strong>點陣圖風格</strong>的圖片，內容與原圖相同，但畫面由一格一格的色塊組成。</p>
         <div class="alert alert-success">
           <span class="alert-icon">✅</span>
-          <span>做到這裡，你已經完成一次「上傳素材 ＋ 一句指令」的 AI 生成流程。</span>
+          <span>到此我們已經完成「提供資料 ＋ 指令」的 AI 工作流程。</span>
         </div>
         <details class="faq">
           <summary>❓ Gemini 只回了文字，沒有給我圖片？</summary>
-          <p>代表它把指令理解成「說明怎麼做」而不是「幫我做」。可以直接回覆一句<strong>「請直接產生圖片給我」</strong>，或重新送出一次指令。若結果的風格不夠明顯，也可以追加描述，例如「像素再大一點、顏色再少一點」。</p>
+          <p>代表 Gemini 理解成「說明怎麼做」而不是「幫我做」。可以直接回覆<strong>「請直接產生圖片給我」</strong>。</p>
+        </details>
+        <details class="faq">
+          <summary>❓ 圖片除了點陣圖風格外，出現其他花樣？</summary>
+          <p>AI 產出的結果會有機率產生需求以外多加的項目，如果我們將 AI 工作流程標準化成工具，就能確保輸出不會有變動。</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h3>切換到 Canvas 功能</h3>
+        <p>在同一個對話中，點對話框下方工具列的 <strong>＋</strong> 展開選單，找到 <strong>Canvas</strong> 點選並開啟該功能。</p>
+        <div class="alert alert-info">
+          <span class="alert-icon">ℹ️</span>
+          <span>Canvas 功能可以讓 Gemini 產出<strong>能直接操作的小工具</strong>，而不只是回覆一段文字或一張圖。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <h3>輸入指令並送出</h3>
+        <p>請 Gemini 把剛才做點陣圖的方法，變成一個我們可以自行調整參數的工具：</p>
+        <div class="code-block">
+          <div class="code-label">Prompt</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt-text">將你的方法轉成 canvas 工具，並增加顆粒度大小讓我可以調整</span>
+        </div>
+        <p>等待 Gemini 產生工具，過程中畫面右側會即時顯示它寫出來的內容。</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-content">
+        <h3>確認結果</h3>
+        <p>預期會在右側 Canvas 面板得到一個<strong>可以操作的小工具</strong>：放入圖片後，用<strong>顆粒度（像素大小）的滑桿</strong>調整，畫面上的點陣圖就會跟著變粗或變細。</p>
+        <div class="alert alert-success">
+          <span class="alert-icon">✅</span>
+          <span>到此我們已經把「每次重下指令」的做法，變成一個<strong>可以重複使用、自己調參數的工具</strong>。</span>
+        </div>
+        <details class="faq">
+          <summary>❓ 沒有出現可以操作的工具，只有程式碼或說明？</summary>
+          <p>回覆<strong>「請在 Canvas 中做成可以操作的工具，並讓我可以調整顆粒度」</strong>，讓它明確產出可互動的版本。</p>
+        </details>
+        <details class="faq">
+          <summary>❓ 調整滑桿後畫面沒有變化？</summary>
+          <p>先確認圖片已經放進工具裡，再回覆<strong>「調整顆粒度後畫面沒有更新，請修正」</strong>，Gemini 會直接改這個工具再重新產生一次。</p>
+        </details>
+        <details class="faq">
+          <summary>❓ 無法成功產出點陣圖風格圖？</summary>
+          <p>若操作確認沒有問題，此情況應為 AI 產生的工具有 bug，請根據操作上有問題的部分描述給 Gemini，請他修正問題。</p>
         </details>
       </div>
     </div>
