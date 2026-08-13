@@ -172,18 +172,6 @@
   details.faq summary { cursor: pointer; font-weight: 600; font-size: .85rem; color: #fca5a5; }
   details.faq p { color: var(--muted); font-size: .85rem; margin-top: .6rem; }
 
-  /* Upcoming placeholder */
-  .upcoming {
-    background: var(--surface);
-    border: 1px dashed var(--border);
-    border-radius: 12px;
-    padding: 2rem 1.5rem;
-    text-align: center;
-    color: var(--muted);
-    font-size: .88rem;
-  }
-  .upcoming .icon { font-size: 1.75rem; display: block; margin-bottom: .5rem; }
-
   code {
     background: var(--surface2); border: 1px solid var(--border);
     border-radius: 4px; padding: .1rem .35rem;
@@ -348,20 +336,129 @@
   </div>
 </div>
 
-<!-- PART 2 (待補) -->
+<!-- PART 2 -->
 <div class="section" id="part2">
   <div class="section-header">
-    <div class="section-icon">🛠️</div>
     <div>
       <span class="part-tag">PART 2</span>
-      <div class="section-title">內容製作中</div>
+      <div class="section-title">用 Canvas 做出帳單前後比較工具</div>
+      <div class="section-meta">把每個月都要做一次的比對，變成一個工具</div>
     </div>
   </div>
   <div class="section-body">
-    <div class="upcoming">
-      <span class="icon">🚧</span>
-      本場次後續步驟製作中，敬請期待。
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>下載兩份帳單 Excel</h3>
+        <p>從<a href="https://www.dropbox.com/scl/fo/97rddzdduvfnddy3frq3u/ADpPaXI6_4WsR6n8sfHkHTo?rlkey=j2rublxw9t6og9k3oc3i63dr5&amp;st=o7iktjud&amp;dl=0" target="_blank">課程資源檔</a>下載兩個 Excel 檔案，分別是<strong>變更前</strong>與<strong>變更後</strong>的帳單。</p>
+        <details class="faq">
+          <summary>❓ 帳單 Excel 交給 AI 分析是否會有資安疑慮？</summary>
+          <p>此範例檔已經通過去識別化，無法辨識出任何敏感資訊，目的是讓 AI 知道 Excel 檔的欄位結構，進而產出能讀取對應欄位格式的分析工具。</p>
+        </details>
+      </div>
     </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>開新對話並開啟 Canvas</h3>
+        <p>在 Gemini 左側點<strong>「新對話」</strong>，再點對話框下方工具列的 <strong>＋</strong> 展開選單，開啟 <strong>Canvas</strong>。</p>
+        <div class="alert alert-info">
+          <span class="alert-icon">ℹ️</span>
+          <span>開新對話是為了避免延續 Part 1 的工作流程，影響這次的產出。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>把兩個 Excel 一起放進對話框</h3>
+        <p>用拖曳或 <strong>＋</strong> →「上傳檔案」，把<strong>兩個檔案都附加在同一則訊息</strong>。</p>
+        <div class="alert alert-info">
+          <span class="alert-icon">ℹ️</span>
+          <span>當對話框出現兩個檔案的縮圖，代表成功附加，此時<strong>先不要送出</strong>，繼續下一步驟。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>輸入指令並送出</h3>
+        <p>輸入範例 prompt，觀察工具如何一次比一次完整：</p>
+
+        <div class="code-block">
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt-text">這兩份 Excel 是同一份帳單的變更前與變更後，請用 Canvas 做一個比較工具，以項目為單位並排顯示變更前金額、變更後金額、差異金額與變化百分比。</span>
+        </div>
+
+        <p>等待 Gemini 產生工具，過程中畫面右側會即時顯示它寫出來的內容。</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h3>確認結果</h3>
+        <p>預期會在右側 Canvas 面板得到一個<strong>帳單比較工具</strong>：逐項列出變更前後的金額、算出差異與變化幅度，並整理出總金額變化與變化最大的項目。</p>
+        <div class="alert alert-warn">
+          <span class="alert-icon">⚠️</span>
+          <span>請<strong>抽查幾個項目的數字</strong>是否與 Excel 一致，特別是總金額。AI 有機率看錯或漏掉資料，工具做好後仍要驗證。</span>
+        </div>
+        <div class="alert alert-success">
+          <span class="alert-icon">✅</span>
+          <span>到此，原本每期都要做一次的人工比對，已經變成一個<strong>能重複使用的工具</strong>。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <h3>追加需求，讓工具更貼近實際工作</h3>
+        <p>工具產出後可以接著要求修改，以下是幾個可以嘗試的追加指令：</p>
+        <div class="code-block">
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt-text">增加圖表化的功能，讓我能切換數字或圖表的結果比較。</span>
+        </div>
+        <div class="code-block">
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt-text">請把變化超過 10% 的項目用醒目顏色標示，並可以只篩選出這些項目。</span>
+        </div>
+        <div class="code-block">
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt-text">請增加把比較結果匯出成 CSV 的按鈕。</span>
+        </div>
+        <details class="faq">
+          <summary>❓ Gemini 說讀不到 Excel，或欄位認錯？</summary>
+          <p>回覆說明資料的實際結構，例如<strong>「項目名稱在 A 欄、金額在 D 欄，第 1 列是標題」</strong>，或把兩份檔案的欄位名稱直接貼給它。</p>
+        </details>
+        <details class="faq">
+          <summary>❓ 數字對不上，或項目沒有正確配對？</summary>
+          <p>指出實際情況請它修正，例如<strong>「項目名稱完全相同才當作同一項目，找不到對應的項目時，請列為新增或取消」</strong>。</p>
+        </details>
+        <details class="faq">
+          <summary>❓ 工具操作起來有問題或畫面空白？</summary>
+          <p>此情況多為 AI 產生的工具有 bug，把操作到哪一步、看到什麼結果描述給 Gemini，請它修正。</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-content">
+        <h3>把工具下載到自己電腦使用</h3>
+        <p>工具滿意後，在 Canvas 面板<strong>右上角</strong>找到下載的圖示，點擊並把檔案存到電腦。</p>
+        <p>存檔後用瀏覽器開啟該檔案，操作方式與 Canvas 中完全相同。</p>
+        <div class="alert alert-success">
+          <span class="alert-icon">✅</span>
+          <span>這個 HTML 檔不需要安裝、離線也能使用。</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
