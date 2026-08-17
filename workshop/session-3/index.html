@@ -12,6 +12,8 @@
     --border: #2e3352;
     --accent: #6c63ff;
     --accent2: #00d4aa;
+    --warn: #f59e0b;
+    --danger: #ef4444;
     --text: #e2e8f0;
     --muted: #94a3b8;
   }
@@ -21,67 +23,416 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang TC', system-ui, sans-serif;
     line-height: 1.6;
     min-height: 100vh;
-    padding: 2rem 1rem 4rem;
   }
-  .wrap { max-width: 720px; margin: 0 auto; }
+
   .breadcrumb {
     display: flex; gap: .4rem; align-items: center;
-    color: var(--muted); font-size: .85rem; margin-bottom: 2rem;
+    color: var(--muted); font-size: .85rem;
+    max-width: 760px; margin: 0 auto; padding: 1.5rem 1.5rem 0;
   }
   .breadcrumb a { color: var(--muted); text-decoration: none; }
   .breadcrumb a:hover { color: var(--text); }
 
-  .hero { text-align: center; margin-bottom: 2.5rem; }
+  /* Hero */
+  .hero { text-align: center; padding: 2rem 1.5rem 1rem; }
   .hero .emoji { font-size: 3rem; margin-bottom: .75rem; }
   .hero .tag {
     display: inline-block;
     font-size: .75rem; font-weight: 700;
-    color: var(--accent2);
-    letter-spacing: .05em;
+    color: var(--accent2); letter-spacing: .05em;
     margin-bottom: .5rem;
   }
   .hero h1 { font-size: 1.75rem; font-weight: 800; color: #fff; margin-bottom: .5rem; }
   .hero p { color: var(--muted); font-size: 1rem; }
 
-  .placeholder {
-    background: var(--surface);
-    border: 1px dashed var(--border);
-    border-radius: 16px;
-    padding: 3rem 1.5rem;
-    text-align: center;
-    color: var(--muted);
-  }
-  .placeholder .icon { font-size: 2rem; margin-bottom: .75rem; }
-  .placeholder p { font-size: .9rem; }
+  /* Main layout */
+  main { max-width: 760px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
-  @media (max-width: 520px) {
+  /* Section */
+  .section { margin-bottom: 3rem; }
+  .section-header {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 12px 12px 0 0;
+    background: linear-gradient(90deg, rgba(108,99,255,.15) 0%, var(--surface) 100%);
+    border: 1px solid rgba(108,99,255,.4);
+    border-bottom: none;
+  }
+  .section-icon { font-size: 1.8rem; line-height: 1; }
+  .part-tag {
+    display: inline-block; font-size: .7rem; font-weight: 700;
+    color: var(--accent2); letter-spacing: .08em; margin-bottom: .15rem;
+  }
+  .section-title { font-size: 1.2rem; font-weight: 700; }
+  .section-meta { font-size: .8rem; color: var(--muted); }
+
+  .section-body {
+    background: var(--surface);
+    border: 1px solid rgba(108,99,255,.4);
+    border-radius: 0 0 12px 12px;
+    padding: 1.5rem;
+  }
+
+  /* Steps */
+  .step { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+  .step:last-child { margin-bottom: 0; }
+  .step-num {
+    flex-shrink: 0; width: 28px; height: 28px;
+    border-radius: 50%; background: var(--surface2);
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .8rem; font-weight: 700; color: var(--muted);
+    margin-top: .15rem;
+  }
+  .step-content { flex: 1; min-width: 0; }
+  .step-content h3 { font-size: .95rem; font-weight: 600; margin-bottom: .4rem; color: #fff; }
+  .step-content p { font-size: .9rem; color: var(--muted); margin-bottom: .6rem; }
+  .step-content p:last-child { margin-bottom: 0; }
+  .step-content ul { margin: .4rem 0 .8rem 1.1rem; }
+  .step-content li { font-size: .88rem; color: var(--muted); margin-bottom: .5rem; }
+  .step-content li:last-child { margin-bottom: 0; }
+
+  /* Code / prompt block */
+  .code-block {
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .75rem 1rem;
+    font-family: 'Consolas', 'Cascadia Code', monospace;
+    font-size: .85rem;
+    color: #e2e8f0;
+    position: relative;
+    margin: .5rem 0;
+    overflow-x: auto;
+  }
+  .code-label {
+    font-size: .7rem; color: var(--muted); text-transform: uppercase;
+    letter-spacing: .08em; margin-bottom: .3rem;
+  }
+  .copy-btn {
+    position: absolute; top: .5rem; right: .5rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--muted); font-size: .7rem; padding: .25rem .5rem;
+    border-radius: 4px; cursor: pointer; transition: all .15s;
+  }
+  .copy-btn:hover { color: #fff; border-color: var(--accent); }
+  .prompt-text { font-size: .95rem; line-height: 1.7; padding-right: 3.5rem; display: block; }
+
+  /* Spec note block (not meant to be copied verbatim) */
+  .spec-block {
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .9rem 1rem;
+    font-size: .85rem;
+    color: var(--muted);
+    margin: .6rem 0;
+  }
+  .spec-block p { color: var(--muted); margin-bottom: .6rem; }
+  .spec-block ul { margin: 0 0 .6rem 1.1rem; }
+  .spec-block li { margin-bottom: .55rem; }
+  .spec-block li:last-child { margin-bottom: 0; }
+  .spec-block p:last-child, .spec-block ul:last-child { margin-bottom: 0; }
+  .spec-label {
+    font-size: .7rem; font-weight: 700; color: var(--accent2);
+    text-transform: uppercase; letter-spacing: .08em;
+    margin: .8rem 0 .3rem;
+  }
+  .spec-label:first-child { margin-top: 0; }
+
+  /* OS-specific command panels */
+  .os-row { display: flex; gap: .75rem; flex-wrap: wrap; margin: .6rem 0; }
+  .os-panel {
+    flex: 1; min-width: 220px;
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .75rem .9rem;
+  }
+  .os-label {
+    display: flex; align-items: center; gap: .4rem;
+    font-size: .78rem; font-weight: 700; color: var(--text);
+    margin-bottom: .5rem;
+  }
+  .os-panel p { font-size: .85rem; color: var(--muted); margin-bottom: 0; }
+  .os-panel pre {
+    font-family: 'Consolas', 'Cascadia Code', monospace;
+    font-size: .82rem; color: #e2e8f0;
+    overflow-x: auto; line-height: 1.7;
+  }
+
+  /* Alert boxes */
+  .alert {
+    border-radius: 8px; padding: .9rem 1rem;
+    font-size: .875rem; margin: .75rem 0;
+    display: flex; gap: .6rem; align-items: flex-start;
+  }
+  .alert-icon { flex-shrink: 0; font-size: 1rem; margin-top: .05rem; }
+  .alert-warn { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.35); color: #fcd34d; }
+  .alert-info { background: rgba(99,102,241,.1); border: 1px solid rgba(99,102,241,.35); color: #a5b4fc; }
+  .alert-success { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.35); color: #6ee7b7; }
+
+  /* Fake browser mockup */
+  .browser-mock {
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: .75rem 0;
+  }
+  .browser-bar {
+    background: #161b22;
+    padding: .5rem .75rem;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .browser-dots { display: flex; gap: .3rem; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #ffbd2e; }
+  .dot-g { background: #28c840; }
+  .browser-url {
+    flex: 1; background: #21262d; border-radius: 4px;
+    padding: .2rem .6rem; font-size: .75rem; color: var(--muted);
+    font-family: monospace;
+  }
+  .browser-content { padding: 1rem; font-size: .82rem; }
+
+  /* Screenshot */
+  .screenshot {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: .75rem 0;
+    background: var(--surface2);
+  }
+  .screenshot img { display: block; width: 100%; height: auto; }
+  .screenshot .caption {
+    padding: .5rem .75rem;
+    font-size: .78rem; color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* Collapsible troubleshooting / Q&A */
+  details.faq {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; padding: .75rem 1rem; margin-top: .5rem;
+  }
+  details.faq summary { cursor: pointer; font-weight: 600; font-size: .85rem; color: #fca5a5; }
+  details.faq[open] summary { margin-bottom: .5rem; }
+  details.faq p { color: var(--muted); font-size: .85rem; margin-top: .6rem; }
+  details.faq.qa summary { color: #93c5fd; }
+
+  code {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 4px; padding: .1rem .35rem;
+    font-family: 'Consolas', 'Cascadia Code', monospace; font-size: .85em;
+  }
+  a { color: var(--accent2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { color: #fff; }
+
+  @media (max-width: 600px) {
     .hero h1 { font-size: 1.35rem; }
+    main { padding: 1rem 1rem 3rem; }
+    .section-body { padding: 1.1rem; }
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <div class="breadcrumb">
-    <a href="../../index.html">首頁</a>
-    <span>/</span>
-    <a href="../index.html">手作步驟</a>
-    <span>/</span>
-    <span>Session 3</span>
-  </div>
+<div class="breadcrumb">
+  <a href="../../index.html">首頁</a>
+  <span>/</span>
+  <a href="../index.html">手作步驟</a>
+  <span>/</span>
+  <span>Session 3</span>
+</div>
 
-  <div class="hero">
-    <div class="emoji">📊</div>
-    <span class="tag">SESSION 3</span>
-    <h1>Excel AI Workshop</h1>
-    <p>AI 輔助 Excel 實作</p>
-  </div>
+<div class="hero">
+  <span class="tag">SESSION 3</span>
+  <h1>Excel AI Workshop</h1>
+  <p>AI 輔助 Excel 實作</p>
+</div>
 
-  <div class="placeholder">
-    <div class="icon">🚧</div>
-    <p>本場次手作步驟內容製作中，敬請期待。</p>
+<main>
+
+<!-- PART 1 -->
+<div class="section" id="part1">
+  <div class="section-header">
+    <div>
+      <span class="part-tag">PART 1</span>
+      <div class="section-title">讓 AI Coding Agent 依照 Plan 實作 Excel 整理工具</div>
+      <div class="section-meta">從下載練習檔案，到讓 AI 讀 Plan、動手寫程式並自我驗證</div>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>先下載練習檔案</h3>
+        <p>從 <a href="https://reurl.cc/ovGlY5" target="_blank">https://reurl.cc/ovGlY5</a> 下載練習檔案，內含真實 Excel 檔案與起始程式碼。</p>
+        <div class="screenshot">
+          <img src="../../assets/workshop-session-3/execise_download.png" alt="動手練習投影片：先下載練習檔案的連結與後續 AI agent prompt 範例">
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>連到 Dropbox，下載並解壓縮</h3>
+        <p>連結會導向 Dropbox 分享的資料夾頁面，點右上角的<strong>「下載」</strong>即可，<strong>無需登入</strong>。</p>
+        <div class="screenshot">
+          <img src="../../assets/workshop-session-3/dropbox_source.png" alt="Dropbox 分享資料夾頁面，右上角的下載按鈕被紅框標示">
+          <div class="caption">Dropbox 分享頁面 → 點「下載」</div>
+        </div>
+        <div class="alert alert-info">
+          <span class="alert-icon">ℹ️</span>
+          <span>若跳出「登入或註冊」視窗，不需要建立帳號，直接點下方的<strong>「或保持只有下載」</strong>即可繼續下載。</span>
+        </div>
+        <div class="screenshot">
+          <img src="../../assets/workshop-session-3/dropbox_download_dialog.png" alt="Dropbox 登入或註冊視窗，下方「或保持只有下載」選項被紅框標示">
+          <div class="caption">跳出登入視窗時 → 點「或保持只有下載」</div>
+        </div>
+        <p>下載完成後會是一個 <code>.zip</code> 檔，記得先<strong>解壓縮</strong>再進行下一步：</p>
+        <div class="os-row">
+          <div class="os-panel">
+            <div class="os-label">🪟 Windows</div>
+            <p>在檔案總管中找到下載的 <code>.zip</code> 檔，按<strong>滑鼠右鍵 → 全部解壓縮</strong>，選好位置後點「解壓縮」。</p>
+          </div>
+          <div class="os-panel">
+            <div class="os-label">🍎 macOS</div>
+            <p>在 Finder 的下載項目中，直接<strong>雙擊</strong> <code>.zip</code> 檔，會自動在同一位置解壓成資料夾。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>用 VS Code 開啟資料夾，先看作業的 Plan</h3>
+        <p>開啟 VS Code 後，從選單 <strong>File → Open Folder</strong>，選擇剛剛下載並解壓縮的作業資料夾。</p>
+        <div class="screenshot">
+          <img src="../../assets/workshop-session-3/vscode_open_folder.png" alt="VS Code File 選單，Open Folder 選項被紅框標示，並提示選擇 execises 路徑">
+          <div class="caption">File → Open Folder → 選擇解壓縮後的資料夾</div>
+        </div>
+        <p>資料夾開啟後，先展開 <code>app</code> 目錄，找到 <code>app/bm_report/docs/plan.md</code> 並預覽（Preview），看看這次作業預計實作的內容。</p>
+        <div class="screenshot">
+          <img src="../../assets/workshop-session-3/vscode_plan_preview.png" alt="VS Code 中預覽 app/bm_report/docs/plan.md，顯示 BM Report Transformer 的實作規劃與目錄結構">
+          <div class="caption">預覽 app/bm_report/docs/plan.md</div>
+        </div>
+
+        <details class="faq qa" open>
+          <summary>💬 Q：這份 Plan 如何產生？</summary>
+          <p><strong>A：</strong>本次作業已將和 AI 對話的過程歸納成 <code>app/bm_report/docs/plan.md</code>。</p>
+          <p>實際上，會需要和 AI 說明以下主要規範，當作日後產生 plan 文件的參考：</p>
+
+          <div class="spec-label">原文（English）</div>
+          <div class="spec-block">
+            <p>Designed, implemented, and refactored a Python BM Report Transformer that reads
+            4 Excel business-status files (<code>raw_data/</code>) and consolidates them into a single
+            analytics CSV (<code>output/raw_report.csv</code>). The pipeline was then refactored from
+            imperative to functional style using <code>map</code>, <code>filter</code>, <code>functools.reduce</code>, and
+            <code>itertools.accumulate</code>.</p>
+            <ul>
+              <li><strong>venv + Google Python style</strong> — all source follows 4-space indent, ≤80 chars, Google docstrings, type hints, <code>logging</code> (no bare <code>print</code> in libs).</li>
+              <li><strong>Amount scale = ×10,000 with <code>round()</code></strong> — Excel values are in $K-derived units; <code>round(val * 10_000)</code> produces integers matching the pre-existing output exactly.</li>
+              <li><strong><code>itertools.accumulate</code> for stateful row scan</strong> — chosen over mutable loop variable to track current <code>rev_op_type</code> across rows in a functional style.</li>
+              <li><strong>Execution timing via <code>config.timed()</code></strong> — stdlib <code>time.perf_counter()</code> context manager logs per-stage wall-clock time; <code>main.py</code> prints a summary line to stdout regardless of log level.</li>
+              <li><strong>Plan written to <code>docs/plan.md</code> first</strong> — design doc committed before implementation, then appended with execution-time section.</li>
+              <li>"add rigorous unit test for app/bm_report"</li>
+            </ul>
+          </div>
+
+          <div class="spec-label">繁體中文易讀版</div>
+          <div class="spec-block">
+            <p>設計、實作並重構了一個 Python 的 BM Report Transformer：讀取 4 份 Excel
+            營運狀態檔案（<code>raw_data/</code>），整合成單一份分析用的 CSV
+            （<code>output/raw_report.csv</code>）。之後再把整個流程從「命令式」寫法，
+            重構成使用 <code>map</code>、<code>filter</code>、<code>functools.reduce</code>、
+            <code>itertools.accumulate</code> 的「函數式」寫法。</p>
+            <ul>
+              <li><strong>虛擬環境（venv）＋ Google Python 風格</strong> — 所有程式碼統一採用 4 個空格縮排、每行不超過 80 字元、Google 格式的 docstring、型別提示（type hints），並使用 <code>logging</code>（函式庫內不使用裸的 <code>print</code>）。</li>
+              <li><strong>金額換算 ×10,000，並用 <code>round()</code> 取整數</strong> — Excel 中的數值是以「千元」為基礎的換算單位；用 <code>round(val * 10_000)</code> 計算後，會得到與原本輸出完全一致的整數結果。</li>
+              <li><strong>用 <code>itertools.accumulate</code> 處理需要記錄狀態的逐列掃描</strong> — 選擇用它取代「可變的迴圈變數」，以函數式寫法追蹤每一列資料目前的 <code>rev_op_type</code>（營收/營運類型）。</li>
+              <li><strong>用 <code>config.timed()</code> 記錄執行時間</strong> — 透過標準函式庫 <code>time.perf_counter()</code> 做成的 context manager，記錄每個階段花費的實際時間；<code>main.py</code> 不論目前的 log 等級為何，都會印出一行執行時間摘要。</li>
+              <li><strong>先寫好 <code>docs/plan.md</code> 再開始實作</strong> — 先把設計文件（plan.md）寫好並提交，之後才開始寫程式，實作完成後再把「執行時間」相關內容補進這份文件。</li>
+              <li>「為 app/bm_report 加上嚴謹的單元測試」</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>進入 AI Agent，依照 Plan 實作並驗證</h3>
+        <p>進入你的 AI coding agent（例如 Claude Code），輸入以下 prompt 範例：</p>
+        <div class="code-block">
+          <div class="code-label">Prompt</div>
+          <button class="copy-btn" onclick="copyCode(this)">複製</button>
+          <span class="prompt-text">讀取 app/bm_report/docs/plan.md，以 raw_data 為輸入、output/ 為輸出，依照 plan.md 實作程式，並執行測試驗證結果</span>
+        </div>
+        <div class="alert alert-info">
+          <span class="alert-icon">ℹ️</span>
+          <span>如果 agent 詢問是否同意執行指令，作業過程中可以先按<strong>同意</strong>繼續進行；實際工作時仍建議每次看過指令內容再決定是否同意執行。</span>
+        </div>
+        <p>也可以參考根目錄的 <code>README.md</code>，了解如何執行主程式和跑單元測試。若想自己在終端機手動跑一次，可以先在 VS Code 選單點 <strong>Terminal → New Terminal</strong> 開啟終端機，再依作業系統輸入對應指令（實際指令仍以 <code>README.md</code> 為主，以下僅供參考）：</p>
+        <div class="os-row">
+          <div class="os-panel">
+            <div class="os-label">🪟 Windows（PowerShell）</div>
+            <pre><code>cd app\bm_report
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+python main.py
+pytest</code></pre>
+          </div>
+          <div class="os-panel">
+            <div class="os-label">🍎 macOS（Terminal）</div>
+            <pre><code>cd app/bm_report
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python main.py
+pytest</code></pre>
+          </div>
+        </div>
+        <div class="alert alert-info">
+          <span class="alert-icon">ℹ️</span>
+          <span>如果資料夾內已經有 <code>.venv</code>（例如已被 AI agent 建立過），可以略過建立虛擬環境那一行，直接執行<strong>啟用（activate）</strong>指令即可。</span>
+        </div>
+        <div class="alert alert-success">
+          <span class="alert-icon">✅</span>
+          <span>到此，AI agent 會依照 <code>plan.md</code> 的規劃讀取 <code>raw_data</code>、產出 <code>output/</code> 底下的結果，並自行執行測試驗證。</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
+</main>
+
+<div style="text-align:center;padding:2rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);">
+  AI Workshop 手作步驟 · Session 3
+</div>
+
+<script>
+function copyCode(btn) {
+  const block = btn.closest('.code-block');
+  const text = [...block.childNodes]
+    .filter(n => n.nodeType === 3 || (n.tagName && n.tagName !== 'BUTTON' && !n.classList.contains('code-label')))
+    .map(n => n.textContent)
+    .join('').replace(/\n{3,}/g, '\n\n').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '已複製！';
+    setTimeout(() => btn.textContent = '複製', 1500);
+  });
+}
+</script>
 </body>
 </html>
