@@ -8,11 +8,8 @@ Dropbox previews one document at a time, it isn't a real static host). Instead o
 relying on Dropbox to serve a multi-page site, we'll pre-render all the pages into one
 linear PDF that anyone can open directly, no click-through navigation required.
 
-The user pointed at `~/vsi/VS-API-Gateway`'s existing PDF-generation skill
-(`.claude/skills/gen-userguide-pdf.md` → `docs/userguide/scripts/generate_pdf.py`) as
-the pattern to follow: render HTML to PDF with headless Chromium via Playwright. That
-script goes Markdown → pandoc → HTML → Playwright → PDF for a single doc; we only need
-the HTML → Playwright → PDF half, run once per page, then merge the pages in order.
+The chosen approach: render HTML to PDF with headless Chromium via Playwright, once
+per page, then merge the pages in order.
 
 Confirmed in this environment already:
 - `playwright` (Python) is installed and its Chromium browser launches successfully.
@@ -47,8 +44,7 @@ path):
 - `page.evaluate("document.querySelectorAll('details').forEach(d => d.open = true)")`
   to expand every collapsible section so nothing is missing from the PDF.
 - `page.pdf(path=tmp_pdf, format="A4", print_background=True, margin={"top": "20mm",
-  "bottom": "20mm", "left": "18mm", "right": "18mm"})` — same margins as the
-  VS-API-Gateway script, kept for visual consistency across our PDF tooling.
+  "bottom": "20mm", "left": "18mm", "right": "18mm"})`.
 - Write each page's PDF to a temp file in order.
 
 **Merge**: `subprocess.run(["pdfunite", *tmp_pdfs, out_path])` to concatenate the 8
@@ -61,11 +57,9 @@ artifacts stay named consistently — `dist/ai-workshop-tool-guide-<version>.pdf
 
 **Visual fidelity — explicit decision**: render pages exactly as they look on screen
 (dark theme, `print_background=True`), rather than injecting a separate light
-print-stylesheet. This matches the "render as viewed" spirit of the reference script
-and needs no new CSS. Flagging this because a dark-themed PDF is heavier to print on
-paper — if that turns out to matter, a follow-up would add a `print.css` override
-(same pattern as `VS-API-Gateway/docs/userguide/print.css`), but that's out of scope
-unless requested.
+print-stylesheet. This needs no new CSS. Flagging this because a dark-themed PDF is
+heavier to print on paper — if that turns out to matter, a follow-up would add a
+`print.css` override, but that's out of scope unless requested.
 
 **Cross-page links**: on-page `#anchor` TOC links already work as intra-page PDF
 destinations (Chromium handles this natively per-document). Cross-*page* links
